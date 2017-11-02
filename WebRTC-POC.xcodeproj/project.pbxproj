@@ -7,20 +7,110 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4445FD561FAB2BB8004A9EDF /* WebRTCVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4445FD551FAB2BB8004A9EDF /* WebRTCVC.mm */; };
+		4445FD591FAB2BD3004A9EDF /* mavenir.webrtc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD581FAB2BD3004A9EDF /* mavenir.webrtc.framework */; };
+		4445FD5B1FAB2EBB004A9EDF /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD5A1FAB2EBA004A9EDF /* CoreBluetooth.framework */; };
+		4445FD5D1FAB2EC5004A9EDF /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD5C1FAB2EC5004A9EDF /* UserNotifications.framework */; };
+		4445FD5F1FAB2ECA004A9EDF /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD5E1FAB2ECA004A9EDF /* UserNotificationsUI.framework */; };
+		4445FD611FAB2EE4004A9EDF /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD601FAB2EE4004A9EDF /* libc++.1.tbd */; };
+		4445FD631FAB2EF0004A9EDF /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD621FAB2EF0004A9EDF /* libstdc++.6.tbd */; };
+		4445FD651FAB2EF9004A9EDF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD641FAB2EF8004A9EDF /* libsqlite3.tbd */; };
+		4445FD671FAB2F0D004A9EDF /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD661FAB2F0D004A9EDF /* libiconv.tbd */; };
+		4445FD691FAB2F17004A9EDF /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD681FAB2F17004A9EDF /* libxml2.2.tbd */; };
+		4445FD6B1FAB2F21004A9EDF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD6A1FAB2F21004A9EDF /* libsqlite3.0.tbd */; };
+		4445FD6D1FAB2F28004A9EDF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD6C1FAB2F28004A9EDF /* libz.tbd */; };
+		4445FD731FAB2F65004A9EDF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD721FAB2F65004A9EDF /* OpenGLES.framework */; };
+		4445FD771FAB2F79004A9EDF /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD761FAB2F79004A9EDF /* CoreVideo.framework */; };
+		4445FD791FAB2F87004A9EDF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD781FAB2F87004A9EDF /* MobileCoreServices.framework */; };
+		4445FD7B1FAB2F90004A9EDF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD7A1FAB2F90004A9EDF /* CoreMedia.framework */; };
+		4445FD7D1FAB2F9D004A9EDF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD7C1FAB2F9D004A9EDF /* QuartzCore.framework */; };
+		4445FD7F1FAB2FA4004A9EDF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD7E1FAB2FA4004A9EDF /* CoreData.framework */; };
+		4445FD811FAB2FAD004A9EDF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD801FAB2FAD004A9EDF /* SystemConfiguration.framework */; };
+		4445FD831FAB2FB3004A9EDF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD821FAB2FB3004A9EDF /* UIKit.framework */; };
+		4445FD851FAB2FB9004A9EDF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD841FAB2FB9004A9EDF /* AVFoundation.framework */; };
+		4445FD871FAB2FC1004A9EDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD861FAB2FC1004A9EDF /* Foundation.framework */; };
+		4445FD891FAB3002004A9EDF /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD881FAB3002004A9EDF /* CoreAudioKit.framework */; };
+		4445FD8D1FAB30A0004A9EDF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD8C1FAB309F004A9EDF /* Security.framework */; };
+		4445FD8F1FAB30B0004A9EDF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD8E1FAB30B0004A9EDF /* CoreFoundation.framework */; };
+		4445FD911FAB3178004A9EDF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD901FAB3177004A9EDF /* AudioToolbox.framework */; };
+		4445FD931FAB3196004A9EDF /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD921FAB3196004A9EDF /* CoreImage.framework */; };
+		4445FD951FAB319D004A9EDF /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD941FAB319D004A9EDF /* ImageIO.framework */; };
+		4445FD971FAB32D1004A9EDF /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD961FAB32D1004A9EDF /* AVKit.framework */; };
+		4445FD981FAB34AD004A9EDF /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD6E1FAB2F2F004A9EDF /* libresolv.tbd */; };
+		4445FD9A1FAB34FE004A9EDF /* libiconv.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD991FAB34FE004A9EDF /* libiconv.2.tbd */; };
+		4445FD9C1FAB350A004A9EDF /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD9B1FAB350A004A9EDF /* libiconv.2.4.0.tbd */; };
+		4445FD9E1FAB36F6004A9EDF /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD9D1FAB36F6004A9EDF /* CoreText.framework */; };
+		4445FDA01FAB3700004A9EDF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD9F1FAB3700004A9EDF /* WebKit.framework */; };
+		4445FDA21FAB370A004A9EDF /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FDA11FAB370A004A9EDF /* VideoToolbox.framework */; };
+		4445FDA41FAB3714004A9EDF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FDA31FAB3714004A9EDF /* Accelerate.framework */; };
+		4445FDA61FAB374C004A9EDF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FDA51FAB374C004A9EDF /* CoreTelephony.framework */; };
+		4445FDA81FAB375D004A9EDF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FDA71FAB375D004A9EDF /* CFNetwork.framework */; };
 		446F12F31FAB2927009BA230 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F12F21FAB2927009BA230 /* AppDelegate.m */; };
-		446F12F61FAB2927009BA230 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F12F51FAB2927009BA230 /* ViewController.m */; };
 		446F12F91FAB2927009BA230 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446F12F71FAB2927009BA230 /* Main.storyboard */; };
 		446F12FB1FAB2927009BA230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446F12FA1FAB2927009BA230 /* Assets.xcassets */; };
 		446F12FE1FAB2927009BA230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446F12FC1FAB2927009BA230 /* LaunchScreen.storyboard */; };
 		446F13011FAB2927009BA230 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F13001FAB2927009BA230 /* main.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		446F13171FAB2B55009BA230 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4445FD541FAB2BB8004A9EDF /* WebRTCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebRTCVC.h; path = "WebRTC-POC/WebRTCVC.h"; sourceTree = SOURCE_ROOT; };
+		4445FD551FAB2BB8004A9EDF /* WebRTCVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WebRTCVC.mm; path = "WebRTC-POC/WebRTCVC.mm"; sourceTree = SOURCE_ROOT; };
+		4445FD581FAB2BD3004A9EDF /* mavenir.webrtc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = mavenir.webrtc.framework; path = "WebRTC-POC/Frameworks/mavenir.webrtc.framework"; sourceTree = "<group>"; };
+		4445FD5A1FAB2EBA004A9EDF /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		4445FD5C1FAB2EC5004A9EDF /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		4445FD5E1FAB2ECA004A9EDF /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		4445FD601FAB2EE4004A9EDF /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		4445FD621FAB2EF0004A9EDF /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		4445FD641FAB2EF8004A9EDF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		4445FD661FAB2F0D004A9EDF /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		4445FD681FAB2F17004A9EDF /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		4445FD6A1FAB2F21004A9EDF /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		4445FD6C1FAB2F28004A9EDF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		4445FD6E1FAB2F2F004A9EDF /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		4445FD701FAB2F5D004A9EDF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		4445FD721FAB2F65004A9EDF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		4445FD741FAB2F70004A9EDF /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		4445FD761FAB2F79004A9EDF /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		4445FD781FAB2F87004A9EDF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		4445FD7A1FAB2F90004A9EDF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		4445FD7C1FAB2F9D004A9EDF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4445FD7E1FAB2FA4004A9EDF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4445FD801FAB2FAD004A9EDF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4445FD821FAB2FB3004A9EDF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4445FD841FAB2FB9004A9EDF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4445FD861FAB2FC1004A9EDF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4445FD881FAB3002004A9EDF /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		4445FD8A1FAB3009004A9EDF /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		4445FD8C1FAB309F004A9EDF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4445FD8E1FAB30B0004A9EDF /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		4445FD901FAB3177004A9EDF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4445FD921FAB3196004A9EDF /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		4445FD941FAB319D004A9EDF /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		4445FD961FAB32D1004A9EDF /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		4445FD991FAB34FE004A9EDF /* libiconv.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.tbd; path = usr/lib/libiconv.2.tbd; sourceTree = SDKROOT; };
+		4445FD9B1FAB350A004A9EDF /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
+		4445FD9D1FAB36F6004A9EDF /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		4445FD9F1FAB3700004A9EDF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		4445FDA11FAB370A004A9EDF /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		4445FDA31FAB3714004A9EDF /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		4445FDA51FAB374C004A9EDF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		4445FDA71FAB375D004A9EDF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		446F12EE1FAB2927009BA230 /* WebRTC-POC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WebRTC-POC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		446F12F11FAB2927009BA230 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		446F12F21FAB2927009BA230 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		446F12F41FAB2927009BA230 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		446F12F51FAB2927009BA230 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		446F12F81FAB2927009BA230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		446F12FA1FAB2927009BA230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		446F12FD1FAB2927009BA230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,17 +123,102 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4445FDA81FAB375D004A9EDF /* CFNetwork.framework in Frameworks */,
+				4445FDA61FAB374C004A9EDF /* CoreTelephony.framework in Frameworks */,
+				4445FD791FAB2F87004A9EDF /* MobileCoreServices.framework in Frameworks */,
+				4445FDA41FAB3714004A9EDF /* Accelerate.framework in Frameworks */,
+				4445FDA21FAB370A004A9EDF /* VideoToolbox.framework in Frameworks */,
+				4445FDA01FAB3700004A9EDF /* WebKit.framework in Frameworks */,
+				4445FD9E1FAB36F6004A9EDF /* CoreText.framework in Frameworks */,
+				4445FD9C1FAB350A004A9EDF /* libiconv.2.4.0.tbd in Frameworks */,
+				4445FD9A1FAB34FE004A9EDF /* libiconv.2.tbd in Frameworks */,
+				4445FD851FAB2FB9004A9EDF /* AVFoundation.framework in Frameworks */,
+				4445FD971FAB32D1004A9EDF /* AVKit.framework in Frameworks */,
+				4445FD951FAB319D004A9EDF /* ImageIO.framework in Frameworks */,
+				4445FD931FAB3196004A9EDF /* CoreImage.framework in Frameworks */,
+				4445FD911FAB3178004A9EDF /* AudioToolbox.framework in Frameworks */,
+				4445FD8F1FAB30B0004A9EDF /* CoreFoundation.framework in Frameworks */,
+				4445FD8D1FAB30A0004A9EDF /* Security.framework in Frameworks */,
+				4445FD891FAB3002004A9EDF /* CoreAudioKit.framework in Frameworks */,
+				4445FD871FAB2FC1004A9EDF /* Foundation.framework in Frameworks */,
+				4445FD831FAB2FB3004A9EDF /* UIKit.framework in Frameworks */,
+				4445FD811FAB2FAD004A9EDF /* SystemConfiguration.framework in Frameworks */,
+				4445FD7F1FAB2FA4004A9EDF /* CoreData.framework in Frameworks */,
+				4445FD7D1FAB2F9D004A9EDF /* QuartzCore.framework in Frameworks */,
+				4445FD7B1FAB2F90004A9EDF /* CoreMedia.framework in Frameworks */,
+				4445FD771FAB2F79004A9EDF /* CoreVideo.framework in Frameworks */,
+				4445FD731FAB2F65004A9EDF /* OpenGLES.framework in Frameworks */,
+				4445FD981FAB34AD004A9EDF /* libresolv.tbd in Frameworks */,
+				4445FD6D1FAB2F28004A9EDF /* libz.tbd in Frameworks */,
+				4445FD6B1FAB2F21004A9EDF /* libsqlite3.0.tbd in Frameworks */,
+				4445FD691FAB2F17004A9EDF /* libxml2.2.tbd in Frameworks */,
+				4445FD671FAB2F0D004A9EDF /* libiconv.tbd in Frameworks */,
+				4445FD651FAB2EF9004A9EDF /* libsqlite3.tbd in Frameworks */,
+				4445FD631FAB2EF0004A9EDF /* libstdc++.6.tbd in Frameworks */,
+				4445FD611FAB2EE4004A9EDF /* libc++.1.tbd in Frameworks */,
+				4445FD5F1FAB2ECA004A9EDF /* UserNotificationsUI.framework in Frameworks */,
+				4445FD5D1FAB2EC5004A9EDF /* UserNotifications.framework in Frameworks */,
+				4445FD5B1FAB2EBB004A9EDF /* CoreBluetooth.framework in Frameworks */,
+				4445FD591FAB2BD3004A9EDF /* mavenir.webrtc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4445FD571FAB2BD3004A9EDF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4445FDA71FAB375D004A9EDF /* CFNetwork.framework */,
+				4445FDA51FAB374C004A9EDF /* CoreTelephony.framework */,
+				4445FDA31FAB3714004A9EDF /* Accelerate.framework */,
+				4445FDA11FAB370A004A9EDF /* VideoToolbox.framework */,
+				4445FD9F1FAB3700004A9EDF /* WebKit.framework */,
+				4445FD9D1FAB36F6004A9EDF /* CoreText.framework */,
+				4445FD9B1FAB350A004A9EDF /* libiconv.2.4.0.tbd */,
+				4445FD991FAB34FE004A9EDF /* libiconv.2.tbd */,
+				4445FD961FAB32D1004A9EDF /* AVKit.framework */,
+				4445FD941FAB319D004A9EDF /* ImageIO.framework */,
+				4445FD921FAB3196004A9EDF /* CoreImage.framework */,
+				4445FD901FAB3177004A9EDF /* AudioToolbox.framework */,
+				4445FD8E1FAB30B0004A9EDF /* CoreFoundation.framework */,
+				4445FD8C1FAB309F004A9EDF /* Security.framework */,
+				4445FD8A1FAB3009004A9EDF /* AudioUnit.framework */,
+				4445FD881FAB3002004A9EDF /* CoreAudioKit.framework */,
+				4445FD861FAB2FC1004A9EDF /* Foundation.framework */,
+				4445FD841FAB2FB9004A9EDF /* AVFoundation.framework */,
+				4445FD821FAB2FB3004A9EDF /* UIKit.framework */,
+				4445FD801FAB2FAD004A9EDF /* SystemConfiguration.framework */,
+				4445FD7E1FAB2FA4004A9EDF /* CoreData.framework */,
+				4445FD7C1FAB2F9D004A9EDF /* QuartzCore.framework */,
+				4445FD7A1FAB2F90004A9EDF /* CoreMedia.framework */,
+				4445FD781FAB2F87004A9EDF /* MobileCoreServices.framework */,
+				4445FD761FAB2F79004A9EDF /* CoreVideo.framework */,
+				4445FD741FAB2F70004A9EDF /* CoreAudio.framework */,
+				4445FD721FAB2F65004A9EDF /* OpenGLES.framework */,
+				4445FD701FAB2F5D004A9EDF /* AdSupport.framework */,
+				4445FD6E1FAB2F2F004A9EDF /* libresolv.tbd */,
+				4445FD6C1FAB2F28004A9EDF /* libz.tbd */,
+				4445FD6A1FAB2F21004A9EDF /* libsqlite3.0.tbd */,
+				4445FD681FAB2F17004A9EDF /* libxml2.2.tbd */,
+				4445FD661FAB2F0D004A9EDF /* libiconv.tbd */,
+				4445FD641FAB2EF8004A9EDF /* libsqlite3.tbd */,
+				4445FD621FAB2EF0004A9EDF /* libstdc++.6.tbd */,
+				4445FD601FAB2EE4004A9EDF /* libc++.1.tbd */,
+				4445FD5E1FAB2ECA004A9EDF /* UserNotificationsUI.framework */,
+				4445FD5C1FAB2EC5004A9EDF /* UserNotifications.framework */,
+				4445FD5A1FAB2EBA004A9EDF /* CoreBluetooth.framework */,
+				4445FD581FAB2BD3004A9EDF /* mavenir.webrtc.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		446F12E51FAB2927009BA230 = {
 			isa = PBXGroup;
 			children = (
 				446F12F01FAB2927009BA230 /* WebRTC-POC */,
 				446F12EF1FAB2927009BA230 /* Products */,
+				4445FD571FAB2BD3004A9EDF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +233,11 @@
 		446F12F01FAB2927009BA230 /* WebRTC-POC */ = {
 			isa = PBXGroup;
 			children = (
+				446F13181FAB2B5B009BA230 /* Frameworks */,
+				4445FD541FAB2BB8004A9EDF /* WebRTCVC.h */,
+				4445FD551FAB2BB8004A9EDF /* WebRTCVC.mm */,
 				446F12F11FAB2927009BA230 /* AppDelegate.h */,
 				446F12F21FAB2927009BA230 /* AppDelegate.m */,
-				446F12F41FAB2927009BA230 /* ViewController.h */,
-				446F12F51FAB2927009BA230 /* ViewController.m */,
 				446F12F71FAB2927009BA230 /* Main.storyboard */,
 				446F12FA1FAB2927009BA230 /* Assets.xcassets */,
 				446F12FC1FAB2927009BA230 /* LaunchScreen.storyboard */,
@@ -69,6 +245,13 @@
 				446F13001FAB2927009BA230 /* main.m */,
 			);
 			path = "WebRTC-POC";
+			sourceTree = "<group>";
+		};
+		446F13181FAB2B5B009BA230 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -81,6 +264,7 @@
 				446F12EA1FAB2927009BA230 /* Sources */,
 				446F12EB1FAB2927009BA230 /* Frameworks */,
 				446F12EC1FAB2927009BA230 /* Resources */,
+				446F13171FAB2B55009BA230 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -142,9 +326,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				446F12F61FAB2927009BA230 /* ViewController.m in Sources */,
 				446F13011FAB2927009BA230 /* main.m in Sources */,
 				446F12F31FAB2927009BA230 /* AppDelegate.m in Sources */,
+				4445FD561FAB2BB8004A9EDF /* WebRTCVC.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,11 +463,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84MKFLBHPN;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WebRTC-POC/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/liblinphone-sdk/apple-darwin/include",
+				);
 				INFOPLIST_FILE = "WebRTC-POC/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.turkcell.webrtc-poc.WebRTC-POC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turkcell.webrtc-poc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -292,11 +489,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84MKFLBHPN;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WebRTC-POC/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/liblinphone-sdk/apple-darwin/include",
+				);
 				INFOPLIST_FILE = "WebRTC-POC/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.turkcell.webrtc-poc.WebRTC-POC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turkcell.webrtc-poc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
