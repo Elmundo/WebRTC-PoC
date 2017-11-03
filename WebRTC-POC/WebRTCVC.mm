@@ -67,7 +67,7 @@
     
     switch (status) {
         case WEBRTC_STATUS_OK:
-            [self addLog:@"[WebRTCVC::mavRegister] WebRTC registeration is success."];
+            [self addLog:@"[WebRTCVC::mavRegister] WebRTC registration is success."];
             break;
             
         case WEBRTC_STATUS_NOTACTIVATED:
@@ -91,7 +91,6 @@
 #pragma mark - WebRTCiOSDelegate
 #pragma mark Register Operations
 - (void)mavOnReceivedRegisterSuccess:(std::string)did fid:(std::string)fid sessionid:(std::string)sessionid clientid:(std::string)clientid {
-    
     NSString *log = [NSString stringWithFormat:@"[WebRTCVC::mavOnReceivedRegisterSuccess] did:%@ fid:%@ sessionId:%@ clientId:%@",
                      NSSTRING_CONVERT(did) , NSSTRING_CONVERT(fid), NSSTRING_CONVERT(sessionid), NSSTRING_CONVERT(clientid)];
     [self addLog:log];
@@ -178,12 +177,12 @@
 #pragma mark Helpers
 -(void)addLog:(NSString *)str {
     if ([NSThread isMainThread]) {
-        NSString *l = [@"\n" stringByAppendingString:str];
+        NSString *l = [@"\n\n" stringByAppendingString:str];
         [_log appendString:l];
         logTextView.text = _log;
     }else {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            NSString *l = [@"\n" stringByAppendingString:str];
+            NSString *l = [@"\n\n" stringByAppendingString:str];
             [_log appendString:l];
             logTextView.text = _log;
         });
@@ -192,11 +191,11 @@
 
 - (void)clearLog {
     if ([NSThread isMainThread]) {
-        _log = [[NSMutableString alloc] initWithString:@"Logs..\n\n"];
+        _log = [[NSMutableString alloc] initWithString:@"Logs..\n"];
         logTextView.text = _log;
     }else {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            _log = [[NSMutableString alloc] initWithString:@"Logs..\n\n"];
+            _log = [[NSMutableString alloc] initWithString:@"Logs..\n"];
             logTextView.text = _log;
         });
     }
