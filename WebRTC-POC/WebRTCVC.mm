@@ -8,8 +8,9 @@
 
 #import "WebRTCVC.h"
 
-#define NSSTRING_CONVERT(str) [NSString stringWithUTF8String:str.c_str()]
-#define NSSTRING_APPEND(str1, str2) [str1 stringByAppendingString:str2];
+#define NSSTRING_TO_STRING(str) [NSString stringWithUTF8String:str.c_str()]
+#define NSSTRING_APPEND(str1, str2) [str1 stringByAppendingString:str2]
+#define STRING_TO_NSSTRING(str) [NSString stringWithCString:str.c_str() encoding:[NSString defaultCStringEncoding]]
 
 @interface WebRTCVC () <WebRTCiOSDelegate>
 {
@@ -17,6 +18,16 @@
     __weak IBOutlet UITextView *logTextView;
     __weak IBOutlet UIButton *reconnectBtn;
     NSMutableString *_log;
+    
+    std::string _fid;
+    std::string _did;
+    std::string _sessionId;
+    std::string _clientId;
+    
+    NSString *caller;
+    NSString *callie;
+    
+    bool onCall;
 }
 @end
 
@@ -25,6 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    onCall = false;
     self.title = @"WebRTC";
     [self clearLog];
     [self initializeWebRTS];
@@ -56,6 +68,17 @@
     }
 }
 
+/*
+ Auth Code,Number
+ 48 908502284041,908502284041
+ 49 908502284042,908502284042
+ 50 908502284044,908502284044
+ */
+
+/*
+ 908502284041 Pass:123456   Domain:superims.com
+ 908502284042 Pass:123456   Domain:superims.com
+ */
 - (void) registerWebRTC {;
     WEBRTC_STATUS_CODE status= WebRTC::mavInstance().mavRegister("https://92.45.96.182:8082",     // Base URL
                                                                  "48",                    // IAM Auth code
@@ -67,15 +90,15 @@
     
     switch (status) {
         case WEBRTC_STATUS_OK:
-            [self addLog:@"[WebRTCVC::mavRegister] WebRTC registration is success."];
+            NSLog(@"WEBRTC_STATUS_OK");
             break;
             
         case WEBRTC_STATUS_NOTACTIVATED:
-            [self addLog:@"[WebRTCVC::mavRegister] WebRTC register is not activated."];
+            NSLog(@"WEBRTC_STATUS_NOTACTIVATED");
             break;
             
         case WEBRTC_STATUS_OPERATIONFAILED:
-            [self addLog:@"[WebRTCVC::mavRegister] WebRTC register operation is failed."];
+            NSLog(@"WEBRTC_STATUS_OPERATIONFAILED");
             break;
             
         default:
@@ -91,80 +114,98 @@
 #pragma mark - WebRTCiOSDelegate
 #pragma mark Register Operations
 - (void)mavOnReceivedRegisterSuccess:(std::string)did fid:(std::string)fid sessionid:(std::string)sessionid clientid:(std::string)clientid {
-    NSString *log = [NSString stringWithFormat:@"[WebRTCVC::mavOnReceivedRegisterSuccess] did:%@ fid:%@ sessionId:%@ clientId:%@",
-                     NSSTRING_CONVERT(did) , NSSTRING_CONVERT(fid), NSSTRING_CONVERT(sessionid), NSSTRING_CONVERT(clientid)];
-    [self addLog:log];
-    [self sendRegisterInfo];
+    
+    _did        = did;
+    _fid        = fid;
+    _sessionId  = sessionid;
+    _clientId   = clientid;
+    
+    NSLog(@"mavOnReceivedRegisterSuccess.. did:%@ fid:%@ sessionId:%@ clientId:%@", NSSTRING_TO_STRING(did) , NSSTRING_TO_STRING(fid), NSSTRING_TO_STRING(sessionid), NSSTRING_TO_STRING(clientid));
+    NSString *str = @"mavOnReceivedRegisterSuccess";//NSSTRING_APPEND(@"mavOnReceivedRegisterSuccess.. ", STRING_CONVERT(sessionId));
+    [self addLog:str];
 }
 
 -(void)mavOnReceivedReRegisterSuccess:(std::string)did fid:(std::string)fid sessionid:(std::string)sessionid clientid:(std::string)clientid {
-    NSString *log = [NSString stringWithFormat:@"[WebRTCVC::mavOnReceivedReRegisterSuccess] did:%@ fid:%@ sessionId:%@ clientId:%@",
-                     NSSTRING_CONVERT(did) , NSSTRING_CONVERT(fid), NSSTRING_CONVERT(sessionid), NSSTRING_CONVERT(clientid)];
-    [self addLog:log];
+    //    NSLog(@"mavOnReceivedReRegisterSuccess.. did:%@ fid:%@ sessionId:%@ clientId:%@", NSSTRING_CONVERT(did), NSSTRING_CONVERT(fid), NSSTRING_CONVERT(sessionid), NSSTRING_CONVERT(clientid));
+    NSString *str = @"mavOnReceivedReRegisterSuccess.. ";
+    [self addLog:str];
 }
 
 -(void)mavOnReceivedWRGToken:(std::string)wrgtoken {
-    NSString *log = [NSString stringWithFormat:@"[WebRTCVC::mavOnReceivedWRGToken] wrgtoken:%@",
-                     NSSTRING_CONVERT(wrgtoken) ];
-    [self addLog:log];
+    NSLog(@"mavOnReceivedWRGToken.. wrgtoken:%@", NSSTRING_TO_STRING(wrgtoken));
+    NSString *str = NSSTRING_APPEND(@"mavOnReceivedWRGToken.. ", NSSTRING_TO_STRING(wrgtoken));
+    [self addLog:str];
 }
 
 -(void)mavOnReceivedAccessToken:(std::string)access_token refresh_token:(std::string)refresh_token ttl:(std::string)ttl status:(std::string)status {
-    NSString *log = [NSString stringWithFormat:@"[WebRTCVC::mavOnReceivedAccessToken] access_token:%@ refresh_token:%@ refresh_token:%@ ttl:%@ status:%@",
-                 NSSTRING_CONVERT(access_token) , NSSTRING_CONVERT(refresh_token), NSSTRING_CONVERT(refresh_token),
-                 NSSTRING_CONVERT(ttl), NSSTRING_CONVERT(status)];
-    [self addLog:log];
+    NSLog(@"mavOnReceivedAccessToken.. access_token:%@ refresh_token:%@ ttl:%@ status:%@", NSSTRING_TO_STRING(access_token),
+          NSSTRING_TO_STRING(refresh_token),
+          NSSTRING_TO_STRING(ttl),
+          NSSTRING_TO_STRING(status));
+    NSString *str = NSSTRING_APPEND(@"mavOnReceivedAccessToken.. ", NSSTRING_TO_STRING(access_token));
+    [self addLog:str];
 }
 
 -(void)mavOnReceivedRegisterError:(int)responsecode errorcode:(int)errorcode {
-    NSString *log = [NSString stringWithFormat:@"[WebRTCVC::mavOnReceivedRegisterError] responsecode:%d errorcode:%d",
-                     responsecode , errorcode];
-    [self addLog:log];
-    
+    NSLog(@"mavOnReceivedRegisterError.. responsecode:%d errorCode:%d", responsecode, errorcode);
+    NSString *str = [NSString stringWithFormat:@"responsecode: %d errorcode: %d", responsecode, errorcode];
+    [self addLog:str];
 }
 
 -(void)mavOnReceivedUnRegisterSuccess {
-    NSString *log = [NSString stringWithFormat:@"[WebRTCVC::mavOnReceivedUnRegisterSuccess] Unregister is success."];
-    [self addLog:log];
+    NSLog(@"mavOnReceivedUnRegisterSuccess..");
 }
 
 -(void)mavOnReceivedSessionInfo:(std::string)session_info {
-    NSString *log = [NSString stringWithFormat:@"[WebRTCVC::mavOnReceivedSessionInfo] session_info:%@", NSSTRING_CONVERT(session_info)];
-    [self addLog:log];
+    NSLog(@"mavOnReceivedSessionInfo.. session_info:%@", NSSTRING_TO_STRING(session_info));
+    [self addLog:NSSTRING_TO_STRING(session_info)];
+    
+    // TODO: Make a new call
+    std::string lineInfo = "908502284041@superims.com"; // Arayan
+    std::string uri = "908502284044@superims.com"; // Aranan
+    if (onCall == false) {
+        WebRTC::mavInstance().mavCallStart(uri, _clientId, false, WEBRTC_AUDIO_WIRED_HEADSET, lineInfo);
+    }
+    
 }
 
 -(void)mavOnReceivedSessionExpired {
-    NSString *log = [NSString stringWithFormat:@"[WebRTCVC::mavOnReceivedSessionExpired] Session expired."];
-    [self addLog:log];
+    NSLog(@"mavOnReceivedSessionExpired..");
+    NSString *str = @"\n\nmavOnReceivedSessionExpired";
+    [self addLog:str];
 }
 
 #pragma mark Call Operations
 - (void)mavOnReceivedNewCall:(std::string)uri callid:(std::string)callid LineInfo:(std::string)LineInfo {
-    NSLog(@"mavOnReceivedNewCall.. uri:%@ callid:%@ LineInfo:%@", NSSTRING_CONVERT(uri), NSSTRING_CONVERT(callid), NSSTRING_CONVERT(LineInfo));
+    NSLog(@"mavOnReceivedNewCall.. uri:%@ callid:%@ LineInfo:%@", NSSTRING_TO_STRING(uri), NSSTRING_TO_STRING(callid), NSSTRING_TO_STRING(LineInfo));
+    WebRTC::mavInstance().mavCallAccept(callid, false, WEBRTC_AUDIO_EAR_PIECE);
 }
 
 -(void)mavOnReceivedCallActive:(std::string)callid {
-    NSLog(@"mavOnReceivedCallActive.. callid:%@", NSSTRING_CONVERT(callid));
+    NSLog(@"mavOnReceivedCallActive.. callid:%@", NSSTRING_TO_STRING(callid));
+    onCall = true;
 }
 
 -(void)mavOnReceivedCallStatus:(std::string)callid statuscode:(int)statuscode {
-    NSLog(@"mavOnReceivedCallStatus.. callid:%@ statuscode:%di", NSSTRING_CONVERT(callid), statuscode);
+    NSLog(@"mavOnReceivedCallStatus.. callid:%@ statuscode:%di", NSSTRING_TO_STRING(callid), statuscode);
 }
 
 -(void)mavOnReceivedCallEnd:(std::string)callid {
-    NSLog(@"mavOnReceivedCallEnd.. callid:%@", NSSTRING_CONVERT(callid));
+    NSLog(@"mavOnReceivedCallEnd.. callid:%@", NSSTRING_TO_STRING(callid));
+    onCall = false;
 }
 
 -(void)mavOnReceivedCallRejected:(std::string)callid {
-    NSLog(@"mavOnReceivedCallRejected.. callid:%@", NSSTRING_CONVERT(callid));
+    NSLog(@"mavOnReceivedCallRejected.. callid:%@", NSSTRING_TO_STRING(callid));
+    onCall = false;
 }
 
 -(void)mavOnReceivedCallHold:(std::string)callid {
-    NSLog(@"mavOnReceivedCallHold.. callid:%@", NSSTRING_CONVERT(callid));
+    NSLog(@"mavOnReceivedCallHold.. callid:%@", NSSTRING_TO_STRING(callid));
 }
 
 -(void)mavOnReceivedCallUnhold:(std::string)callid {
-    NSLog(@"mavOnReceivedCallUnhold.. callid:%@", NSSTRING_CONVERT(callid));
+    NSLog(@"mavOnReceivedCallUnhold.. callid:%@", NSSTRING_TO_STRING(callid));
 }
 
 #pragma mark Actions
@@ -177,12 +218,12 @@
 #pragma mark Helpers
 -(void)addLog:(NSString *)str {
     if ([NSThread isMainThread]) {
-        NSString *l = [@"\n\n" stringByAppendingString:str];
+        NSString *l = [@"\n" stringByAppendingString:str];
         [_log appendString:l];
         logTextView.text = _log;
     }else {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            NSString *l = [@"\n\n" stringByAppendingString:str];
+            NSString *l = [@"\n" stringByAppendingString:str];
             [_log appendString:l];
             logTextView.text = _log;
         });
@@ -198,33 +239,6 @@
             _log = [[NSMutableString alloc] initWithString:@"Logs..\n"];
             logTextView.text = _log;
         });
-    }
-}
-
-- (void)sendRegisterInfo {
-    NSString *msisdn = @"908502284041";
-    NSString *lineId = [msisdn copy];
-    
-    std::string str_msisdn    = std::string([msisdn UTF8String], [msisdn lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
-    std::string str_lineId    = std::string([lineId UTF8String], [lineId lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
-    std::string str_empty     = std::string([@"" UTF8String], [@"" lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
-    WEBRTC_STATUS_CODE status = WebRTC::mavInstance().mavSendRegistrationInfo(str_msisdn, str_empty, str_lineId, str_empty);
-    
-    switch (status) {
-        case WEBRTC_STATUS_OK:
-            [self addLog:@"[WebRTCVC::mavSendRegistrationInfo] Sending registration info is success."];
-            break;
-            
-        case WEBRTC_STATUS_NOTACTIVATED:
-            [self addLog:@"[WebRTCVC::mavSendRegistrationInfo]. Not Activated"];
-            break;
-            
-        case WEBRTC_STATUS_OPERATIONFAILED:
-            [self addLog:@"[WebRTCVC::mavSendRegistrationInfo] Operation failed."];
-            break;
-            
-        default:
-            break;
     }
 }
 
