@@ -10,8 +10,6 @@
 		4445FD561FAB2BB8004A9EDF /* WebRTCVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4445FD551FAB2BB8004A9EDF /* WebRTCVC.mm */; };
 		4445FD591FAB2BD3004A9EDF /* mavenir.webrtc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD581FAB2BD3004A9EDF /* mavenir.webrtc.framework */; };
 		4445FD5B1FAB2EBB004A9EDF /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD5A1FAB2EBA004A9EDF /* CoreBluetooth.framework */; };
-		4445FD5D1FAB2EC5004A9EDF /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD5C1FAB2EC5004A9EDF /* UserNotifications.framework */; };
-		4445FD5F1FAB2ECA004A9EDF /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD5E1FAB2ECA004A9EDF /* UserNotificationsUI.framework */; };
 		4445FD611FAB2EE4004A9EDF /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD601FAB2EE4004A9EDF /* libc++.1.tbd */; };
 		4445FD631FAB2EF0004A9EDF /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD621FAB2EF0004A9EDF /* libstdc++.6.tbd */; };
 		4445FD651FAB2EF9004A9EDF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD641FAB2EF8004A9EDF /* libsqlite3.tbd */; };
@@ -50,6 +48,14 @@
 		446F12FB1FAB2927009BA230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446F12FA1FAB2927009BA230 /* Assets.xcassets */; };
 		446F12FE1FAB2927009BA230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446F12FC1FAB2927009BA230 /* LaunchScreen.storyboard */; };
 		446F13011FAB2927009BA230 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F13001FAB2927009BA230 /* main.m */; };
+		44BFC7241FBEA9F600BE5830 /* CallerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BFC7221FBEA9F600BE5830 /* CallerVC.m */; };
+		44BFC7251FBEA9F600BE5830 /* CallerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BFC7231FBEA9F600BE5830 /* CallerVC.xib */; };
+		44BFC72C1FBEAA1F00BE5830 /* CallieVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BFC72A1FBEAA1F00BE5830 /* CallieVC.m */; };
+		44BFC72D1FBEAA1F00BE5830 /* CallieVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BFC72B1FBEAA1F00BE5830 /* CallieVC.xib */; };
+		44BFC72F1FBEB5F200BE5830 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44BFC72E1FBEB5F200BE5830 /* Info.plist */; };
+		44BFC7361FBED64600BE5830 /* LogTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BFC7351FBED64600BE5830 /* LogTVC.m */; };
+		44BFC7391FBF058E00BE5830 /* LogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BFC7381FBF058E00BE5830 /* LogModel.m */; };
+		44E8B06C1FC04F7F002A1C80 /* NSString+WebRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E8B06B1FC04F7F002A1C80 /* NSString+WebRTC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,8 +72,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4445FD541FAB2BB8004A9EDF /* WebRTCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebRTCVC.h; path = "WebRTC-POC/WebRTCVC.h"; sourceTree = SOURCE_ROOT; };
-		4445FD551FAB2BB8004A9EDF /* WebRTCVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WebRTCVC.mm; path = "WebRTC-POC/WebRTCVC.mm"; sourceTree = SOURCE_ROOT; };
+		4445FD541FAB2BB8004A9EDF /* WebRTCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebRTCVC.h; path = "WebRTC-POC/Controllers/WebRTCVC.h"; sourceTree = SOURCE_ROOT; };
+		4445FD551FAB2BB8004A9EDF /* WebRTCVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WebRTCVC.mm; path = "WebRTC-POC/Controllers/WebRTCVC.mm"; sourceTree = SOURCE_ROOT; };
 		4445FD581FAB2BD3004A9EDF /* mavenir.webrtc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = mavenir.webrtc.framework; path = "WebRTC-POC/Frameworks/mavenir.webrtc.framework"; sourceTree = "<group>"; };
 		4445FD5A1FAB2EBA004A9EDF /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		4445FD5C1FAB2EC5004A9EDF /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -114,8 +120,20 @@
 		446F12F81FAB2927009BA230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		446F12FA1FAB2927009BA230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		446F12FD1FAB2927009BA230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		446F12FF1FAB2927009BA230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		446F13001FAB2927009BA230 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		44BFC7211FBEA9F600BE5830 /* CallerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallerVC.h; sourceTree = "<group>"; };
+		44BFC7221FBEA9F600BE5830 /* CallerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallerVC.m; sourceTree = "<group>"; };
+		44BFC7231FBEA9F600BE5830 /* CallerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallerVC.xib; sourceTree = "<group>"; };
+		44BFC7291FBEAA1F00BE5830 /* CallieVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallieVC.h; sourceTree = "<group>"; };
+		44BFC72A1FBEAA1F00BE5830 /* CallieVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallieVC.m; sourceTree = "<group>"; };
+		44BFC72B1FBEAA1F00BE5830 /* CallieVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallieVC.xib; sourceTree = "<group>"; };
+		44BFC72E1FBEB5F200BE5830 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44BFC7341FBED64600BE5830 /* LogTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogTVC.h; sourceTree = "<group>"; };
+		44BFC7351FBED64600BE5830 /* LogTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogTVC.m; sourceTree = "<group>"; };
+		44BFC7371FBF058E00BE5830 /* LogModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogModel.h; sourceTree = "<group>"; };
+		44BFC7381FBF058E00BE5830 /* LogModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogModel.m; sourceTree = "<group>"; };
+		44E8B06A1FC04F7F002A1C80 /* NSString+WebRTC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+WebRTC.h"; sourceTree = "<group>"; };
+		44E8B06B1FC04F7F002A1C80 /* NSString+WebRTC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+WebRTC.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,8 +174,6 @@
 				4445FD651FAB2EF9004A9EDF /* libsqlite3.tbd in Frameworks */,
 				4445FD631FAB2EF0004A9EDF /* libstdc++.6.tbd in Frameworks */,
 				4445FD611FAB2EE4004A9EDF /* libc++.1.tbd in Frameworks */,
-				4445FD5F1FAB2ECA004A9EDF /* UserNotificationsUI.framework in Frameworks */,
-				4445FD5D1FAB2EC5004A9EDF /* UserNotifications.framework in Frameworks */,
 				4445FD5B1FAB2EBB004A9EDF /* CoreBluetooth.framework in Frameworks */,
 				4445FD591FAB2BD3004A9EDF /* mavenir.webrtc.framework in Frameworks */,
 			);
@@ -233,16 +249,13 @@
 		446F12F01FAB2927009BA230 /* WebRTC-POC */ = {
 			isa = PBXGroup;
 			children = (
+				44BFC72E1FBEB5F200BE5830 /* Info.plist */,
+				44BFC7301FBECCD100BE5830 /* Utils */,
+				44BFC71F1FBEA97200BE5830 /* Supports */,
 				446F13181FAB2B5B009BA230 /* Frameworks */,
-				4445FD541FAB2BB8004A9EDF /* WebRTCVC.h */,
-				4445FD551FAB2BB8004A9EDF /* WebRTCVC.mm */,
-				446F12F11FAB2927009BA230 /* AppDelegate.h */,
-				446F12F21FAB2927009BA230 /* AppDelegate.m */,
-				446F12F71FAB2927009BA230 /* Main.storyboard */,
-				446F12FA1FAB2927009BA230 /* Assets.xcassets */,
-				446F12FC1FAB2927009BA230 /* LaunchScreen.storyboard */,
-				446F12FF1FAB2927009BA230 /* Info.plist */,
-				446F13001FAB2927009BA230 /* main.m */,
+				44BFC71E1FBEA96200BE5830 /* Models */,
+				44BFC71D1FBEA95D00BE5830 /* Views */,
+				44BFC71C1FBEA95400BE5830 /* Controllers */,
 			);
 			path = "WebRTC-POC";
 			sourceTree = "<group>";
@@ -252,6 +265,69 @@
 			children = (
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		44BFC71C1FBEA95400BE5830 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				44BFC7201FBEA9DD00BE5830 /* Call */,
+				4445FD541FAB2BB8004A9EDF /* WebRTCVC.h */,
+				4445FD551FAB2BB8004A9EDF /* WebRTCVC.mm */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		44BFC71D1FBEA95D00BE5830 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				44BFC7341FBED64600BE5830 /* LogTVC.h */,
+				44BFC7351FBED64600BE5830 /* LogTVC.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		44BFC71E1FBEA96200BE5830 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				44BFC7371FBF058E00BE5830 /* LogModel.h */,
+				44BFC7381FBF058E00BE5830 /* LogModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		44BFC71F1FBEA97200BE5830 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				446F12F11FAB2927009BA230 /* AppDelegate.h */,
+				446F12F21FAB2927009BA230 /* AppDelegate.m */,
+				446F12F71FAB2927009BA230 /* Main.storyboard */,
+				446F12FA1FAB2927009BA230 /* Assets.xcassets */,
+				446F12FC1FAB2927009BA230 /* LaunchScreen.storyboard */,
+				446F13001FAB2927009BA230 /* main.m */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		44BFC7201FBEA9DD00BE5830 /* Call */ = {
+			isa = PBXGroup;
+			children = (
+				44BFC7211FBEA9F600BE5830 /* CallerVC.h */,
+				44BFC7221FBEA9F600BE5830 /* CallerVC.m */,
+				44BFC7231FBEA9F600BE5830 /* CallerVC.xib */,
+				44BFC7291FBEAA1F00BE5830 /* CallieVC.h */,
+				44BFC72A1FBEAA1F00BE5830 /* CallieVC.m */,
+				44BFC72B1FBEAA1F00BE5830 /* CallieVC.xib */,
+			);
+			path = Call;
+			sourceTree = "<group>";
+		};
+		44BFC7301FBECCD100BE5830 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				44E8B06A1FC04F7F002A1C80 /* NSString+WebRTC.h */,
+				44E8B06B1FC04F7F002A1C80 /* NSString+WebRTC.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +363,17 @@
 					446F12ED1FAB2927009BA230 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -313,7 +400,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44BFC72D1FBEAA1F00BE5830 /* CallieVC.xib in Resources */,
 				446F12FE1FAB2927009BA230 /* LaunchScreen.storyboard in Resources */,
+				44BFC72F1FBEB5F200BE5830 /* Info.plist in Resources */,
+				44BFC7251FBEA9F600BE5830 /* CallerVC.xib in Resources */,
 				446F12FB1FAB2927009BA230 /* Assets.xcassets in Resources */,
 				446F12F91FAB2927009BA230 /* Main.storyboard in Resources */,
 			);
@@ -326,8 +416,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44BFC7361FBED64600BE5830 /* LogTVC.m in Sources */,
 				446F13011FAB2927009BA230 /* main.m in Sources */,
+				44BFC7391FBF058E00BE5830 /* LogModel.m in Sources */,
+				44BFC7241FBEA9F600BE5830 /* CallerVC.m in Sources */,
+				44BFC72C1FBEAA1F00BE5830 /* CallieVC.m in Sources */,
 				446F12F31FAB2927009BA230 /* AppDelegate.m in Sources */,
+				44E8B06C1FC04F7F002A1C80 /* NSString+WebRTC.m in Sources */,
 				4445FD561FAB2BB8004A9EDF /* WebRTCVC.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,7 +571,7 @@
 					"$(PROJECT_DIR)/liblinphone-sdk/apple-darwin/include",
 				);
 				INFOPLIST_FILE = "WebRTC-POC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turkcell.webrtc-poc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -502,7 +597,7 @@
 					"$(PROJECT_DIR)/liblinphone-sdk/apple-darwin/include",
 				);
 				INFOPLIST_FILE = "WebRTC-POC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turkcell.webrtc-poc";
 				PRODUCT_NAME = "$(TARGET_NAME)";

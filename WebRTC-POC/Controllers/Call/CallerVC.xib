@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CallerVC">
+            <connections>
+                <outlet property="callingPersonIV" destination="OhX-Ss-uJW" id="AxW-qe-ML6"/>
+                <outlet property="callingPersonL" destination="p8h-Mj-R9i" id="VdZ-GM-fe9"/>
+                <outlet property="constantCallingL" destination="3w4-PM-0P1" id="lvE-Iy-Y8v"/>
+                <outlet property="containerView" destination="CQE-uf-v1o" id="Wup-jD-eaZ"/>
+                <outlet property="declineBtn" destination="PGb-JC-gX9" id="mWF-sI-y4h"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQE-uf-v1o" userLabel="ContainerView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Renata Wiliams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8h-Mj-R9i" userLabel="CallingPersonL">
+                            <rect key="frame" x="29" y="69" width="231" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="xcZ-eo-Dvr"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="36"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="calling..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3w4-PM-0P1" userLabel="ConstantCallingL">
+                            <rect key="frame" x="29" y="117" width="71" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="AGj-bv-tVX"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="OhX-Ss-uJW" userLabel="CallingPersonIV">
+                            <rect key="frame" x="280" y="62" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="FEt-qQ-zwi"/>
+                                <constraint firstAttribute="height" constant="80" id="gXu-00-Jxu"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGb-JC-gX9" userLabel="DeclineBtn">
+                            <rect key="frame" x="147" y="501" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="15V-4d-8QC"/>
+                                <constraint firstAttribute="width" constant="80" id="QRX-tN-Xqp"/>
+                            </constraints>
+                            <state key="normal" image="decline"/>
+                            <connections>
+                                <action selector="decline_Action:" destination="-1" eventType="touchUpInside" id="CIR-KA-i5t"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="3w4-PM-0P1" firstAttribute="leading" secondItem="p8h-Mj-R9i" secondAttribute="leading" id="McB-KG-bnl"/>
+                        <constraint firstAttribute="trailing" secondItem="OhX-Ss-uJW" secondAttribute="trailing" constant="15" id="SFU-gr-d0C"/>
+                        <constraint firstItem="p8h-Mj-R9i" firstAttribute="leading" secondItem="CQE-uf-v1o" secondAttribute="leading" constant="29" id="Y4e-Mv-WsD"/>
+                        <constraint firstAttribute="bottom" secondItem="PGb-JC-gX9" secondAttribute="bottom" constant="86" id="cIb-iB-tUD"/>
+                        <constraint firstItem="OhX-Ss-uJW" firstAttribute="top" secondItem="CQE-uf-v1o" secondAttribute="top" constant="62" id="eBW-r4-gPq"/>
+                        <constraint firstItem="p8h-Mj-R9i" firstAttribute="top" secondItem="CQE-uf-v1o" secondAttribute="top" constant="69" id="fgW-Xw-5le"/>
+                        <constraint firstItem="3w4-PM-0P1" firstAttribute="top" secondItem="p8h-Mj-R9i" secondAttribute="bottom" constant="8" id="hoe-3i-Gz9"/>
+                        <constraint firstItem="PGb-JC-gX9" firstAttribute="centerX" secondItem="CQE-uf-v1o" secondAttribute="centerX" id="jIE-Uj-asJ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="CQE-uf-v1o" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="THF-D8-uiv"/>
+                <constraint firstAttribute="trailing" secondItem="CQE-uf-v1o" secondAttribute="trailing" id="dbE-PO-Cma"/>
+                <constraint firstItem="CQE-uf-v1o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iPR-mU-gib"/>
+                <constraint firstAttribute="bottom" secondItem="CQE-uf-v1o" secondAttribute="bottom" id="t4T-Gp-WwW"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="decline" width="80" height="80"/>
+        <image name="placeholder" width="360" height="328"/>
+    </resources>
+</document>
