@@ -7,13 +7,14 @@
 //
 
 #import "CallerVC.h"
-
 @interface CallerVC ()
 
 @end
 
 @implementation CallerVC
-
+{
+    NSString *_callId;
+}
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -22,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initWidgets];
+    [self addObservers];
 }
 
 -(void) addObservers {
@@ -77,28 +79,69 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+- (IBAction)hold_Action:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    NSString *text = btn.titleLabel.text;
+    
+    if ([text isEqualToString:@"Hold"]) {
+        std::string c_callId = [_callId cStringWebRTC];
+        WebRTC::mavInstance().mavCallHold(c_callId, true);
+    }else if ([text isEqualToString:@"Resume"]) {
+        std::string c_callId = [_callId cStringWebRTC];
+        WebRTC::mavInstance().mavCallUnhold(c_callId);
+    }
+}
+
+- (IBAction)mute_Action:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    NSString *text = btn.titleLabel.text;
+    
+    if ([text isEqualToString:@"Mute"]) {
+        std::string c_callId = [_callId cStringWebRTC];
+        WebRTC::mavInstance().mavCallMute(c_callId);
+    }else if ([text isEqualToString:@"Unmute"]) {
+        std::string c_callId = [_callId cStringWebRTC];
+        WebRTC::mavInstance().mavCallUnMute(c_callId);
+    }
+}
+
+- (IBAction)addCall_ACtion:(id)sender {
+    // Not implemented yet.
+}
+
+- (IBAction)speaker_Action:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    NSString *text = btn.titleLabel.text;
+    
+    if ([text isEqualToString:@"Speaker"]) {
+        std::string c_callId = [_callId cStringWebRTC];
+    }else if ([text isEqualToString:@"Callie"]) {
+        std::string c_callId = [_callId cStringWebRTC];
+    }
+}
+
 -(void)onCallActive_Action:(NSDictionary *)userInfo {
-    NSString *callId = [userInfo objectForKey:@"data"];
+    _callId = [userInfo objectForKey:@"data"];
 }
 
 -(void)onCallStatus_Action:(NSDictionary *)userInfo {
-    NSString *callId = [userInfo objectForKey:@"data"];
+    _callId = [userInfo objectForKey:@"data"];
 }
 
 -(void)onCallEnd_Action:(NSDictionary *)userInfo {
-    NSString *callId = [userInfo objectForKey:@"data"];
+    _callId = [userInfo objectForKey:@"data"];
 }
 
 -(void)onCallReject_Action:(NSDictionary *)userInfo {
-    NSString *callId = [userInfo objectForKey:@"data"];
+    _callId = [userInfo objectForKey:@"data"];
 }
 
 -(void)onCallHold_Action:(NSDictionary *)userInfo {
-    NSString *callId = [userInfo objectForKey:@"data"];
+    _callId = [userInfo objectForKey:@"data"];
 }
 
 -(void)onCallUnhold_Action:(NSDictionary *)userInfo {
-    NSString *callId = [userInfo objectForKey:@"data"];
+    _callId = [userInfo objectForKey:@"data"];
 }
 
 @end

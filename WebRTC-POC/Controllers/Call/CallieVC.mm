@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initWidgets];
-    [self addObservers];
+//    [self addObservers];
 }
 
 -(void) addObservers {

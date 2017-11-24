@@ -57,14 +57,15 @@
     [super viewDidLoad];
     
     logs       = [[NSMutableArray<LogModel *> alloc] init];
-    authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"48", @"49", @"50", nil];
+    authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"48", @"49", @"50", @"56", nil];
     msisdnList = [[NSArray<NSString *> alloc] initWithObjects:
                   @"908502284041@superims.com", @"908502284042@superims.com",
-                  @"908502284044@superims.com", nil];
+                  @"908502284044@superims.com", @"905390000098@ims.mnc001.mcc286.3gppnetwork.org",
+                  @"905390000530@ims.mnc001.mcc286.3gppnetwork.org", @"905390000058@ims.mnc001.mcc286.3gppnetwork.org", nil];
     
-    _authCode     = [authCodes objectAtIndex:0];
-    _msisdn       = [msisdnList objectAtIndex:0];
-    _targetMsisdn = [msisdnList objectAtIndex:2];
+    _authCode     = [authCodes objectAtIndex:3];
+    _msisdn       = [msisdnList objectAtIndex:3];
+    _targetMsisdn = [msisdnList objectAtIndex:4];
     self.authCodeTF.text     = _authCode;
     self.msisdnTF.text       = _msisdn;
     self.targetMsisdnTF.text = _targetMsisdn;
@@ -484,6 +485,7 @@
                     [NSString stringWithCharList:callid.c_str()],
                     [NSString stringWithCharList:LineInfo.c_str()] ]];
     _callId = [NSString stringWithCharList:callid.c_str()];
+    
     [self navigateToCallieVC];
 }
 
@@ -497,6 +499,13 @@
     [self addLog: [NSString stringWithFormat:@"WebRTC mavOnReceivedCallStatus! callid: %@ statusCode: %d", [NSString stringWithCharList:callid.c_str()], statuscode]];
     _callId = [NSString stringWithCharList:callid.c_str()];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CallStatus" object:nil userInfo:@{@"data": _callId}];
+    
+    // statusCode == 204 means Call ended.
+    if (statuscode == 204) {
+        if (self.presentedViewController) {
+            [self.presentedViewController dismissViewControllerAnimated:true completion:nil];
+        }
+    }
 }
 
 -(void)mavOnReceivedCallEnd:(std::string)callid {
@@ -530,4 +539,3 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CallUnhold" object:nil userInfo:@{@"data": _callId}];
 }
 @end
-

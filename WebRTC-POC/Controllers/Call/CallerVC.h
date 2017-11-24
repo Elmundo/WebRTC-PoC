@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <mavenir.webrtc/WebRTC.h>
+#import <mavenir.webrtc/WebRTCiOS.h>
+#import "NSString+WebRTC.h"
 
 @protocol CallerDelegate
 
@@ -20,6 +23,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *callingPersonIV;
 @property (weak, nonatomic) IBOutlet UIButton *declineBtn;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIButton *holdBtn;
+@property (weak, nonatomic) IBOutlet UIButton *muteBtn;
+@property (weak, nonatomic) IBOutlet UIButton *addCallBtn;
+@property (weak, nonatomic) IBOutlet UIButton *speakerBtn;
 
 @property (weak, nonatomic) id<CallerDelegate> delegate;
 
