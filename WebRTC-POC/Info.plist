@@ -22,6 +22,13 @@
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone needed to be used to communicate via VoIP</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>voip</string>
+		<string>audio</string>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

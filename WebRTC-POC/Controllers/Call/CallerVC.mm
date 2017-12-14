@@ -26,13 +26,22 @@
     [self addObservers];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self removeObservers];
+}
+
 -(void) addObservers {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallActive_Action:) name:@"CallActive" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallStatus_Action:) name:@"CallStatus" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallEnd_Action:) name:@"CallEnd" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallEnd_Action:)    name:@"CallEnd" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallReject_Action:) name:@"CellRejected" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallHold_Action:) name:@"CallHold" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallHold_Action:)   name:@"CallHold" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallUnhold_Action:) name:@"CallUnhold" object:nil];
+}
+
+- (void)removeObservers {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)initWidgets {
@@ -86,9 +95,11 @@
     if ([text isEqualToString:@"Hold"]) {
         std::string c_callId = [_callId cStringWebRTC];
         WebRTC::mavInstance().mavCallHold(c_callId, true);
+        [btn setTitle:@"Resume" forState:UIControlStateNormal];
     }else if ([text isEqualToString:@"Resume"]) {
         std::string c_callId = [_callId cStringWebRTC];
         WebRTC::mavInstance().mavCallUnhold(c_callId);
+        [btn setTitle:@"Hold" forState:UIControlStateNormal];
     }
 }
 
@@ -99,9 +110,11 @@
     if ([text isEqualToString:@"Mute"]) {
         std::string c_callId = [_callId cStringWebRTC];
         WebRTC::mavInstance().mavCallMute(c_callId);
+        [btn setTitle:@"Unmute" forState:UIControlStateNormal];
     }else if ([text isEqualToString:@"Unmute"]) {
         std::string c_callId = [_callId cStringWebRTC];
         WebRTC::mavInstance().mavCallUnMute(c_callId);
+        [btn setTitle:@"Mute" forState:UIControlStateNormal];
     }
 }
 
@@ -115,33 +128,37 @@
     
     if ([text isEqualToString:@"Speaker"]) {
         std::string c_callId = [_callId cStringWebRTC];
-    }else if ([text isEqualToString:@"Callie"]) {
+        [btn setTitle:@"Earpiece" forState:UIControlStateNormal];
+        [[AudioService sharedManager] switchTo:AudioCallStateSpeaker];
+    }else if ([text isEqualToString:@"Earpiece"]) {
         std::string c_callId = [_callId cStringWebRTC];
+        [btn setTitle:@"Speaker" forState:UIControlStateNormal];
+        [[AudioService sharedManager] switchTo:AudioCallStateEarPierce];
     }
 }
 
--(void)onCallActive_Action:(NSDictionary *)userInfo {
-    _callId = [userInfo objectForKey:@"data"];
+-(void)onCallActive_Action:(NSNotification *)userInfo {
+    _callId = [userInfo.userInfo objectForKey:@"data"];
 }
 
--(void)onCallStatus_Action:(NSDictionary *)userInfo {
-    _callId = [userInfo objectForKey:@"data"];
+-(void)onCallStatus_Action:(NSNotification *)userInfo {
+    _callId = [userInfo.userInfo objectForKey:@"data"];
 }
 
--(void)onCallEnd_Action:(NSDictionary *)userInfo {
-    _callId = [userInfo objectForKey:@"data"];
+-(void)onCallEnd_Action:(NSNotification *)userInfo {
+    _callId = [userInfo.userInfo objectForKey:@"data"];
 }
 
--(void)onCallReject_Action:(NSDictionary *)userInfo {
-    _callId = [userInfo objectForKey:@"data"];
+-(void)onCallReject_Action:(NSNotification *)userInfo {
+    _callId = [userInfo.userInfo objectForKey:@"data"];
 }
 
--(void)onCallHold_Action:(NSDictionary *)userInfo {
-    _callId = [userInfo objectForKey:@"data"];
+-(void)onCallHold_Action:(NSNotification *)userInfo {
+    _callId = [userInfo.userInfo  objectForKey:@"data"];
 }
 
--(void)onCallUnhold_Action:(NSDictionary *)userInfo {
-    _callId = [userInfo objectForKey:@"data"];
+-(void)onCallUnhold_Action:(NSNotification *)userInfo {
+    _callId = [userInfo.userInfo objectForKey:@"data"];
 }
 
 @end

@@ -48,6 +48,10 @@
 		446F12FB1FAB2927009BA230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446F12FA1FAB2927009BA230 /* Assets.xcassets */; };
 		446F12FE1FAB2927009BA230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446F12FC1FAB2927009BA230 /* LaunchScreen.storyboard */; };
 		446F13011FAB2927009BA230 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F13001FAB2927009BA230 /* main.m */; };
+		44BB0AC61FDA79DC00BB9180 /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0AC51FDA79DC00BB9180 /* CallManager.m */; };
+		44BB0AC91FDA79E800BB9180 /* ProviderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0AC81FDA79E800BB9180 /* ProviderManager.m */; };
+		44BB0ACC1FDA7BB000BB9180 /* Call.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0ACB1FDA7BB000BB9180 /* Call.m */; };
+		44BB0ACF1FDAB85100BB9180 /* AudioService.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0ACE1FDAB85100BB9180 /* AudioService.m */; };
 		44BFC7241FBEA9F600BE5830 /* CallerVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 44BFC7221FBEA9F600BE5830 /* CallerVC.mm */; };
 		44BFC7251FBEA9F600BE5830 /* CallerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BFC7231FBEA9F600BE5830 /* CallerVC.xib */; };
 		44BFC72C1FBEAA1F00BE5830 /* CallieVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 44BFC72A1FBEAA1F00BE5830 /* CallieVC.mm */; };
@@ -121,6 +125,15 @@
 		446F12FA1FAB2927009BA230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		446F12FD1FAB2927009BA230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		446F13001FAB2927009BA230 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		44BB0AC21FDA78E800BB9180 /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
+		44BB0AC41FDA79DC00BB9180 /* CallManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallManager.h; sourceTree = "<group>"; };
+		44BB0AC51FDA79DC00BB9180 /* CallManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallManager.m; sourceTree = "<group>"; };
+		44BB0AC71FDA79E800BB9180 /* ProviderManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProviderManager.h; sourceTree = "<group>"; };
+		44BB0AC81FDA79E800BB9180 /* ProviderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProviderManager.m; sourceTree = "<group>"; };
+		44BB0ACA1FDA7BB000BB9180 /* Call.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Call.h; sourceTree = "<group>"; };
+		44BB0ACB1FDA7BB000BB9180 /* Call.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Call.m; sourceTree = "<group>"; };
+		44BB0ACD1FDAB85100BB9180 /* AudioService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioService.h; sourceTree = "<group>"; };
+		44BB0ACE1FDAB85100BB9180 /* AudioService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioService.m; sourceTree = "<group>"; };
 		44BFC7211FBEA9F600BE5830 /* CallerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallerVC.h; sourceTree = "<group>"; };
 		44BFC7221FBEA9F600BE5830 /* CallerVC.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CallerVC.mm; sourceTree = "<group>"; };
 		44BFC7231FBEA9F600BE5830 /* CallerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallerVC.xib; sourceTree = "<group>"; };
@@ -185,6 +198,7 @@
 		4445FD571FAB2BD3004A9EDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44BB0AC21FDA78E800BB9180 /* CallKit.framework */,
 				4445FDA71FAB375D004A9EDF /* CFNetwork.framework */,
 				4445FDA51FAB374C004A9EDF /* CoreTelephony.framework */,
 				4445FDA31FAB3714004A9EDF /* Accelerate.framework */,
@@ -256,6 +270,7 @@
 				44BFC71E1FBEA96200BE5830 /* Models */,
 				44BFC71D1FBEA95D00BE5830 /* Views */,
 				44BFC71C1FBEA95400BE5830 /* Controllers */,
+				44BB0AC31FDA79B800BB9180 /* Managers */,
 			);
 			path = "WebRTC-POC";
 			sourceTree = "<group>";
@@ -265,6 +280,21 @@
 			children = (
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		44BB0AC31FDA79B800BB9180 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				44BB0AC41FDA79DC00BB9180 /* CallManager.h */,
+				44BB0AC51FDA79DC00BB9180 /* CallManager.m */,
+				44BB0AC71FDA79E800BB9180 /* ProviderManager.h */,
+				44BB0AC81FDA79E800BB9180 /* ProviderManager.m */,
+				44BB0ACD1FDAB85100BB9180 /* AudioService.h */,
+				44BB0ACE1FDAB85100BB9180 /* AudioService.m */,
+				44BB0ACA1FDA7BB000BB9180 /* Call.h */,
+				44BB0ACB1FDA7BB000BB9180 /* Call.m */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		44BFC71C1FBEA95400BE5830 /* Controllers */ = {
@@ -368,7 +398,7 @@
 								enabled = 0;
 							};
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 0;
@@ -416,14 +446,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44BB0AC91FDA79E800BB9180 /* ProviderManager.m in Sources */,
+				44BB0ACC1FDA7BB000BB9180 /* Call.m in Sources */,
 				44BFC7361FBED64600BE5830 /* LogTVC.m in Sources */,
 				446F13011FAB2927009BA230 /* main.m in Sources */,
 				44BFC7391FBF058E00BE5830 /* LogModel.m in Sources */,
 				44BFC7241FBEA9F600BE5830 /* CallerVC.mm in Sources */,
 				44BFC72C1FBEAA1F00BE5830 /* CallieVC.mm in Sources */,
 				446F12F31FAB2927009BA230 /* AppDelegate.m in Sources */,
+				44BB0ACF1FDAB85100BB9180 /* AudioService.m in Sources */,
 				44E8B06C1FC04F7F002A1C80 /* NSString+WebRTC.m in Sources */,
 				4445FD561FAB2BB8004A9EDF /* WebRTCVC.mm in Sources */,
+				44BB0AC61FDA79DC00BB9180 /* CallManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,7 +605,7 @@
 					"$(PROJECT_DIR)/liblinphone-sdk/apple-darwin/include",
 				);
 				INFOPLIST_FILE = "WebRTC-POC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turkcell.webrtc-poc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -597,7 +631,7 @@
 					"$(PROJECT_DIR)/liblinphone-sdk/apple-darwin/include",
 				);
 				INFOPLIST_FILE = "WebRTC-POC/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.turkcell.webrtc-poc";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "ProviderManager.h"
+#import "CallManager.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    ProviderManager *manager = [ProviderManager sharedManager];
+    CallManager *callManager = [CallManager sharedManager];
+    manager.callManager      = callManager;
+    
     return YES;
 }
 
