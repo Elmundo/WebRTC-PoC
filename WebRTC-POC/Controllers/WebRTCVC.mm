@@ -63,7 +63,7 @@
     msisdnList = [[NSArray<NSString *> alloc] initWithObjects:
                   @"908502284041@superims.com", @"908502284042@superims.com",
                   @"908502284044@superims.com", @"905390000098@ims.mnc001.mcc286.3gppnetwork.org",
-                  @"905390000530@ims.mnc001.mcc286.3gppnetwork.org", @"905390000058@ims.mnc001.mcc286.3gppnetwork.org", nil];
+                  @"905390000530@ims.mnc001.mcc286.3gppnetwork.org", @"905390000058@ims.mnc001.mcc286.3gppnetwork.org", @"05390000075@ims.mnc001.mcc286.3gppnetwork.org", nil];
     
     _authCode     = [authCodes objectAtIndex:3];
     _msisdn       = [msisdnList objectAtIndex:3];
