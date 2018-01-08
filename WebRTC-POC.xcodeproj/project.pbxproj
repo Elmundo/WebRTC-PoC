@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		443FC53920038A1900B6F6ED /* TableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 443FC53820038A1900B6F6ED /* TableViewDelegate.m */; };
 		4445FD561FAB2BB8004A9EDF /* WebRTCVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4445FD551FAB2BB8004A9EDF /* WebRTCVC.mm */; };
 		4445FD591FAB2BD3004A9EDF /* mavenir.webrtc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD581FAB2BD3004A9EDF /* mavenir.webrtc.framework */; };
 		4445FD5B1FAB2EBB004A9EDF /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD5A1FAB2EBA004A9EDF /* CoreBluetooth.framework */; };
@@ -76,6 +77,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		443FC53720038A1900B6F6ED /* TableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewDelegate.h; sourceTree = "<group>"; };
+		443FC53820038A1900B6F6ED /* TableViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewDelegate.m; sourceTree = "<group>"; };
 		4445FD541FAB2BB8004A9EDF /* WebRTCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebRTCVC.h; path = "WebRTC-POC/Controllers/WebRTCVC.h"; sourceTree = SOURCE_ROOT; };
 		4445FD551FAB2BB8004A9EDF /* WebRTCVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WebRTCVC.mm; path = "WebRTC-POC/Controllers/WebRTCVC.mm"; sourceTree = SOURCE_ROOT; };
 		4445FD581FAB2BD3004A9EDF /* mavenir.webrtc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = mavenir.webrtc.framework; path = "WebRTC-POC/Frameworks/mavenir.webrtc.framework"; sourceTree = "<group>"; };
@@ -195,6 +198,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		443FC536200389F000B6F6ED /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				443FC53720038A1900B6F6ED /* TableViewDelegate.h */,
+				443FC53820038A1900B6F6ED /* TableViewDelegate.m */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		4445FD571FAB2BD3004A9EDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +283,7 @@
 				44BFC71D1FBEA95D00BE5830 /* Views */,
 				44BFC71C1FBEA95400BE5830 /* Controllers */,
 				44BB0AC31FDA79B800BB9180 /* Managers */,
+				443FC536200389F000B6F6ED /* Delegates */,
 			);
 			path = "WebRTC-POC";
 			sourceTree = "<group>";
@@ -452,6 +465,7 @@
 				446F13011FAB2927009BA230 /* main.m in Sources */,
 				44BFC7391FBF058E00BE5830 /* LogModel.m in Sources */,
 				44BFC7241FBEA9F600BE5830 /* CallerVC.mm in Sources */,
+				443FC53920038A1900B6F6ED /* TableViewDelegate.m in Sources */,
 				44BFC72C1FBEAA1F00BE5830 /* CallieVC.mm in Sources */,
 				446F12F31FAB2927009BA230 /* AppDelegate.m in Sources */,
 				44BB0ACF1FDAB85100BB9180 /* AudioService.m in Sources */,

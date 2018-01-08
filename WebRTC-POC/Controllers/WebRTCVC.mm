@@ -13,6 +13,7 @@
 #import "LogTVC.h"
 #import "ProviderManager.h"
 #import "CallManager.h"
+#import "TableViewDelegate.h"
 
 #define NSSTRING_TO_STRING(str) [NSString stringWithUTF8String:str.c_str()]
 #define NSSTRING_APPEND(str1, str2) [str1 stringByAppendingString:str2]
@@ -21,9 +22,12 @@
 #define kScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 
-@interface WebRTCVC () <WebRTCiOSDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDataSource, UITableViewDelegate, CallerDelegate, CallieDelegate>
+@interface WebRTCVC () <WebRTCiOSDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CallerDelegate, CallieDelegate>
 {
     WebRTC *webRTC;
+    
+    // Delegates
+    TableViewDelegate *_tableViewDelegate;
     
     // Widgets
     UIPickerView *authCodePV;
@@ -58,6 +62,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initDatas];
+    [self initWidgets];
+    [self initPickerViews];
+    [self initTableView];
+    [self initWebRTC];
+    WebRTC::mavInstance().mavUnRegister(true);
+    
+    [self addNotifications];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+}
+
+- (void)addNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground::)
+                                                 name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
+    
+}
+
+- (void)removeNotifications {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Init Methods
+- (void)initDatas {
     logs       = [[NSMutableArray<LogModel *> alloc] init];
     authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"48", @"49", @"50", @"56", nil];
     msisdnList = [[NSArray<NSString *> alloc] initWithObjects:
@@ -68,6 +103,7 @@
     _authCode     = [authCodes objectAtIndex:3];
     _msisdn       = [msisdnList objectAtIndex:3];
     _targetMsisdn = [msisdnList objectAtIndex:4];
+    
     self.authCodeTF.text     = _authCode;
     self.msisdnTF.text       = _msisdn;
     self.targetMsisdnTF.text = _targetMsisdn;
@@ -75,24 +111,10 @@
     needReRegister    = false;
     isWebRTCAvailable = false;
     onCall            = false;
-
-    self.logTV.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1.0f)];
     
-    [self initWidgets];
-    [self initPickerViews];
-    [self initTableView];
-    [self initWebRTC];
-    WebRTC::mavInstance().mavUnRegister(true);
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(applicationDidBecomeActive:)
-                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
+    self.logTV.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1.0f)];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-
-#pragma mark - Init Methods
 - (void)initWidgets {
     self.statusIcon.layer.cornerRadius  = self.statusIcon.layer.frame.size.width / 2;
     self.statusIcon.layer.masksToBounds = true;
@@ -131,8 +153,11 @@
 }
 
 - (void)initTableView {
-    self.logTV.delegate           = self;
-    self.logTV.dataSource         = self;
+    _tableViewDelegate            = [[TableViewDelegate alloc] init];
+    _tableViewDelegate.logs       = logs;
+    
+    self.logTV.delegate           = _tableViewDelegate;
+    self.logTV.dataSource         = _tableViewDelegate;
     self.logTV.layer.cornerRadius = 6.0;
     self.logTV.layer.borderWidth  = 2.0;
     self.logTV.layer.borderColor  = [UIColor darkGrayColor].CGColor;
@@ -257,7 +282,6 @@
     [self presentViewController:vc animated:true completion:nil];
 }
 
-#pragma mark - UIPickerViewDataSource
 -(void)setWebRTCStatus:(bool)status {
     
     if ([NSThread isMainThread]) {
@@ -278,7 +302,10 @@
         });
     }
 }
-
+#pragma mark -
+#pragma mark - ***** DELEGATE METHODS *****
+#pragma mark -
+#pragma mark - UIPickerViewDataSource
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
@@ -321,29 +348,6 @@
         _targetMsisdn = [msisdnList objectAtIndex:row];
         self.targetMsisdnTF.text = _targetMsisdn;
     }
-}
-
-#pragma mark - UITableViewDataSource
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [logs count];
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LogModel *model       = [logs objectAtIndex:indexPath.row];
-    LogTVC *cell          = (LogTVC *)[tableView dequeueReusableCellWithIdentifier:@"LogTVC"];
-    cell.logTextView.text = model.log;
-    [cell.logTextView setFont:[UIFont systemFontOfSize:12.0f]];
-
-    return cell;
-}
-
-#pragma mark - UITableViewDelegate
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self calculateHeightOfCell:indexPath];
 }
 
 #pragma mark - CallerDelegate
@@ -419,18 +423,20 @@
     [self.logTV reloadData];
 }
 
-- (CGFloat)calculateHeightOfCell:(NSIndexPath *)indexPath {
-    LogModel *model = [logs objectAtIndex:indexPath.row];
-    NSString *text  = model.log;
-    CGRect rect = [text boundingRectWithSize:CGSizeMake(340, 2000)
-                       options:NSStringDrawingUsesLineFragmentOrigin
-                    attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0f]}
-                       context:nil];
-    NSInteger height = MAX(rect.size.height + 10, 44);
-    return height;
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     if ([_sessionId cStringWebRTC]) {
         std::string sessionId  = [_sessionId cStringWebRTC];
         std::string nativeline = [_msisdn cStringWebRTC];
@@ -438,6 +444,8 @@
         WEBRTC_STATUS_CODE _ = WebRTC::mavInstance().mavReRegister(sessionId, nativeline);
     }
 }
+
+
 
 #pragma mark -
 #pragma mark - WebRTCiOSDelegate
