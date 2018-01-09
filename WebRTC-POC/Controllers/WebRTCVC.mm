@@ -78,13 +78,16 @@
 
 - (void)addNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(applicationWillEnterForeground::)
+                                             selector:@selector(applicationWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground:)
                                                  name:UIApplicationWillEnterForegroundNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(applicationDidBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification object:nil];
-    
 }
 
 - (void)removeNotifications {
@@ -94,14 +97,15 @@
 #pragma mark - Init Methods
 - (void)initDatas {
     logs       = [[NSMutableArray<LogModel *> alloc] init];
-    authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"48", @"49", @"50", @"56", nil];
+    authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"48", @"49", @"50", @"56", @"57", nil];
     msisdnList = [[NSArray<NSString *> alloc] initWithObjects:
                   @"908502284041@superims.com", @"908502284042@superims.com",
                   @"908502284044@superims.com", @"905390000098@ims.mnc001.mcc286.3gppnetwork.org",
-                  @"905390000530@ims.mnc001.mcc286.3gppnetwork.org", @"905390000058@ims.mnc001.mcc286.3gppnetwork.org", @"05390000075@ims.mnc001.mcc286.3gppnetwork.org", nil];
+                  @"905390000530@ims.mnc001.mcc286.3gppnetwork.org", @"905390000058@ims.mnc001.mcc286.3gppnetwork.org",
+                  @"05390000075@ims.mnc001.mcc286.3gppnetwork.org", @"05390001903@ims.mnc001.mcc286.3gppnetwork.org", nil];
     
-    _authCode     = [authCodes objectAtIndex:3];
-    _msisdn       = [msisdnList objectAtIndex:3];
+    _authCode     = [authCodes objectAtIndex:4];
+    _msisdn       = [msisdnList objectAtIndex:7];
     _targetMsisdn = [msisdnList objectAtIndex:4];
     
     self.authCodeTF.text     = _authCode;
@@ -243,7 +247,7 @@
             break;
     }
 }
-
+    
 - (void) unregisterWebRTC {
 //    WebRTC::mavInstance().mavUnRegister(true);
 //    needReRegister = true;
@@ -283,7 +287,6 @@
 }
 
 -(void)setWebRTCStatus:(bool)status {
-    
     if ([NSThread isMainThread]) {
         isWebRTCAvailable = status;
         if (status) {
@@ -424,25 +427,29 @@
 }
 
 
+#pragma mark - Application States
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    
+    NSLog(@"");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    if ([_sessionId cStringWebRTC]) {
+        std::string sessionId  = [_sessionId cStringWebRTC];
+        std::string nativeline = [_msisdn cStringWebRTC];
+        
+        
+        WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavRegisterAgain(sessionId);
+        
+    }
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    if ([_sessionId cStringWebRTC]) {
-        std::string sessionId  = [_sessionId cStringWebRTC];
-        std::string nativeline = [_msisdn cStringWebRTC];
-        
-        WEBRTC_STATUS_CODE _ = WebRTC::mavInstance().mavReRegister(sessionId, nativeline);
-    }
+    NSLog(@"");
 }
 
 
@@ -489,6 +496,10 @@
     if (self.presentedViewController) {
         [self.presentedViewController dismissViewControllerAnimated:true completion:nil];
     }
+    std::string sessionId  = [_sessionId cStringWebRTC];
+    std::string nativeline = [_msisdn cStringWebRTC];
+    
+    WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavReRegister(sessionId, nativeline);
 }
 
 -(void)mavOnReceivedRegisterError:(int)responsecode errorcode:(int)errorcode {
