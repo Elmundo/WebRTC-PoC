@@ -6,6 +6,8 @@
 //  Copyright © 2017 BARIS YILMAZ. All rights reserved.
 //
 
+#import <Reachability/Reachability.h>
+
 #import "WebRTCVC.h"
 #import "Call/CallerVC.h"
 #import "Call/CallieVC.h"
@@ -167,6 +169,26 @@
     self.logTV.layer.borderColor  = [UIColor darkGrayColor].CGColor;
 }
 
+- (void)initReachability {
+    Reachability *reach = [Reachability reachabilityWithHostName:@"www.google.com"];
+    
+    reach.reachableBlock = ^(Reachability *reachability) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self addLog:@"Internet if online."];
+            std::string sessionId  = [_sessionId cStringWebRTC];
+            WebRTC::mavInstance().mavRegisterAgain(sessionId);
+        });
+    };
+    
+    reach.unreachableBlock = ^(Reachability *reachability) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self addLog:@"Internet if offline."];
+        });
+    };
+    
+    [reach startNotifier];
+}
+
 - (void)showAlertWithMessage:(NSString *)message {
     alertController = [UIAlertController alertControllerWithTitle:@"Warning" message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -223,13 +245,22 @@
     std::string msisdn      = [_msisdn cStringWebRTC];
     std::string workline    = "WebRTC worline";
     
-    WEBRTC_STATUS_CODE status= WebRTC::mavInstance().mavRegister(baseURL, // Base URL
-                                                                 authCode,    // IAM Auth code
-                                                                 displayName,              // Display name of URI
-                                                                 deviceName,          // Friendly name used switch device
-                                                                 msisdn,      // Phone number of device
-                                                                 workline            // ??? Common workline
-                                                                 );
+//    WEBRTC_STATUS_CODE status = WebRTC::mavInstance().mavRegisterAgain([_sessionId cStringWebRTC]);
+    
+    NSString *cachedSessionId = [self getUserDefaultsWithKey:@"sessionId"];
+    WEBRTC_STATUS_CODE status;
+    if (cachedSessionId) {
+        status = WebRTC::mavInstance().mavRegisterAgain([cachedSessionId cStringWebRTC]);
+    }else {
+        status= WebRTC::mavInstance().mavRegister(baseURL, // Base URL
+                                                                     authCode,    // IAM Auth code
+                                                                     displayName,              // Display name of URI
+                                                                     deviceName,          // Friendly name used switch device
+                                                                     msisdn,      // Phone number of device
+                                                                     workline            // ??? Common workline
+                                                                     );
+    }
+    
     switch (status) {
         case WEBRTC_STATUS_OK:
 //            [self addLog:@"WebRTC registration is success!"];
@@ -254,19 +285,6 @@
 }
 
 #pragma mark - Methods
-//- (void)startReRegisterSession {
-//    timer = [NSTimer timerWithTimeInterval:10.0 repeats:true block:^(NSTimer * _Nonnull timer) {
-//        std::string sessionId = [_sessionId cStringWebRTC];
-//        std::string msisdn = [_msisdn cStringWebRTC];
-//        WebRTC::mavInstance().mavReRegister(sessionId, msisdn);
-//    }];
-//    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
-//}
-
-//- (void)endReRegisterSession {
-//    [timer invalidate];
-//    timer = nil;
-//}
 
 - (void)navigateToCallerVC {
     self.definesPresentationContext = true;
@@ -426,6 +444,16 @@
     [self.logTV reloadData];
 }
 
+- (void)setUserDefaultsWithKey:(NSString *)key value:(NSString *)value {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:value forKey:key];
+    [defaults synchronize];
+}
+
+- (NSString *)getUserDefaultsWithKey:(NSString *)key {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return (NSString *)[defaults objectForKey:key];
+}
 
 #pragma mark - Application States
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -440,9 +468,7 @@
         std::string sessionId  = [_sessionId cStringWebRTC];
         std::string nativeline = [_msisdn cStringWebRTC];
         
-        
         WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavRegisterAgain(sessionId);
-        
     }
 }
 
