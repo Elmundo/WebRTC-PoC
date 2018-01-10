@@ -127,11 +127,16 @@
     NSString *text = btn.titleLabel.text;
     
     if ([text isEqualToString:@"Speaker"]) {
-        std::string c_callId = [_callId cStringWebRTC];
+        if (_callId) {
+            std::string c_callId = [_callId cStringWebRTC];
+        }
         [btn setTitle:@"Earpiece" forState:UIControlStateNormal];
         [[AudioService sharedManager] switchTo:AudioCallStateSpeaker];
+        
     }else if ([text isEqualToString:@"Earpiece"]) {
-        std::string c_callId = [_callId cStringWebRTC];
+        if (_callId) {
+            std::string c_callId = [_callId cStringWebRTC];
+        }
         [btn setTitle:@"Speaker" forState:UIControlStateNormal];
         [[AudioService sharedManager] switchTo:AudioCallStateEarPierce];
     }

@@ -56,7 +56,6 @@
     NSError *error;
     switch (state) {
         case AudioCallStateEarPierce:
-            
             [_audioSession setCategory:AVAudioSessionCategoryPlayAndRecord
                   withOptions:AVAudioSessionCategoryOptionAllowBluetooth
                                  error:&error];

@@ -249,17 +249,25 @@
     
     NSString *cachedSessionId = [self getUserDefaultsWithKey:@"sessionId"];
     WEBRTC_STATUS_CODE status;
-    if (cachedSessionId) {
-        status = WebRTC::mavInstance().mavRegisterAgain([cachedSessionId cStringWebRTC]);
-    }else {
-        status= WebRTC::mavInstance().mavRegister(baseURL, // Base URL
-                                                                     authCode,    // IAM Auth code
-                                                                     displayName,              // Display name of URI
-                                                                     deviceName,          // Friendly name used switch device
-                                                                     msisdn,      // Phone number of device
-                                                                     workline            // ??? Common workline
-                                                                     );
-    }
+//    if (cachedSessionId) {
+//        status = WebRTC::mavInstance().mavRegisterAgain([cachedSessionId cStringWebRTC]);
+//    }else {
+//        status= WebRTC::mavInstance().mavRegister(baseURL, // Base URL
+//                                                                     authCode,    // IAM Auth code
+//                                                                     displayName,              // Display name of URI
+//                                                                     deviceName,          // Friendly name used switch device
+//                                                                     msisdn,      // Phone number of device
+//                                                                     workline            // ??? Common workline
+//                                                                     );
+//    }
+    
+    status= WebRTC::mavInstance().mavRegister(baseURL, // Base URL
+                                              authCode,    // IAM Auth code
+                                              displayName,              // Display name of URI
+                                              deviceName,          // Friendly name used switch device
+                                              msisdn,      // Phone number of device
+                                              workline            // ??? Common workline
+                                              );
     
     switch (status) {
         case WEBRTC_STATUS_OK:
@@ -489,6 +497,7 @@
     _sessionId = [NSString stringWithCharList:sessionid.c_str()];
     _clientId  = [NSString stringWithCharList:clientid.c_str()];
     
+    [self setUserDefaultsWithKey:@"sessionId" value:_sessionId];
     [self addLog:@"WebRTC mavOnReceivedRegisterSuccess!"];
 }
 
