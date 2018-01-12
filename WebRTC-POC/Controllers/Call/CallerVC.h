@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ContactsUI/ContactsUI.h>
+#import <Contacts/Contacts.h>
 #import <mavenir.webrtc/WebRTC.h>
 #import <mavenir.webrtc/WebRTCiOS.h>
 #import "NSString+WebRTC.h"

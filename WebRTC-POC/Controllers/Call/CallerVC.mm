@@ -6,7 +6,10 @@
 //  Copyright © 2017 BARIS YILMAZ. All rights reserved.
 //
 
+#import <DWAddressBook.h>
+
 #import "CallerVC.h"
+
 @interface CallerVC ()
 
 @end
@@ -14,6 +17,8 @@
 @implementation CallerVC
 {
     NSString *_callId;
+    CNContactPickerViewController *contactController;
+    DWAddressBook *addressbook;
 }
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -23,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initWidgets];
+    [self initContactController];
     [self addObservers];
 }
 
@@ -56,6 +62,16 @@
     [self.view insertSubview:blurView atIndex:0];
 
     [self setConstraintsWithBlurEffectView:blurView];
+}
+
+- (void)initContactController {
+    [DWAddressBook requestAddressBookAuthorization];
+    
+    addressbook = [[DWAddressBook alloc] initWithResultBlock:^(NSString *name, NSString *mobNumber) {
+        NSLog(@"");
+    } failure:^{
+        NSLog(@"Contact selection had been failed.");
+    }];
 }
 
 - (void)setConstraintsWithBlurEffectView:(UIVisualEffectView *)blurView{
@@ -93,13 +109,17 @@
     NSString *text = btn.titleLabel.text;
     
     if ([text isEqualToString:@"Hold"]) {
-        std::string c_callId = [_callId cStringWebRTC];
-        WebRTC::mavInstance().mavCallHold(c_callId, true);
-        [btn setTitle:@"Resume" forState:UIControlStateNormal];
+        if (_callId) {
+            std::string c_callId = [_callId cStringWebRTC];
+            WebRTC::mavInstance().mavCallHold(c_callId, true);
+            [btn setTitle:@"Resume" forState:UIControlStateNormal];
+        }
     }else if ([text isEqualToString:@"Resume"]) {
-        std::string c_callId = [_callId cStringWebRTC];
-        WebRTC::mavInstance().mavCallUnhold(c_callId);
-        [btn setTitle:@"Hold" forState:UIControlStateNormal];
+        if (_callId) {
+            std::string c_callId = [_callId cStringWebRTC];
+            WebRTC::mavInstance().mavCallUnhold(c_callId);
+            [btn setTitle:@"Hold" forState:UIControlStateNormal];
+        }
     }
 }
 
@@ -108,18 +128,23 @@
     NSString *text = btn.titleLabel.text;
     
     if ([text isEqualToString:@"Mute"]) {
-        std::string c_callId = [_callId cStringWebRTC];
-        WebRTC::mavInstance().mavCallMute(c_callId);
-        [btn setTitle:@"Unmute" forState:UIControlStateNormal];
+        if (_callId) {
+            std::string c_callId = [_callId cStringWebRTC];
+            WebRTC::mavInstance().mavCallMute(c_callId);
+            [btn setTitle:@"Unmute" forState:UIControlStateNormal];
+        }
+        
     }else if ([text isEqualToString:@"Unmute"]) {
-        std::string c_callId = [_callId cStringWebRTC];
-        WebRTC::mavInstance().mavCallUnMute(c_callId);
-        [btn setTitle:@"Mute" forState:UIControlStateNormal];
+        if (_callId) {
+            std::string c_callId = [_callId cStringWebRTC];
+            WebRTC::mavInstance().mavCallUnMute(c_callId);
+            [btn setTitle:@"Mute" forState:UIControlStateNormal];
+        }
     }
 }
 
 - (IBAction)addCall_ACtion:(id)sender {
-    // Not implemented yet.
+    [self presentViewController:addressbook animated:true completion:nil];
 }
 
 - (IBAction)speaker_Action:(id)sender {
@@ -141,6 +166,8 @@
         [[AudioService sharedManager] switchTo:AudioCallStateEarPierce];
     }
 }
+
+#pragma mark - Notifications
 
 -(void)onCallActive_Action:(NSNotification *)userInfo {
     _callId = [userInfo.userInfo objectForKey:@"data"];
@@ -165,5 +192,7 @@
 -(void)onCallUnhold_Action:(NSNotification *)userInfo {
     _callId = [userInfo.userInfo objectForKey:@"data"];
 }
+
+#pragma mark - Delegates
 
 @end

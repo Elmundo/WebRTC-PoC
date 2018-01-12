@@ -69,9 +69,16 @@
     [self initPickerViews];
     [self initTableView];
     [self initWebRTC];
-    WebRTC::mavInstance().mavUnRegister(true);
+    [self initReachability];
+//    WebRTC::mavInstance().mavUnRegister(true);
     
     [self addNotifications];
+    
+    _sessionId = [self getUserDefaultsWithKey:@"sessionId"];
+    WEBRTC_STATUS_CODE status;
+    if (_sessionId) {
+        status = WebRTC::mavInstance().mavRegisterAgain([_sessionId cStringWebRTC]);
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -247,18 +254,18 @@
     
 //    WEBRTC_STATUS_CODE status = WebRTC::mavInstance().mavRegisterAgain([_sessionId cStringWebRTC]);
     
-    NSString *cachedSessionId = [self getUserDefaultsWithKey:@"sessionId"];
+    _sessionId = [self getUserDefaultsWithKey:@"sessionId"];
     WEBRTC_STATUS_CODE status;
-//    if (cachedSessionId) {
-//        status = WebRTC::mavInstance().mavRegisterAgain([cachedSessionId cStringWebRTC]);
+//    if (_sessionId) {
+//        status = WebRTC::mavInstance().mavRegisterAgain([_sessionId cStringWebRTC]);
 //    }else {
-//        status= WebRTC::mavInstance().mavRegister(baseURL, // Base URL
-//                                                                     authCode,    // IAM Auth code
-//                                                                     displayName,              // Display name of URI
-//                                                                     deviceName,          // Friendly name used switch device
-//                                                                     msisdn,      // Phone number of device
-//                                                                     workline            // ??? Common workline
-//                                                                     );
+//        status = WebRTC::mavInstance().mavRegister(baseURL, // Base URL
+//                                                   authCode,    // IAM Auth code
+//                                                   displayName,              // Display name of URI
+//                                                   deviceName,          // Friendly name used switch device
+//                                                   msisdn,      // Phone number of device
+//                                                   workline            // ??? Common workline
+//                                                   );
 //    }
     
     status= WebRTC::mavInstance().mavRegister(baseURL, // Base URL
@@ -300,7 +307,9 @@
     vc.delegate                     = self;
     vc.modalPresentationStyle       = UIModalPresentationOverCurrentContext;
     vc.modalTransitionStyle         = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:vc animated:true completion:nil];
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:vc];
+    [navigation setNavigationBarHidden:true];
+    [self presentViewController:navigation animated:true completion:nil];
 }
 
 - (void)navigateToCallieVC {
@@ -475,7 +484,6 @@
     if ([_sessionId cStringWebRTC]) {
         std::string sessionId  = [_sessionId cStringWebRTC];
         std::string nativeline = [_msisdn cStringWebRTC];
-        
         WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavRegisterAgain(sessionId);
     }
 }
@@ -485,8 +493,6 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     NSLog(@"");
 }
-
-
 
 #pragma mark -
 #pragma mark - WebRTCiOSDelegate

@@ -7,72 +7,159 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		194542C700B6EF12198CA27987888131 /* Pods-WebRTC-POC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C6180B7EAC9B688E55757D1EBB6C2C /* Pods-WebRTC-POC-dummy.m */; };
-		2BBAA9093FBE34BD59942C380DD82D0E /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 00A2A70CB6AB8500885AFDAB18D35A12 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4AE742F0D32CE1071C89B4CF4C168D67 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7587CE669F43043C23D8EA6BDEA80A /* Reachability.m */; };
-		62D3D2EA974D0AF73A905817D385D4C1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2AF9EC704AAD470CAC8FE0D05A5430B /* SystemConfiguration.framework */; };
-		819E8ED00C8E0C6A820C8B5A9B9C5A21 /* Reachability-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC9156B5D7AD191B1D50947D7C4A9C5 /* Reachability-dummy.m */; };
-		964FC2D433C586A9E0DE8AE956CD25A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
-		BC1AD72852A93E357AA6EB33E2779DC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */; };
+		008E427DE2F824C218DD77D8CE828CB3 /* DWNumberView.h in Headers */ = {isa = PBXBuildFile; fileRef = 82050B223E0E9BA55B58DE742F85B195 /* DWNumberView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1355693C565218A949D636D86B41607E /* PPPersonModel.h in Headers */ = {isa = PBXBuildFile; fileRef = C0E1EC4DCD73490C3FCDE6202BC7ABBF /* PPPersonModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2FEDCA49EC94F892A537F86A3D4550E6 /* PPGetAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 2435936A7356BB59F892C423BC038FE1 /* PPGetAddressBook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36063775C1B08CF737E27760523D0E79 /* PPSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A823D9ED4C8C66C922EC7A568231EC3 /* PPSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		378D95CD82DC5DA11B30F934B900AD50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E163C13D7C1C91F41C8DB13EA90222 /* Foundation.framework */; };
+		3A03FEA7632EAA67F394EB7F56A89BB5 /* PPPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F01A3DB53AB60538343F370C00A6C77 /* PPPersonModel.m */; };
+		3F035C464F75C3AC0E0B4E08D08317FE /* Reachability-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7611ABD7E74BC13372ACE60D4CA03E24 /* Reachability-dummy.m */; };
+		4C2A78777AF5EE853846F0CC416DDA98 /* DWMobNumberController.h in Headers */ = {isa = PBXBuildFile; fileRef = 19F98403019E415E9299D29B270B675A /* DWMobNumberController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F24E48905E65E2F0E1F1F76C8C1B695 /* PPGetAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4467980C9FBF0461DDAD0F696059315B /* PPGetAddressBook.m */; };
+		550F72297F49CE66ABD4532BD950D3A3 /* DWAddressBook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EDB559D265BF1B19393914F2E60CE4 /* DWAddressBook-dummy.m */; };
+		660B7A833EA5CDBBEE0F804BC102931A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB2A12B152B1441A0695CB90EEFBA22 /* UIKit.framework */; };
+		739641F1E15A5164BA22609E891CAC39 /* DWContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDE9572B1B9936771653F6C7E249C0B /* DWContactController.m */; };
+		7C740C0A0F0BEE6D9DC93ADE229FD35B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E163C13D7C1C91F41C8DB13EA90222 /* Foundation.framework */; };
+		83EFCF4E037F0D070EE1FF250BD4CC3B /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DDEE76D61A1444CF0C224C1CCCE980A6 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87AE081D830C37A0BA68E3510797EC9D /* PPAddressBookHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 279ED38473BC49F2220497082BECF509 /* PPAddressBookHandle.m */; };
+		8C905D9205296223DA58B96381C84B4A /* PPAddressBookHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = FE32BCBE4DE470AA07577AB9B4FAB802 /* PPAddressBookHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		97FA8749E37F80877F249CEF7FAD99FF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B51E11B3F458E7A72350FD1EA137B5C /* SystemConfiguration.framework */; };
+		B3C2A1FFC57E3F1C6CB7C5030872AA13 /* DWAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 33393B063D653AD0AF9E3492C565C021 /* DWAddressBook.m */; };
+		B63BE56D7F547A8AD7424533D7161F09 /* DWNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912038EE3E0B5EA2710B5CB3F72A65C /* DWNumberView.m */; };
+		C363A643161D7750C9EC98F93BA3DC92 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E163C13D7C1C91F41C8DB13EA90222 /* Foundation.framework */; };
+		C53B685578D07B35232FD295F7F63AA2 /* DWMobNumberController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A29905C293BDF4BA610C0D67318B926 /* DWMobNumberController.m */; };
+		CDBE62BA26CEDEEE7C22DA7727C2B295 /* DWContactController.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD56ABF67DA88D8A08518C7B5EE932E /* DWContactController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2B38E62AF390C16C19532F4C872EEC4 /* DWAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C41355F2D05607E50308223DC32BEED /* DWAddressBook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E33A65467ED335CDF20531C17FE0D41C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F215A8CD3B0AD25C8AE46D7C5FEA0FDF /* AddressBook.framework */; };
+		EFA5BC3E7F02F27ABC1F4205592FE7CD /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6843DE54B153E753023F0035A9B90579 /* Reachability.m */; };
+		F5487898B69828BB1A513D61B53D282A /* Pods-WebRTC-POC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C6180B7EAC9B688E55757D1EBB6C2C /* Pods-WebRTC-POC-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C942C517FD2AA24DE527C9EB4C58EB76 /* PBXContainerItemProxy */ = {
+		6B58B0D4A4961C0CA25DCFA934B6827F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 33BECFE8920F4035B97AC6159D034871;
+			remoteGlobalIDString = EAE9E17A32D7D9B8188EA563C6CCFE15;
+			remoteInfo = DWAddressBook;
+		};
+		99F43A5C8B252F54F266B439B407163F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03E5FDA1E7B36C83CBDE805F09DBC251;
 			remoteInfo = Reachability;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00A2A70CB6AB8500885AFDAB18D35A12 /* Reachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		09E80A36C6CD46B7F3D7F5A056B41016 /* Reachability.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Reachability.xcconfig; sourceTree = "<group>"; };
+		042D3D6EC69DF2AC11411E93BAC1CE67 /* resources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = resources.bundle; path = DWAddressBook/resources.bundle; sourceTree = "<group>"; };
+		0A29905C293BDF4BA610C0D67318B926 /* DWMobNumberController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWMobNumberController.m; path = DWAddressBook/DWMobNumberController.m; sourceTree = "<group>"; };
 		12C6180B7EAC9B688E55757D1EBB6C2C /* Pods-WebRTC-POC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WebRTC-POC-dummy.m"; sourceTree = "<group>"; };
+		19F98403019E415E9299D29B270B675A /* DWMobNumberController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWMobNumberController.h; path = DWAddressBook/DWMobNumberController.h; sourceTree = "<group>"; };
 		1EB10F4F26D31DC66958000D8C3BE489 /* Pods-WebRTC-POC-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WebRTC-POC-frameworks.sh"; sourceTree = "<group>"; };
-		1EC9156B5D7AD191B1D50947D7C4A9C5 /* Reachability-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Reachability-dummy.m"; sourceTree = "<group>"; };
+		22EDB559D265BF1B19393914F2E60CE4 /* DWAddressBook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DWAddressBook-dummy.m"; sourceTree = "<group>"; };
+		2435936A7356BB59F892C423BC038FE1 /* PPGetAddressBook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPGetAddressBook.h; path = DWAddressBook/PPGetAddressBook.h; sourceTree = "<group>"; };
+		279ED38473BC49F2220497082BECF509 /* PPAddressBookHandle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPAddressBookHandle.m; path = DWAddressBook/PPAddressBookHandle.m; sourceTree = "<group>"; };
+		2B51E11B3F458E7A72350FD1EA137B5C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		2F01A3DB53AB60538343F370C00A6C77 /* PPPersonModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPPersonModel.m; path = DWAddressBook/PPPersonModel.m; sourceTree = "<group>"; };
+		33393B063D653AD0AF9E3492C565C021 /* DWAddressBook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWAddressBook.m; path = DWAddressBook/DWAddressBook.m; sourceTree = "<group>"; };
+		3A823D9ED4C8C66C922EC7A568231EC3 /* PPSingleton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPSingleton.h; path = DWAddressBook/PPSingleton.h; sourceTree = "<group>"; };
 		3AC31EAAE50E8EDA7C6748921C0055FF /* Pods-WebRTC-POC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WebRTC-POC.debug.xcconfig"; sourceTree = "<group>"; };
+		3DED54BC606C4125B11DB84D628D01D1 /* DWAddressBook-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DWAddressBook-prefix.pch"; sourceTree = "<group>"; };
 		417AACB59DA93F8DA052BD8F6A6ECB3C /* Pods-WebRTC-POC-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WebRTC-POC-acknowledgements.plist"; sourceTree = "<group>"; };
+		4467980C9FBF0461DDAD0F696059315B /* PPGetAddressBook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPGetAddressBook.m; path = DWAddressBook/PPGetAddressBook.m; sourceTree = "<group>"; };
+		4AB4E97BC2BD072FF1C018F86FDF894E /* Reachability.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Reachability.xcconfig; sourceTree = "<group>"; };
+		5C41355F2D05607E50308223DC32BEED /* DWAddressBook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWAddressBook.h; path = DWAddressBook/DWAddressBook.h; sourceTree = "<group>"; };
 		5CCD09D80C99EC3A6747C1DF942DCF2C /* Pods-WebRTC-POC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WebRTC-POC.release.xcconfig"; sourceTree = "<group>"; };
+		6843DE54B153E753023F0035A9B90579 /* Reachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		6B335E6B022959CF57F4F9C5BFB928F9 /* Pods-WebRTC-POC-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WebRTC-POC-acknowledgements.markdown"; sourceTree = "<group>"; };
+		74E163C13D7C1C91F41C8DB13EA90222 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7611ABD7E74BC13372ACE60D4CA03E24 /* Reachability-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Reachability-dummy.m"; sourceTree = "<group>"; };
+		7912038EE3E0B5EA2710B5CB3F72A65C /* DWNumberView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWNumberView.m; path = DWAddressBook/DWNumberView.m; sourceTree = "<group>"; };
+		82050B223E0E9BA55B58DE742F85B195 /* DWNumberView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWNumberView.h; path = DWAddressBook/DWNumberView.h; sourceTree = "<group>"; };
+		8CDE9572B1B9936771653F6C7E249C0B /* DWContactController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWContactController.m; path = DWAddressBook/DWContactController.m; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		ABDA4F5349E9D518C99F451C88CE691F /* libReachability.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libReachability.a; path = libReachability.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF7587CE669F43043C23D8EA6BDEA80A /* Reachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		B23E08535045DBDA458D608362D739F7 /* libPods-WebRTC-POC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-WebRTC-POC.a"; path = "libPods-WebRTC-POC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9494F6600F89ADBB8166DEC7F77B2B35 /* libDWAddressBook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libDWAddressBook.a; path = libDWAddressBook.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9852D56928A020B171BAEB651A135F3B /* DWAddressBook.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DWAddressBook.xcconfig; sourceTree = "<group>"; };
+		ABE4CA7E875441CAA874F1FABC63B988 /* libReachability.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libReachability.a; path = libReachability.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B94DE67D7D5E510BF63E2CA2693B3F6B /* Reachability-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Reachability-prefix.pch"; sourceTree = "<group>"; };
+		C0E1EC4DCD73490C3FCDE6202BC7ABBF /* PPPersonModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPPersonModel.h; path = DWAddressBook/PPPersonModel.h; sourceTree = "<group>"; };
 		C6FFFFD6431296E1DF453AE972CEF3CC /* Pods-WebRTC-POC-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WebRTC-POC-resources.sh"; sourceTree = "<group>"; };
-		F173ABEF1F58F3FEC9F57DA9B0C7796B /* Reachability-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Reachability-prefix.pch"; sourceTree = "<group>"; };
-		F2AF9EC704AAD470CAC8FE0D05A5430B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		CAB2A12B152B1441A0695CB90EEFBA22 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		CCD56ABF67DA88D8A08518C7B5EE932E /* DWContactController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWContactController.h; path = DWAddressBook/DWContactController.h; sourceTree = "<group>"; };
+		DDEE76D61A1444CF0C224C1CCCE980A6 /* Reachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		F215A8CD3B0AD25C8AE46D7C5FEA0FDF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
+		F2B59780D2A55B0558278BB3AC8E1D8F /* libPods-WebRTC-POC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-WebRTC-POC.a"; path = "libPods-WebRTC-POC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE32BCBE4DE470AA07577AB9B4FAB802 /* PPAddressBookHandle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPAddressBookHandle.h; path = DWAddressBook/PPAddressBookHandle.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		15B9947D1D3D036819A610A30868BCA7 /* Frameworks */ = {
+		3043863C36B27BF51BD1A8F1F594604A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				964FC2D433C586A9E0DE8AE956CD25A1 /* Foundation.framework in Frameworks */,
+				7C740C0A0F0BEE6D9DC93ADE229FD35B /* Foundation.framework in Frameworks */,
+				97FA8749E37F80877F249CEF7FAD99FF /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C052931B3A95AA6C4A3E4E14EDB81754 /* Frameworks */ = {
+		3A352E3CD319DD1108DB04A5011711AB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC1AD72852A93E357AA6EB33E2779DC2 /* Foundation.framework in Frameworks */,
-				62D3D2EA974D0AF73A905817D385D4C1 /* SystemConfiguration.framework in Frameworks */,
+				E33A65467ED335CDF20531C17FE0D41C /* AddressBook.framework in Frameworks */,
+				C363A643161D7750C9EC98F93BA3DC92 /* Foundation.framework in Frameworks */,
+				660B7A833EA5CDBBEE0F804BC102931A /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		492D595E6116B6E8980E43262BE39D60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				378D95CD82DC5DA11B30F934B900AD50 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11EF341D83DDFE5429DD2C143379C91A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9494F6600F89ADBB8166DEC7F77B2B35 /* libDWAddressBook.a */,
+				F2B59780D2A55B0558278BB3AC8E1D8F /* libPods-WebRTC-POC.a */,
+				ABE4CA7E875441CAA874F1FABC63B988 /* libReachability.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		13DB3AA1C3BC1E583C1EC5736B95E2FE /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				1A0C1536141EE0132D5A2738A4A97966 /* Pods-WebRTC-POC */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1AC8E0642EECA67D4FD40B6D71339E2 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1541FF29434321F7F32D9763E5BF8A95 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				DDEE76D61A1444CF0C224C1CCCE980A6 /* Reachability.h */,
+				6843DE54B153E753023F0035A9B90579 /* Reachability.m */,
+				6CBFE898833D5B1DA0D6C8E75A9A79BA /* Support Files */,
+			);
+			name = Reachability;
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		1A0C1536141EE0132D5A2738A4A97966 /* Pods-WebRTC-POC */ = {
@@ -90,111 +177,128 @@
 			path = "Target Support Files/Pods-WebRTC-POC";
 			sourceTree = "<group>";
 		};
-		1E5F340FCE6EDC4C2E1D1C0CED337BC6 /* Products */ = {
+		6CBFE898833D5B1DA0D6C8E75A9A79BA /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B23E08535045DBDA458D608362D739F7 /* libPods-WebRTC-POC.a */,
-				ABDA4F5349E9D518C99F451C88CE691F /* libReachability.a */,
+				4AB4E97BC2BD072FF1C018F86FDF894E /* Reachability.xcconfig */,
+				7611ABD7E74BC13372ACE60D4CA03E24 /* Reachability-dummy.m */,
+				B94DE67D7D5E510BF63E2CA2693B3F6B /* Reachability-prefix.pch */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E7E283C74B7E79D37D9BAAFF277942F5 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		57DA4A7A70518C0F24FB5B180AA699A2 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				00A2A70CB6AB8500885AFDAB18D35A12 /* Reachability.h */,
-				AF7587CE669F43043C23D8EA6BDEA80A /* Reachability.m */,
-				DB5E4BB54CD520D1B840991E85F44639 /* Support Files */,
-			);
-			name = Reachability;
-			path = Reachability;
+			name = "Support Files";
+			path = "../Target Support Files/Reachability";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				D02F67554E14C3100F274620CC9E3885 /* Pods */,
-				1E5F340FCE6EDC4C2E1D1C0CED337BC6 /* Products */,
+				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
+				C544D86967F2925B90D70D4DD5BAC0EF /* Pods */,
+				11EF341D83DDFE5429DD2C143379C91A /* Products */,
 				13DB3AA1C3BC1E583C1EC5736B95E2FE /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D02F67554E14C3100F274620CC9E3885 /* Pods */ = {
+		A3B83AB9B736A71DD00943D2AC207456 /* DWAddressBook */ = {
 			isa = PBXGroup;
 			children = (
-				57DA4A7A70518C0F24FB5B180AA699A2 /* Reachability */,
+				5C41355F2D05607E50308223DC32BEED /* DWAddressBook.h */,
+				33393B063D653AD0AF9E3492C565C021 /* DWAddressBook.m */,
+				CCD56ABF67DA88D8A08518C7B5EE932E /* DWContactController.h */,
+				8CDE9572B1B9936771653F6C7E249C0B /* DWContactController.m */,
+				19F98403019E415E9299D29B270B675A /* DWMobNumberController.h */,
+				0A29905C293BDF4BA610C0D67318B926 /* DWMobNumberController.m */,
+				82050B223E0E9BA55B58DE742F85B195 /* DWNumberView.h */,
+				7912038EE3E0B5EA2710B5CB3F72A65C /* DWNumberView.m */,
+				FE32BCBE4DE470AA07577AB9B4FAB802 /* PPAddressBookHandle.h */,
+				279ED38473BC49F2220497082BECF509 /* PPAddressBookHandle.m */,
+				2435936A7356BB59F892C423BC038FE1 /* PPGetAddressBook.h */,
+				4467980C9FBF0461DDAD0F696059315B /* PPGetAddressBook.m */,
+				C0E1EC4DCD73490C3FCDE6202BC7ABBF /* PPPersonModel.h */,
+				2F01A3DB53AB60538343F370C00A6C77 /* PPPersonModel.m */,
+				3A823D9ED4C8C66C922EC7A568231EC3 /* PPSingleton.h */,
+				B8A8826C82CB292B38D3D62FC598E7A5 /* Resources */,
+				FA67AFF365B41F4184B1EDCACBCB47BC /* Support Files */,
+			);
+			name = DWAddressBook;
+			path = DWAddressBook;
+			sourceTree = "<group>";
+		};
+		B8A8826C82CB292B38D3D62FC598E7A5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				042D3D6EC69DF2AC11411E93BAC1CE67 /* resources.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C544D86967F2925B90D70D4DD5BAC0EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A3B83AB9B736A71DD00943D2AC207456 /* DWAddressBook */,
+				1541FF29434321F7F32D9763E5BF8A95 /* Reachability */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		DB5E4BB54CD520D1B840991E85F44639 /* Support Files */ = {
+		F1AC8E0642EECA67D4FD40B6D71339E2 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				09E80A36C6CD46B7F3D7F5A056B41016 /* Reachability.xcconfig */,
-				1EC9156B5D7AD191B1D50947D7C4A9C5 /* Reachability-dummy.m */,
-				F173ABEF1F58F3FEC9F57DA9B0C7796B /* Reachability-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Reachability";
-			sourceTree = "<group>";
-		};
-		E7E283C74B7E79D37D9BAAFF277942F5 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				97D7E984AA2ED06FC886024282B47207 /* Foundation.framework */,
-				F2AF9EC704AAD470CAC8FE0D05A5430B /* SystemConfiguration.framework */,
+				F215A8CD3B0AD25C8AE46D7C5FEA0FDF /* AddressBook.framework */,
+				74E163C13D7C1C91F41C8DB13EA90222 /* Foundation.framework */,
+				2B51E11B3F458E7A72350FD1EA137B5C /* SystemConfiguration.framework */,
+				CAB2A12B152B1441A0695CB90EEFBA22 /* UIKit.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		FA67AFF365B41F4184B1EDCACBCB47BC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9852D56928A020B171BAEB651A135F3B /* DWAddressBook.xcconfig */,
+				22EDB559D265BF1B19393914F2E60CE4 /* DWAddressBook-dummy.m */,
+				3DED54BC606C4125B11DB84D628D01D1 /* DWAddressBook-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/DWAddressBook";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		CD532C2E0E901ED59C738DBF0A01331D /* Headers */ = {
+		B85C23D33E59262216060464AEA4090C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BBAA9093FBE34BD59942C380DD82D0E /* Reachability.h in Headers */,
+				E2B38E62AF390C16C19532F4C872EEC4 /* DWAddressBook.h in Headers */,
+				CDBE62BA26CEDEEE7C22DA7727C2B295 /* DWContactController.h in Headers */,
+				4C2A78777AF5EE853846F0CC416DDA98 /* DWMobNumberController.h in Headers */,
+				008E427DE2F824C218DD77D8CE828CB3 /* DWNumberView.h in Headers */,
+				8C905D9205296223DA58B96381C84B4A /* PPAddressBookHandle.h in Headers */,
+				2FEDCA49EC94F892A537F86A3D4550E6 /* PPGetAddressBook.h in Headers */,
+				1355693C565218A949D636D86B41607E /* PPPersonModel.h in Headers */,
+				36063775C1B08CF737E27760523D0E79 /* PPSingleton.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C313496A24B9227A857EF90EB0CDF143 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83EFCF4E037F0D070EE1FF250BD4CC3B /* Reachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		09C7D487D8FEDD73A8C13E4487A6C35D /* Pods-WebRTC-POC */ = {
+		03E5FDA1E7B36C83CBDE805F09DBC251 /* Reachability */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 69E0F36EB4550AD38EDDF50A9223F760 /* Build configuration list for PBXNativeTarget "Pods-WebRTC-POC" */;
+			buildConfigurationList = 8B3C8139B2BA5840BBA32E40AC1A3DE0 /* Build configuration list for PBXNativeTarget "Reachability" */;
 			buildPhases = (
-				F4394653FCA2490A5F29A5AB6B1E76B0 /* Sources */,
-				15B9947D1D3D036819A610A30868BCA7 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F91B1A9123BA287013CDECF50355F6F5 /* PBXTargetDependency */,
-			);
-			name = "Pods-WebRTC-POC";
-			productName = "Pods-WebRTC-POC";
-			productReference = B23E08535045DBDA458D608362D739F7 /* libPods-WebRTC-POC.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		33BECFE8920F4035B97AC6159D034871 /* Reachability */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1AC1FDA388BBAD13F68B50F0BF142CFA /* Build configuration list for PBXNativeTarget "Reachability" */;
-			buildPhases = (
-				9C92C21F9ECC274E99A15BE2899EA318 /* Sources */,
-				C052931B3A95AA6C4A3E4E14EDB81754 /* Frameworks */,
-				CD532C2E0E901ED59C738DBF0A01331D /* Headers */,
+				E5A0ECE02FA77453DD809B1200DF9427 /* Sources */,
+				3043863C36B27BF51BD1A8F1F594604A /* Frameworks */,
+				C313496A24B9227A857EF90EB0CDF143 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -202,7 +306,42 @@
 			);
 			name = Reachability;
 			productName = Reachability;
-			productReference = ABDA4F5349E9D518C99F451C88CE691F /* libReachability.a */;
+			productReference = ABE4CA7E875441CAA874F1FABC63B988 /* libReachability.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E39FB9E896549695F2EAF8F1B9D8AC4A /* Pods-WebRTC-POC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32A8B800A3031F7A973B3990B9E4E83A /* Build configuration list for PBXNativeTarget "Pods-WebRTC-POC" */;
+			buildPhases = (
+				9EFC079714A4B6E93301489D90E8EF29 /* Sources */,
+				492D595E6116B6E8980E43262BE39D60 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				53E83988239D7BFB24FB13BCF47AC096 /* PBXTargetDependency */,
+				045B70EC8D668C5A479903011AB11721 /* PBXTargetDependency */,
+			);
+			name = "Pods-WebRTC-POC";
+			productName = "Pods-WebRTC-POC";
+			productReference = F2B59780D2A55B0558278BB3AC8E1D8F /* libPods-WebRTC-POC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		EAE9E17A32D7D9B8188EA563C6CCFE15 /* DWAddressBook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B49B1E25AF3B01E1380A071A0C66DF0F /* Build configuration list for PBXNativeTarget "DWAddressBook" */;
+			buildPhases = (
+				9475626679BF395A8E3D2A290AACDDF5 /* Sources */,
+				3A352E3CD319DD1108DB04A5011711AB /* Frameworks */,
+				B85C23D33E59262216060464AEA4090C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DWAddressBook;
+			productName = DWAddressBook;
+			productReference = 9494F6600F89ADBB8166DEC7F77B2B35 /* libDWAddressBook.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -222,47 +361,134 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 1E5F340FCE6EDC4C2E1D1C0CED337BC6 /* Products */;
+			productRefGroup = 11EF341D83DDFE5429DD2C143379C91A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				09C7D487D8FEDD73A8C13E4487A6C35D /* Pods-WebRTC-POC */,
-				33BECFE8920F4035B97AC6159D034871 /* Reachability */,
+				EAE9E17A32D7D9B8188EA563C6CCFE15 /* DWAddressBook */,
+				E39FB9E896549695F2EAF8F1B9D8AC4A /* Pods-WebRTC-POC */,
+				03E5FDA1E7B36C83CBDE805F09DBC251 /* Reachability */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9C92C21F9ECC274E99A15BE2899EA318 /* Sources */ = {
+		9475626679BF395A8E3D2A290AACDDF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				819E8ED00C8E0C6A820C8B5A9B9C5A21 /* Reachability-dummy.m in Sources */,
-				4AE742F0D32CE1071C89B4CF4C168D67 /* Reachability.m in Sources */,
+				550F72297F49CE66ABD4532BD950D3A3 /* DWAddressBook-dummy.m in Sources */,
+				B3C2A1FFC57E3F1C6CB7C5030872AA13 /* DWAddressBook.m in Sources */,
+				739641F1E15A5164BA22609E891CAC39 /* DWContactController.m in Sources */,
+				C53B685578D07B35232FD295F7F63AA2 /* DWMobNumberController.m in Sources */,
+				B63BE56D7F547A8AD7424533D7161F09 /* DWNumberView.m in Sources */,
+				87AE081D830C37A0BA68E3510797EC9D /* PPAddressBookHandle.m in Sources */,
+				4F24E48905E65E2F0E1F1F76C8C1B695 /* PPGetAddressBook.m in Sources */,
+				3A03FEA7632EAA67F394EB7F56A89BB5 /* PPPersonModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F4394653FCA2490A5F29A5AB6B1E76B0 /* Sources */ = {
+		9EFC079714A4B6E93301489D90E8EF29 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				194542C700B6EF12198CA27987888131 /* Pods-WebRTC-POC-dummy.m in Sources */,
+				F5487898B69828BB1A513D61B53D282A /* Pods-WebRTC-POC-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5A0ECE02FA77453DD809B1200DF9427 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F035C464F75C3AC0E0B4E08D08317FE /* Reachability-dummy.m in Sources */,
+				EFA5BC3E7F02F27ABC1F4205592FE7CD /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F91B1A9123BA287013CDECF50355F6F5 /* PBXTargetDependency */ = {
+		045B70EC8D668C5A479903011AB11721 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Reachability;
-			target = 33BECFE8920F4035B97AC6159D034871 /* Reachability */;
-			targetProxy = C942C517FD2AA24DE527C9EB4C58EB76 /* PBXContainerItemProxy */;
+			target = 03E5FDA1E7B36C83CBDE805F09DBC251 /* Reachability */;
+			targetProxy = 99F43A5C8B252F54F266B439B407163F /* PBXContainerItemProxy */;
+		};
+		53E83988239D7BFB24FB13BCF47AC096 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DWAddressBook;
+			target = EAE9E17A32D7D9B8188EA563C6CCFE15 /* DWAddressBook */;
+			targetProxy = 6B58B0D4A4961C0CA25DCFA934B6827F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1574DFBE46C3A95056829BC718547A7A /* Release */ = {
+		067C78539B522400F497E99A0F664FB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AB4E97BC2BD072FF1C018F86FDF894E /* Reachability.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Reachability/Reachability-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0B92CC773974D9899CD55170A6F8DE59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9852D56928A020B171BAEB651A135F3B /* DWAddressBook.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/DWAddressBook/DWAddressBook-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4B41DCD782535429FE229225482C852E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CCD09D80C99EC3A6747C1DF942DCF2C /* Pods-WebRTC-POC.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		621AB785940626574F07364CB14760E1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -308,7 +534,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
@@ -317,48 +543,28 @@
 			};
 			name = Release;
 		};
-		318AA3E0EA486CF01C202A13D0C5E817 /* Debug */ = {
+		9FF0472494414DFAD461DF5E124D6BC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3AC31EAAE50E8EDA7C6748921C0055FF /* Pods-WebRTC-POC.debug.xcconfig */;
+			baseConfigurationReference = 4AB4E97BC2BD072FF1C018F86FDF894E /* Reachability.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				MACH_O_TYPE = staticlib;
+				GCC_PREFIX_HEADER = "Target Support Files/Reachability/Reachability-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		3E132E07C07DC57ABE6518C048FB8A45 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5CCD09D80C99EC3A6747C1DF942DCF2C /* Pods-WebRTC-POC.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		5B5A1446720EEC8CE963B9BD750713E4 /* Debug */ = {
+		B57C09D404C607DDE283C5C44183B2A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -407,7 +613,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,16 +624,16 @@
 			};
 			name = Debug;
 		};
-		ABF157451A5064D3D2D07366C20AF098 /* Debug */ = {
+		C6366A2F9B8E8EF5DC2DE6DF6078133D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09E80A36C6CD46B7F3D7F5A056B41016 /* Reachability.xcconfig */;
+			baseConfigurationReference = 9852D56928A020B171BAEB651A135F3B /* DWAddressBook.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/Reachability/Reachability-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				GCC_PREFIX_HEADER = "Target Support Files/DWAddressBook/DWAddressBook-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -439,54 +645,61 @@
 			};
 			name = Debug;
 		};
-		C87A1339F2EC654CD2E5FFA5CD13A9F7 /* Release */ = {
+		F326B3D53C75C76E7335DE4E7407BEDB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09E80A36C6CD46B7F3D7F5A056B41016 /* Reachability.xcconfig */;
+			baseConfigurationReference = 3AC31EAAE50E8EDA7C6748921C0055FF /* Pods-WebRTC-POC.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/Reachability/Reachability-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1AC1FDA388BBAD13F68B50F0BF142CFA /* Build configuration list for PBXNativeTarget "Reachability" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ABF157451A5064D3D2D07366C20AF098 /* Debug */,
-				C87A1339F2EC654CD2E5FFA5CD13A9F7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5B5A1446720EEC8CE963B9BD750713E4 /* Debug */,
-				1574DFBE46C3A95056829BC718547A7A /* Release */,
+				B57C09D404C607DDE283C5C44183B2A1 /* Debug */,
+				621AB785940626574F07364CB14760E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		69E0F36EB4550AD38EDDF50A9223F760 /* Build configuration list for PBXNativeTarget "Pods-WebRTC-POC" */ = {
+		32A8B800A3031F7A973B3990B9E4E83A /* Build configuration list for PBXNativeTarget "Pods-WebRTC-POC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				318AA3E0EA486CF01C202A13D0C5E817 /* Debug */,
-				3E132E07C07DC57ABE6518C048FB8A45 /* Release */,
+				F326B3D53C75C76E7335DE4E7407BEDB /* Debug */,
+				4B41DCD782535429FE229225482C852E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B3C8139B2BA5840BBA32E40AC1A3DE0 /* Build configuration list for PBXNativeTarget "Reachability" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FF0472494414DFAD461DF5E124D6BC3 /* Debug */,
+				067C78539B522400F497E99A0F664FB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B49B1E25AF3B01E1380A071A0C66DF0F /* Build configuration list for PBXNativeTarget "DWAddressBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6366A2F9B8E8EF5DC2DE6DF6078133D /* Debug */,
+				0B92CC773974D9899CD55170A6F8DE59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

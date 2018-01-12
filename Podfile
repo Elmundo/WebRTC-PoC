@@ -7,4 +7,5 @@ target 'WebRTC-POC' do
 
   # Pods for WebRTC-POC
   pod 'Reachability', '~> 3.2'
+  pod 'DWAddressBook', '~> 0.0.3'
 end
