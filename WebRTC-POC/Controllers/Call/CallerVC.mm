@@ -9,6 +9,9 @@
 #import <DWAddressBook.h>
 
 #import "CallerVC.h"
+#import "CallManager.h"
+
+typedef void (^SecondCallBlock)();
 
 @interface CallerVC ()
 
@@ -17,9 +20,12 @@
 @implementation CallerVC
 {
     NSString *_callId;
+    WebRTC *webRTC;
     CNContactPickerViewController *contactController;
     DWAddressBook *addressbook;
+    SecondCallBlock secondCallBlock;
 }
+
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -27,8 +33,15 @@
 #pragma mark - Build-in Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    webRTC = &WebRTC::mavInstance();
+    secondCallBlock = nil;
     [self initWidgets];
     [self initContactController];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self addObservers];
 }
 
@@ -68,7 +81,7 @@
     [DWAddressBook requestAddressBookAuthorization];
     
     addressbook = [[DWAddressBook alloc] initWithResultBlock:^(NSString *name, NSString *mobNumber) {
-        NSLog(@"");
+        [self configureSecondCall];
     } failure:^{
         NSLog(@"Contact selection had been failed.");
     }];
@@ -95,6 +108,21 @@
     [self.view addConstraints:constraints];
 }
 
+#pragma mark - Methdos
+- (void)configureSecondCall {
+    std::string callId    = [_callId cStringWebRTC];
+    WebRTC::mavInstance().mavCallHold(callId, false);
+    secondCallBlock = ^{
+        std::string callie    = [_secondtargetMsisdn cStringWebRTC];
+        std::string caller    = [_caller cStringWebRTC];
+        std::string dynamicId = [_sessionId cStringWebRTC];
+        std::string callId    = [_callId cStringWebRTC];
+        
+        WebRTC::mavInstance().mavCallStart(callie, dynamicId, false, WEBRTC_AUDIO_WIRED_HEADSET, caller);
+        [[CallManager sharedManager] startCall:_secondtargetMsisdn videoEnabled:false];
+    };
+}
+
 #pragma mark - Actions
 - (IBAction)decline_Action:(UIButton *)sender {
     if (self.delegate) {
@@ -113,12 +141,20 @@
             std::string c_callId = [_callId cStringWebRTC];
             WebRTC::mavInstance().mavCallHold(c_callId, true);
             [btn setTitle:@"Resume" forState:UIControlStateNormal];
+            
+            Call *call = [[CallManager sharedManager] getActiveCall];
+            call.state = CallStateHeld;
+            [[CallManager sharedManager] setHeld:call onHold:true];
         }
     }else if ([text isEqualToString:@"Resume"]) {
         if (_callId) {
             std::string c_callId = [_callId cStringWebRTC];
             WebRTC::mavInstance().mavCallUnhold(c_callId);
             [btn setTitle:@"Hold" forState:UIControlStateNormal];
+            
+            Call *call = [[CallManager sharedManager] getActiveCall];
+            call.state = CallStateActive;
+            [[CallManager sharedManager] setHeld:call onHold:false];
         }
     }
 }
@@ -132,6 +168,10 @@
             std::string c_callId = [_callId cStringWebRTC];
             WebRTC::mavInstance().mavCallMute(c_callId);
             [btn setTitle:@"Unmute" forState:UIControlStateNormal];
+            
+            Call *call = [[CallManager sharedManager] getActiveCall];
+            call.state = CallStateActive;
+            [[CallManager sharedManager] setHeld:call onHold:false];
         }
         
     }else if ([text isEqualToString:@"Unmute"]) {
@@ -139,6 +179,10 @@
             std::string c_callId = [_callId cStringWebRTC];
             WebRTC::mavInstance().mavCallUnMute(c_callId);
             [btn setTitle:@"Mute" forState:UIControlStateNormal];
+            
+            Call *call = [[CallManager sharedManager] getActiveCall];
+            call.state = CallStateActive;
+            [[CallManager sharedManager] setHeld:call onHold:false];
         }
     }
 }
@@ -187,6 +231,9 @@
 
 -(void)onCallHold_Action:(NSNotification *)userInfo {
     _callId = [userInfo.userInfo  objectForKey:@"data"];
+    
+    secondCallBlock();
+    secondCallBlock = nil;
 }
 
 -(void)onCallUnhold_Action:(NSNotification *)userInfo {

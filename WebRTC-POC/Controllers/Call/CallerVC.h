@@ -33,4 +33,9 @@
 
 @property (weak, nonatomic) id<CallerDelegate> delegate;
 
+@property (nonatomic, copy) NSString *caller;
+@property (nonatomic, copy) NSString *secondCallId;
+@property (nonatomic, copy) NSString *secondtargetMsisdn;
+@property (nonatomic, copy) NSString *sessionId;
+
 @end

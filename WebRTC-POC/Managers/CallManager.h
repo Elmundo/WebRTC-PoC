@@ -12,7 +12,7 @@
 
 typedef void(^CallsChangedHandler)(void);
 
-@interface CallManager : NSObject
+@interface CallManager : NSObject <CXCallObserverDelegate>
 
 @property (nonatomic, copy) CallsChangedHandler callsChangedHandler;
 @property (nonatomic, strong) NSMutableArray<Call*> *calls;
@@ -30,6 +30,12 @@ typedef void(^CallsChangedHandler)(void);
 - (void)endCall:(Call *)call;
 
 - (void)setHeld:(Call *)call onHold:(bool)onHold;
+
+- (void)setMute:(Call *)call isMuted:(bool)isMuted;
+
+- (void)setGroup:(Call *)call mergeCall:(Call *)mergeCall;
+
+- (void)setPlayDTMF:(Call *)call digits:(NSString *)digits;
 
 - (Call *)callWithUUID:(NSUUID *)uuid;
 

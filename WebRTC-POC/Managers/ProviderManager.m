@@ -8,9 +8,13 @@
 
 #import "ProviderManager.h"
 
+typedef void (^AnswerCallBlock)(Call *call);
+
 @implementation ProviderManager
 {
     CXProvider *_prodiver;
+    AnswerCallBlock _answerCallBlock;
+    
 }
 
 + (id)sharedManager {
@@ -40,16 +44,19 @@
     return self;
 }
 
-- (void)reportIncomingCallWithUUID:(NSUUID *)uuid handle:(NSString *)handle hasVideo:(bool)hasVideo completion:( void(^)(NSError *error)) completion
+- (void)reportIncomingCallWithUUID:(NSUUID *)uuid handle:(NSString *)handle hasVideo:(bool)hasVideo completion:( void(^)(NSError *error)) completion answer:( void(^)(Call *call)) answer
 {
     CXCallUpdate *update = [CXCallUpdate new];
     update.remoteHandle = [[CXHandle alloc] initWithType:CXHandleTypePhoneNumber value:handle];
     update.hasVideo = hasVideo;
+    _answerCallBlock = answer;
     
     [_prodiver reportNewIncomingCallWithUUID:uuid update:update completion:^(NSError * _Nullable error) {
-        if (error != nil) {
+        if (error == nil) {
             Call *call = [[Call alloc] initWithUUID:uuid outgoing:false handle:handle];
             [_callManager add:call];
+        }else {
+            NSLog(@"error: %@", [error description]);
         }
     }];
 }
@@ -73,6 +80,7 @@
         if (success) {
             [action fulfill];
             [_callManager add:call];
+            call.connectedStateChanged();
         }else {
             [action fail];
         }
@@ -89,6 +97,8 @@
     
     [[AudioService sharedManager] configureAudioSession];
     [call answer];
+    _answerCallBlock(call);
+    
     [action fulfill];
 }
 
@@ -127,15 +137,33 @@
 }
 
 -(void)provider:(CXProvider *)provider performSetMutedCallAction:(CXSetMutedCallAction *)action {
+    Call *call = [_callManager callWithUUID:action.callUUID];
+    if (call == nil) {
+        [action fail];
+        return;
+    }
     
+    [action fulfill];
 }
 
 -(void)provider:(CXProvider *)provider performSetGroupCallAction:(CXSetGroupCallAction *)action {
+    Call *call = [_callManager callWithUUID:action.callUUID];
+    if (call == nil) {
+        [action fail];
+        return;
+    }
     
+    [action fulfill];
 }
 
 -(void)provider:(CXProvider *)provider performPlayDTMFCallAction:(CXPlayDTMFCallAction *)action {
+    Call *call = [_callManager callWithUUID:action.callUUID];
+    if (call == nil) {
+        [action fail];
+        return;
+    }
     
+    [action fulfill];
 }
 
 -(void)providerDidReset:(CXProvider *)provider {

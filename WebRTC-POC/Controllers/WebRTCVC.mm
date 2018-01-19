@@ -16,6 +16,7 @@
 #import "ProviderManager.h"
 #import "CallManager.h"
 #import "TableViewDelegate.h"
+#import "AudioService.h"
 
 #define NSSTRING_TO_STRING(str) [NSString stringWithUTF8String:str.c_str()]
 #define NSSTRING_APPEND(str1, str2) [str1 stringByAppendingString:str2]
@@ -35,17 +36,20 @@
     UIPickerView *authCodePV;
     UIPickerView *msisdnPV;
     UIPickerView *targetMsisdnPV;
+    UIPickerView *secondTargetMsisdnPV;
     UIAlertController *alertController;
     
     // Properties
     NSString *_authCode;
     NSString *_msisdn;
     NSString *_targetMsisdn;
+    NSString *_secondTargetMsisdn;
     NSString *_fid;
     NSString *_did;
     NSString *_sessionId;
     NSString *_clientId;
     NSString *_callId;
+    NSString *_secondCallId;
     
     NSArray<NSString *> *authCodes;
     NSArray<NSString *> *msisdnList;
@@ -55,6 +59,7 @@
     bool onCall;
     bool isWebRTCAvailable;
     bool needReRegister;
+    int activeConnectionCount;
 }
 @end
 
@@ -105,22 +110,26 @@
 
 #pragma mark - Init Methods
 - (void)initDatas {
+    activeConnectionCount = 0;
+    
     logs       = [[NSMutableArray<LogModel *> alloc] init];
     authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"48", @"49", @"50", @"56", @"57", nil];
     msisdnList = [[NSArray<NSString *> alloc] initWithObjects:
                   @"908502284041@superims.com", @"908502284042@superims.com",
                   @"908502284044@superims.com", @"905390000098@ims.mnc001.mcc286.3gppnetwork.org",
                   @"905390000530@ims.mnc001.mcc286.3gppnetwork.org", @"905390000058@ims.mnc001.mcc286.3gppnetwork.org",
-                  @"05390000075@ims.mnc001.mcc286.3gppnetwork.org", @"05390001903@ims.mnc001.mcc286.3gppnetwork.org", nil];
+                  @"05390000075@ims.mnc001.mcc286.3gppnetwork.org", @"05390001903@ims.mnc001.mcc286.3gppnetwork.org",
+                  @"905322106528@ims.mnc001.mcc286.3gppnetwork.org", nil];
     
-    _authCode     = [authCodes objectAtIndex:4];
-    _msisdn       = [msisdnList objectAtIndex:7];
-    _targetMsisdn = [msisdnList objectAtIndex:4];
+    _authCode           = [authCodes objectAtIndex:4];
+    _msisdn             = [msisdnList objectAtIndex:7];
+    _targetMsisdn       = [msisdnList objectAtIndex:4];
+    _secondTargetMsisdn = [msisdnList objectAtIndex:3];
     
-    self.authCodeTF.text     = _authCode;
-    self.msisdnTF.text       = _msisdn;
-    self.targetMsisdnTF.text = _targetMsisdn;
-    
+    self.authCodeTF.text           = _authCode;
+    self.msisdnTF.text             = _msisdn;
+    self.targetMsisdnTF.text       = _targetMsisdn;
+    self.secondTargetMsisdnTF.text = _secondTargetMsisdn;
     needReRegister    = false;
     isWebRTCAvailable = false;
     onCall            = false;
@@ -139,6 +148,7 @@
     [self initAuthCodePickerView];
     [self initMsisdnPickerView];
     [self initTargetMsisdnPickerView];
+    [self initSecondTargetMsisdnPickerView];
 }
 
 - (void)initAuthCodePickerView {
@@ -165,6 +175,14 @@
     self.targetMsisdnTF.inputAccessoryView = [self getNewToolbar];
 }
 
+- (void)initSecondTargetMsisdnPickerView {
+    secondTargetMsisdnPV                         = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 216.0f)];
+    secondTargetMsisdnPV.delegate                = self;
+    secondTargetMsisdnPV.dataSource              = self;
+    self.secondTargetMsisdnTF.inputView          = secondTargetMsisdnPV;
+    self.secondTargetMsisdnTF.inputAccessoryView = [self getNewToolbar];
+}
+
 - (void)initTableView {
     _tableViewDelegate            = [[TableViewDelegate alloc] init];
     _tableViewDelegate.logs       = logs;
@@ -178,7 +196,7 @@
 
 - (void)initReachability {
     Reachability *reach = [Reachability reachabilityWithHostName:@"www.google.com"];
-    
+
     reach.reachableBlock = ^(Reachability *reachability) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self addLog:@"Internet if online."];
@@ -186,13 +204,13 @@
             WebRTC::mavInstance().mavRegisterAgain(sessionId);
         });
     };
-    
+
     reach.unreachableBlock = ^(Reachability *reachability) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self addLog:@"Internet if offline."];
         });
     };
-    
+
     [reach startNotifier];
 }
 
@@ -244,7 +262,6 @@
 }
 
 - (void)registerWebRTC {
-
     std::string authCode    = [_authCode cStringWebRTC];
     std::string baseURL     = "https://92.45.96.182:8082";
     std::string displayName = "Baris Yilmaz";
@@ -307,6 +324,11 @@
     vc.delegate                     = self;
     vc.modalPresentationStyle       = UIModalPresentationOverCurrentContext;
     vc.modalTransitionStyle         = UIModalTransitionStyleCrossDissolve;
+    
+    vc.caller                       = _msisdn;
+    vc.secondtargetMsisdn           = _secondTargetMsisdn;
+    vc.sessionId                    = _sessionId;
+    
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:vc];
     [navigation setNavigationBarHidden:true];
     [self presentViewController:navigation animated:true completion:nil];
@@ -382,9 +404,12 @@
     }else if ([pickerView isEqual:msisdnPV]) {
         _msisdn = [msisdnList objectAtIndex:row];
         self.msisdnTF.text = _msisdn;
-    }else {
+    }else if ([pickerView isEqual:targetMsisdnPV]){
         _targetMsisdn = [msisdnList objectAtIndex:row];
         self.targetMsisdnTF.text = _targetMsisdn;
+    }else if ([pickerView isEqual:secondTargetMsisdnPV]){
+        _secondTargetMsisdn = [msisdnList objectAtIndex:row];
+        self.secondTargetMsisdnTF.text = _secondTargetMsisdn;
     }
 }
 
@@ -431,7 +456,7 @@
         
         WebRTC::mavInstance().mavCallStart(callie, dynamicId, false, WEBRTC_AUDIO_WIRED_HEADSET, caller);
         [[CallManager sharedManager] startCall:_targetMsisdn videoEnabled:false];
-        
+
         [self navigateToCallerVC];
     }else {
         [self showAlertWithMessage:@"WebRTC is not available!"];
@@ -442,6 +467,7 @@
     [self.authCodeTF resignFirstResponder];
     [self.msisdnTF resignFirstResponder];
     [self.targetMsisdnTF resignFirstResponder];
+    [self.secondTargetMsisdnTF resignFirstResponder];
 }
 
 #pragma mark - Helpers
@@ -563,35 +589,55 @@
 
 #pragma mark Call Operations
 - (void)mavOnReceivedNewCall:(std::string)uri callid:(std::string)callid LineInfo:(std::string)LineInfo {
-     [self addLog: [NSString stringWithFormat:@"WebRTC mavOnReceivedNewCall! uri: %@ callid: %@ LineInfo: %@",
+    [self addLog: [NSString stringWithFormat:@"WebRTC mavOnReceivedNewCall! uri: %@ callid: %@ LineInfo: %@",
                     [NSString stringWithCharList:uri.c_str()],
                     [NSString stringWithCharList:callid.c_str()],
                     [NSString stringWithCharList:LineInfo.c_str()] ]];
     _callId = [NSString stringWithCharList:callid.c_str()];
     
-    
     CXCallUpdate *update = [[CXCallUpdate alloc] init];
     NSString *handle = [NSString stringWithCharList:uri.c_str()];
     update.remoteHandle = [[CXHandle alloc] initWithType:CXHandleTypePhoneNumber value:handle];
     update.hasVideo = false;
+
     [[ProviderManager sharedManager] reportIncomingCallWithUUID:[NSUUID UUID] handle:handle hasVideo:false completion:^(NSError *error) {
         if(error) {
             NSLog(@"Error: %@", [error description]);
         }
+    } answer:^(Call *call) {
+        std::string callId = [_callId cStringWebRTC];
+        WebRTC::mavInstance().mavCallAccept(callId, false, WEBRTC_AUDIO_EAR_PIECE);
     }];
     
     NSLog(@"************************* mavOnReceivedNewCall");
-    // TODO: CXProvider reportNewIncomingCall
-    [self navigateToCallieVC];
+//    [self navigateToCallieVC];
 }
 
 -(void)mavOnReceivedCallActive:(std::string)callid {
+    NSLog(@"-(void)mavOnReceivedCallActive:(std::string)callid   =>   %@", [NSString stringWithCharList:callid.c_str()]);
+    activeConnectionCount += 1;
     [self addLog: [NSString stringWithFormat:@"WebRTC mavOnReceivedCallActive! callid: %@", [NSString stringWithCharList:callid.c_str()] ]];
-    _callId = [NSString stringWithCharList:callid.c_str()];
     
-    Call *call = [[CallManager sharedManager] getActiveCall];
-    call.state = CallStateActive;
-    [call answer];
+    [[AudioService sharedManager] startAudio];
+    if (activeConnectionCount > 1) {
+        _secondCallId = [NSString stringWithCharList:callid.c_str()];
+        Call *call = [[CallManager sharedManager] getActiveCall];
+        call.state = CallStateActive;
+        [call answer];
+        
+        std::string confcallId = [_secondCallId cStringWebRTC];
+        std::string callId = [_callId cStringWebRTC];
+        std::string activeUri = [_secondTargetMsisdn cStringWebRTC];
+        std::string holdUri = [_targetMsisdn cStringWebRTC];
+        std::string lineinfo = [_msisdn cStringWebRTC];
+        
+        WebRTC::mavInstance().mavStartAdHocConf(confcallId, callId, activeUri, holdUri, WEBRTC_AUDIO_EAR_PIECE, lineinfo);
+    }else {
+        _callId = [NSString stringWithCharList:callid.c_str()];
+        Call *call = [[CallManager sharedManager] getActiveCall];
+        call.state = CallStateActive;
+        [call answer];
+    }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CallActive" object:nil userInfo:@{@"data": _callId}];
     NSLog(@"************************* mavOnReceivedCallActive");
@@ -599,8 +645,6 @@
 
 -(void)mavOnReceivedCallStatus:(std::string)callid statuscode:(int)statuscode {
     [self addLog: [NSString stringWithFormat:@"WebRTC mavOnReceivedCallStatus! callid: %@ statusCode: %d", [NSString stringWithCharList:callid.c_str()], statuscode]];
-    _callId = [NSString stringWithCharList:callid.c_str()];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"CallStatus" object:nil userInfo:@{@"data": _callId}];
     
     // Who knows?
     if (statuscode == 183) {
@@ -610,12 +654,25 @@
     // Incoming Call
     if (statuscode == 180) {
         Call *call = [[CallManager sharedManager] getActiveCall];
-        call.connectionState = ConnectedStateComplete;
+        call.connectionState = ConnectedStatePending;
+        call.connectedStateChanged();
         NSLog(@"************************* StatusCode = 180");
     }
     
     // Our Call is Accepted
     if (statuscode == 200) {
+//        activeConnectionCount += 1;
+//        if (activeConnectionCount > 1) {
+//            _secondCallId = [NSString stringWithCharList:callid.c_str()];
+//        }else {
+//            _callId = [NSString stringWithCharList:callid.c_str()];
+//        }
+        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"CallStatus" object:nil userInfo:@{@"data": _callId}];
+        
+        Call *call = [[CallManager sharedManager] getActiveCall];
+        call.connectionState = ConnectedStateComplete;
+        call.connectedStateChanged();
         NSLog(@"************************* StatusCode = 200");
     }
 
@@ -631,17 +688,47 @@
         }
         NSLog(@"************************* StatusCode = 204");
     }
+    
+    // Unknown
+    if (statuscode == 405) {
+        if (self.presentedViewController) {
+            [self.presentedViewController dismissViewControllerAnimated:true completion:nil];
+        }
+        NSLog(@"************************* StatusCode = 405");
+    }
+    
+    // Unknown
+    if (statuscode == 500) {
+        if (self.presentedViewController) {
+            [self.presentedViewController dismissViewControllerAnimated:true completion:nil];
+        }
+        NSLog(@"************************* StatusCode = 500");
+    }
 }
 
 -(void)mavOnCallHoldStatus:(std::string)callid status:(std::string)status {
     NSLog(@"************************* mavOnCallHoldStatus StatusCode = %@", [NSString stringWithCharList:status.c_str()]);
+    
+    _callId = [NSString stringWithCharList:callid.c_str()];
+    Call *call = [[CallManager sharedManager] getActiveCall];
+    call.state = CallStateHeld;
+    [[CallManager sharedManager] setHeld:call onHold:true];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CallHold" object:nil userInfo:@{@"data": _callId}];
 }
 
 -(void)mavOnCallUnHoldStatus:(std::string)callid status:(std::string)status {
     NSLog(@"************************* mavOnCallUnHoldStatus StatusCode = %@", [NSString stringWithCharList:status.c_str()]);
+    
+    _callId = [NSString stringWithCharList:callid.c_str()];
+    Call *call = [[CallManager sharedManager] getActiveCall];
+    call.state = CallStateActive;
+    [[CallManager sharedManager] setHeld:call onHold:false];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CallUnHold" object:nil userInfo:@{@"data": _callId}];
 }
 
 -(void)mavOnReceivedCallEnd:(std::string)callid {
+    activeConnectionCount -= 1;
+    
     [self addLog: [NSString stringWithFormat:@"WebRTC mavOnReceivedCallEnd! callid: %@", [NSString stringWithCharList:callid.c_str()] ]];
     _callId = [NSString stringWithCharList:callid.c_str()];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CallEnd" object:nil userInfo:@{@"data": _callId}];
@@ -660,6 +747,10 @@
     _callId = [NSString stringWithCharList:callid.c_str()];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CellRejected" object:nil userInfo:@{@"data": _callId}];
     NSLog(@"************************* mavOnReceivedCallRejected");
+    
+    Call *call = [[CallManager sharedManager] getActiveCall];
+    [[CallManager sharedManager] endCall:call];
+    
     if (self.presentedViewController) {
         [self.presentedViewController dismissViewControllerAnimated:true completion:nil];
     }
@@ -678,4 +769,5 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CallUnhold" object:nil userInfo:@{@"data": _callId}];
     NSLog(@"************************* mavOnReceivedCallUnhold");
 }
+
 @end

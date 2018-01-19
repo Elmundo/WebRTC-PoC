@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *authCodeTF;
 @property (weak, nonatomic) IBOutlet UITextField *msisdnTF;
 @property (weak, nonatomic) IBOutlet UITextField *targetMsisdnTF;
+@property (weak, nonatomic) IBOutlet UITextField *secondTargetMsisdnTF;
 @property (weak, nonatomic) IBOutlet UIButton *callBtn;
 
 @end

@@ -25,13 +25,27 @@
 //    [self addObservers];
 }
 
--(void) addObservers {
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self addObservers];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+-(void)addObservers {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallActive_Action:) name:@"CallActive" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallStatus_Action:) name:@"CallStatus" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallEnd_Action:) name:@"CallEnd" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallReject_Action:) name:@"CellRejected" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallHold_Action:) name:@"CallHold" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallUnhold_Action:) name:@"CallUnhold" object:nil];
+}
+
+-(void)removeObservers {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)initWidgets {

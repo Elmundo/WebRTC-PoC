@@ -62,10 +62,12 @@
 }
 
 -(void)endCall:(Call *)call {
-    CXEndCallAction *endCallAction = [[CXEndCallAction alloc] initWithCallUUID:call.uuid];
-    CXTransaction *transaction = [[CXTransaction alloc] initWithAction:endCallAction];
-    
-    [self requestTransaction:transaction];
+    if (call.uuid) {
+        CXEndCallAction *endCallAction = [[CXEndCallAction alloc] initWithCallUUID:call.uuid];
+        CXTransaction *transaction = [[CXTransaction alloc] initWithAction:endCallAction];
+        
+        [self requestTransaction:transaction];
+    }
 }
 
 -(void)setHeld:(Call *)call onHold:(bool)onHold {
@@ -78,6 +80,20 @@
 - (void)setMute:(Call *)call isMuted:(bool)isMuted {
     CXSetMutedCallAction *muteCallAction = [[CXSetMutedCallAction alloc] initWithCallUUID:call.uuid muted:isMuted];
     CXTransaction *transaction = [[CXTransaction alloc] initWithAction:muteCallAction];
+    
+    [self requestTransaction:transaction];
+}
+
+- (void)setGroup:(Call *)call mergeCall:(Call *)mergeCall{
+    CXSetGroupCallAction *groupCallAction = [[CXSetGroupCallAction alloc] initWithCallUUID:call.uuid callUUIDToGroupWith:mergeCall.uuid];
+    CXTransaction *transaction = [[CXTransaction alloc] initWithAction:groupCallAction];
+    
+    [self requestTransaction:transaction];
+}
+
+- (void)setPlayDTMF:(Call *)call digits:(NSString *)digits {
+    CXPlayDTMFCallAction *dtmfCallAction = [[CXPlayDTMFCallAction alloc] initWithCallUUID:call.uuid digits:digits type:CXPlayDTMFCallActionTypeSingleTone];
+    CXTransaction *transaction = [[CXTransaction alloc] initWithAction:dtmfCallAction];
     
     [self requestTransaction:transaction];
 }

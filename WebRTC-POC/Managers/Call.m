@@ -26,7 +26,7 @@
         self.isOutgoing = outgoing;
         self.handle = handle;
         self.state = CallStateEnded;
-        self.connectionState = ConnectedStatePending;
+        self.connectionState = ConnectedStateStarted;
     }
     return self;
 }

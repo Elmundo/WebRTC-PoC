@@ -16,7 +16,8 @@ typedef enum : NSUInteger {
 } CallState;
 
 typedef enum : NSUInteger {
-    ConnectedStatePending = 0,
+    ConnectedStateStarted = 0,
+    ConnectedStatePending,
     ConnectedStateComplete,
 } ConnectedState;
 
