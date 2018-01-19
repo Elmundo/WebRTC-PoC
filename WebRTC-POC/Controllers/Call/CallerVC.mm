@@ -7,6 +7,7 @@
 //
 
 #import <DWAddressBook.h>
+#import <JCPadButton.h>
 
 #import "CallerVC.h"
 #import "CallManager.h"
@@ -24,6 +25,7 @@ typedef void (^SecondCallBlock)();
     CNContactPickerViewController *contactController;
     DWAddressBook *addressbook;
     SecondCallBlock secondCallBlock;
+    JCDialPad *dialpad;
 }
 
 -(void)dealloc {
@@ -36,8 +38,14 @@ typedef void (^SecondCallBlock)();
     
     webRTC = &WebRTC::mavInstance();
     secondCallBlock = nil;
+    
     [self initWidgets];
     [self initContactController];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self initDialPad];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -63,6 +71,12 @@ typedef void (^SecondCallBlock)();
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)initDialPad {
+    dialpad = [[JCDialPad alloc] initWithFrame:self.view.bounds];
+    dialpad.buttons = [[JCDialPad defaultButtons] arrayByAddingObject:[self twilioButton]];
+    dialpad.delegate = self;
+}
+
 - (void)initWidgets {
     self.callingPersonIV.layer.cornerRadius = self.callingPersonIV.frame.size.width/2;
     self.callingPersonIV.layer.masksToBounds = true;
@@ -85,6 +99,15 @@ typedef void (^SecondCallBlock)();
     } failure:^{
         NSLog(@"Contact selection had been failed.");
     }];
+}
+
+- (JCPadButton *)twilioButton
+{
+    UIImage *twilioIcon = [UIImage imageNamed:@"Twilio"];
+    UIImageView *iconView = [[UIImageView alloc] initWithImage:twilioIcon];
+    iconView.contentMode = UIViewContentModeScaleAspectFit;
+    JCPadButton *twilioButton = [[JCPadButton alloc] initWithInput:@"T" iconView:iconView subLabel:@""];
+    return twilioButton;
 }
 
 - (void)setConstraintsWithBlurEffectView:(UIVisualEffectView *)blurView{
@@ -211,6 +234,12 @@ typedef void (^SecondCallBlock)();
     }
 }
 
+- (IBAction)dialpad_Action:(id)sender {
+    if (_callId != nil) {
+        [self.view addSubview:dialpad];
+    }
+}
+
 #pragma mark - Notifications
 
 -(void)onCallActive_Action:(NSNotification *)userInfo {
@@ -241,5 +270,16 @@ typedef void (^SecondCallBlock)();
 }
 
 #pragma mark - Delegates
+#pragma mark - JCDialPadDelegate
+-(BOOL)dialPad:(JCDialPad *)dialPad shouldInsertText:(NSString *)text forButtonPress:(JCPadButton *)button {
+    if ([text isEqualToString:@"T"]) {
+        [dialPad removeFromSuperview];
+    }else {
+        NSLog(@"Pressed button is: %@", text);
+        char digit = [text cStringWebRTC][0];
+        WebRTC::mavInstance().mavCallDTMF([_callId cStringWebRTC] , digit);
+    }
+    return true;
+}
 
 @end

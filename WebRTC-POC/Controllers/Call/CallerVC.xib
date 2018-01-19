@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +17,7 @@
                 <outlet property="constantCallingL" destination="3w4-PM-0P1" id="lvE-Iy-Y8v"/>
                 <outlet property="containerView" destination="CQE-uf-v1o" id="Wup-jD-eaZ"/>
                 <outlet property="declineBtn" destination="PGb-JC-gX9" id="mWF-sI-y4h"/>
+                <outlet property="dialPad" destination="ZEb-8t-LSt" id="ZGD-Gw-j3L"/>
                 <outlet property="holdBtn" destination="c7O-RI-2ON" id="iTB-Zn-GqT"/>
                 <outlet property="muteBtn" destination="q6p-a2-hWC" id="bGL-HM-G2q"/>
                 <outlet property="speakerBtn" destination="Oju-zs-1SV" id="POK-HC-Cr2"/>
@@ -127,12 +128,31 @@
                                 <action selector="speaker_Action:" destination="-1" eventType="touchUpInside" id="bVb-au-6at"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEb-8t-LSt" userLabel="MuteBtn">
+                            <rect key="frame" x="147" y="348" width="83" height="78"/>
+                            <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="83" id="28t-Gj-vlp"/>
+                                <constraint firstAttribute="height" constant="78" id="91X-WV-Ue0"/>
+                                <constraint firstAttribute="width" constant="83" id="9uC-DI-5eu"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="83" id="JVO-8d-C6R"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="78" id="YtA-xs-ePW"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="78" id="etc-zH-39h"/>
+                            </constraints>
+                            <state key="normal" title="Dial Pad">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="dialpad_Action:" destination="-1" eventType="touchUpInside" id="mUf-Rs-ZyT"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Oju-zs-1SV" firstAttribute="top" secondItem="c7O-RI-2ON" secondAttribute="bottom" constant="25" id="5dq-Vc-t2D"/>
                         <constraint firstItem="q6p-a2-hWC" firstAttribute="leading" secondItem="c7O-RI-2ON" secondAttribute="trailing" constant="48" id="8RC-C6-E9F"/>
                         <constraint firstItem="c7O-RI-2ON" firstAttribute="top" secondItem="CQE-uf-v1o" secondAttribute="top" constant="245" id="A1U-RV-PGO"/>
+                        <constraint firstItem="ZEb-8t-LSt" firstAttribute="top" secondItem="q6p-a2-hWC" secondAttribute="bottom" constant="25" id="BKX-zW-kuy"/>
                         <constraint firstItem="q6p-a2-hWC" firstAttribute="top" secondItem="CQE-uf-v1o" secondAttribute="top" constant="245" id="CgU-wK-00F"/>
                         <constraint firstItem="3w4-PM-0P1" firstAttribute="leading" secondItem="p8h-Mj-R9i" secondAttribute="leading" id="McB-KG-bnl"/>
                         <constraint firstAttribute="trailing" secondItem="OhX-Ss-uJW" secondAttribute="trailing" constant="15" id="SFU-gr-d0C"/>
@@ -148,6 +168,7 @@
                         <constraint firstItem="PGb-JC-gX9" firstAttribute="centerX" secondItem="CQE-uf-v1o" secondAttribute="centerX" id="jIE-Uj-asJ"/>
                         <constraint firstAttribute="trailing" secondItem="1ZM-Fd-M2h" secondAttribute="trailing" constant="16" id="jcj-19-tP7"/>
                         <constraint firstItem="1ZM-Fd-M2h" firstAttribute="width" secondItem="c7O-RI-2ON" secondAttribute="width" id="uD7-bd-w5e"/>
+                        <constraint firstItem="ZEb-8t-LSt" firstAttribute="leading" secondItem="Oju-zs-1SV" secondAttribute="trailing" constant="47" id="uMZ-4Y-T2Q"/>
                         <constraint firstItem="Oju-zs-1SV" firstAttribute="leading" secondItem="CQE-uf-v1o" secondAttribute="leading" constant="17" id="uvO-m6-Zb9"/>
                     </constraints>
                 </view>

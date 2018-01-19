@@ -7,103 +7,179 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		008E427DE2F824C218DD77D8CE828CB3 /* DWNumberView.h in Headers */ = {isa = PBXBuildFile; fileRef = 82050B223E0E9BA55B58DE742F85B195 /* DWNumberView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1355693C565218A949D636D86B41607E /* PPPersonModel.h in Headers */ = {isa = PBXBuildFile; fileRef = C0E1EC4DCD73490C3FCDE6202BC7ABBF /* PPPersonModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FEDCA49EC94F892A537F86A3D4550E6 /* PPGetAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 2435936A7356BB59F892C423BC038FE1 /* PPGetAddressBook.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		36063775C1B08CF737E27760523D0E79 /* PPSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A823D9ED4C8C66C922EC7A568231EC3 /* PPSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		378D95CD82DC5DA11B30F934B900AD50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E163C13D7C1C91F41C8DB13EA90222 /* Foundation.framework */; };
-		3A03FEA7632EAA67F394EB7F56A89BB5 /* PPPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F01A3DB53AB60538343F370C00A6C77 /* PPPersonModel.m */; };
-		3F035C464F75C3AC0E0B4E08D08317FE /* Reachability-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7611ABD7E74BC13372ACE60D4CA03E24 /* Reachability-dummy.m */; };
-		4C2A78777AF5EE853846F0CC416DDA98 /* DWMobNumberController.h in Headers */ = {isa = PBXBuildFile; fileRef = 19F98403019E415E9299D29B270B675A /* DWMobNumberController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4F24E48905E65E2F0E1F1F76C8C1B695 /* PPGetAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4467980C9FBF0461DDAD0F696059315B /* PPGetAddressBook.m */; };
-		550F72297F49CE66ABD4532BD950D3A3 /* DWAddressBook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EDB559D265BF1B19393914F2E60CE4 /* DWAddressBook-dummy.m */; };
-		660B7A833EA5CDBBEE0F804BC102931A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB2A12B152B1441A0695CB90EEFBA22 /* UIKit.framework */; };
-		739641F1E15A5164BA22609E891CAC39 /* DWContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDE9572B1B9936771653F6C7E249C0B /* DWContactController.m */; };
-		7C740C0A0F0BEE6D9DC93ADE229FD35B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E163C13D7C1C91F41C8DB13EA90222 /* Foundation.framework */; };
-		83EFCF4E037F0D070EE1FF250BD4CC3B /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DDEE76D61A1444CF0C224C1CCCE980A6 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87AE081D830C37A0BA68E3510797EC9D /* PPAddressBookHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 279ED38473BC49F2220497082BECF509 /* PPAddressBookHandle.m */; };
-		8C905D9205296223DA58B96381C84B4A /* PPAddressBookHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = FE32BCBE4DE470AA07577AB9B4FAB802 /* PPAddressBookHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97FA8749E37F80877F249CEF7FAD99FF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B51E11B3F458E7A72350FD1EA137B5C /* SystemConfiguration.framework */; };
-		B3C2A1FFC57E3F1C6CB7C5030872AA13 /* DWAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 33393B063D653AD0AF9E3492C565C021 /* DWAddressBook.m */; };
-		B63BE56D7F547A8AD7424533D7161F09 /* DWNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912038EE3E0B5EA2710B5CB3F72A65C /* DWNumberView.m */; };
-		C363A643161D7750C9EC98F93BA3DC92 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E163C13D7C1C91F41C8DB13EA90222 /* Foundation.framework */; };
-		C53B685578D07B35232FD295F7F63AA2 /* DWMobNumberController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A29905C293BDF4BA610C0D67318B926 /* DWMobNumberController.m */; };
-		CDBE62BA26CEDEEE7C22DA7727C2B295 /* DWContactController.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD56ABF67DA88D8A08518C7B5EE932E /* DWContactController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2B38E62AF390C16C19532F4C872EEC4 /* DWAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C41355F2D05607E50308223DC32BEED /* DWAddressBook.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E33A65467ED335CDF20531C17FE0D41C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F215A8CD3B0AD25C8AE46D7C5FEA0FDF /* AddressBook.framework */; };
-		EFA5BC3E7F02F27ABC1F4205592FE7CD /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6843DE54B153E753023F0035A9B90579 /* Reachability.m */; };
-		F5487898B69828BB1A513D61B53D282A /* Pods-WebRTC-POC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C6180B7EAC9B688E55757D1EBB6C2C /* Pods-WebRTC-POC-dummy.m */; };
+		008E427DE2F824C218DD77D8CE828CB3 /* DWNumberView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F509B78DBBD1268F2CA59CBE0FB29A5 /* DWNumberView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		059B15FEDA856169563562425AC3A055 /* NBGeneratedPhoneNumberMetaData.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FAE323C6095303270FCEE22DAF6C00F /* NBGeneratedPhoneNumberMetaData.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		1355693C565218A949D636D86B41607E /* PPPersonModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A72C047D789146EF6A88A1C59E21DF2 /* PPPersonModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D65D77835067ED7DCAD2B1B08F289B4 /* NBPhoneNumberUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 062980E2566948514F33EC31EF792B96 /* NBPhoneNumberUtil.m */; };
+		2FEDCA49EC94F892A537F86A3D4550E6 /* PPGetAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EA54442C903024BC65A1D96FF9AFAA7 /* PPGetAddressBook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36063775C1B08CF737E27760523D0E79 /* PPSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EEBC88E29CA1752E5CA2AABF2082EED /* PPSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3993729BE953CB47CEA4FE291F6C03C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918958FDA3F3ADA11E80437F4374287D /* Foundation.framework */; };
+		3A03FEA7632EAA67F394EB7F56A89BB5 /* PPPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1E9E54FB1404A8C9BF595D7424779F /* PPPersonModel.m */; };
+		3CE73BDAE92479887131D10633C6D4F8 /* JCDialPad-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08032AEBDB26B2021C5DF128F5D58CEB /* JCDialPad-dummy.m */; };
+		3D5BA67463C1AD2B169249DF4BD17A8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918958FDA3F3ADA11E80437F4374287D /* Foundation.framework */; };
+		3FB71F4613CBF5085C6AAFE426ADEF65 /* NBMetadataHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E15A029EDF2DD1F7515D9174A3A0DC3 /* NBMetadataHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4285D18869DD0C3924A4B76DBE8A15CF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7274669C0030A823D75B24EDB710C5 /* SystemConfiguration.framework */; };
+		42C17E18FF6B9703040ABBFCA4E51A4E /* NBAsYouTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C524582E69E1BD77A49A535BD5A12032 /* NBAsYouTypeFormatter.m */; };
+		448DD6A542C3AC366685E9C3EF453AB0 /* NSArray+NBAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BA96CC82618F30E148B54ECAC014B0FE /* NSArray+NBAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		44FD026E195895AABA67147F29CDF23F /* NBPhoneNumberDesc.m in Sources */ = {isa = PBXBuildFile; fileRef = B804CE15DE2E8C715AFE49D7CCBF7167 /* NBPhoneNumberDesc.m */; };
+		45A818D6D2D6769114984FF69A416E4A /* JCPadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 780698ABFA9325FF164918A2DE002215 /* JCPadButton.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		4C2A78777AF5EE853846F0CC416DDA98 /* DWMobNumberController.h in Headers */ = {isa = PBXBuildFile; fileRef = C80749395745B79AC4834A1DE6132909 /* DWMobNumberController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F24E48905E65E2F0E1F1F76C8C1B695 /* PPGetAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC21DCEE3E8E117ECFDC3C2506EAF0F /* PPGetAddressBook.m */; };
+		5078F968BBDD8B3CDA2136E38372A5E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918958FDA3F3ADA11E80437F4374287D /* Foundation.framework */; };
+		518FB2C61F30C6F7A4B4942E27F58965 /* NBPhoneNumberDesc.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E7148D671A149D23E5ADC99EAE0398D /* NBPhoneNumberDesc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		54E1487B01F429E01DEB138D017FB660 /* NBAsYouTypeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 528876EF064F78F3FF46B8410DEE90DC /* NBAsYouTypeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		550F72297F49CE66ABD4532BD950D3A3 /* DWAddressBook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 703994EC9014A75283D39CDDD4924009 /* DWAddressBook-dummy.m */; };
+		660B7A833EA5CDBBEE0F804BC102931A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9185D566A07C12007F1B6B6AAE7AFF /* UIKit.framework */; };
+		69433B81E5DC2F4BB34294445508D2B0 /* JCDialPad.m in Sources */ = {isa = PBXBuildFile; fileRef = A07D84FDC42C7A12B4508AE754EA7A1E /* JCDialPad.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6BB77EDDAA84EE6B2A403585B9793183 /* NBMetadataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B63799A24EFD5AC05C1FCB2D055D66BD /* NBMetadataHelper.m */; };
+		6EBDB24E68F1E95737A3190114C6AE3D /* libPhoneNumber-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2594251462ED97019E333509378A4EC3 /* libPhoneNumber-iOS-dummy.m */; };
+		739641F1E15A5164BA22609E891CAC39 /* DWContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E90486C810B956D2ACD894201F65972 /* DWContactController.m */; };
+		818FDFB18600D55C98DC090BC935928D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F82A0A187E0029A43E5DDF0D0F8C9F49 /* Reachability.m */; };
+		87AE081D830C37A0BA68E3510797EC9D /* PPAddressBookHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E57CF7406C15D8655D97C08304929 /* PPAddressBookHandle.m */; };
+		8C905D9205296223DA58B96381C84B4A /* PPAddressBookHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = B9669200C7FBE2D58993FCF0D223DCDD /* PPAddressBookHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8F2FF0F23C5147FA08FDB727897110F6 /* NBPhoneNumberDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFE48DAD571655F2F63F50A90FAC109 /* NBPhoneNumberDefines.m */; };
+		94061E504B9B745AD0F5D5F042391CED /* NBPhoneNumberDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BF5CC67F71C8537D3D6C314CD09C593 /* NBPhoneNumberDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98A74A4B34297B9B9708EF78320F9D1C /* UIView+FrameAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EEF470EA79A3F90D09D797D20AAFFEA /* UIView+FrameAccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D23C8E3B4381252A7302835A201F44C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073E202B9E5A8B7EDD8955BF6C164466 /* CoreTelephony.framework */; };
+		B1CA67D5F937965B5EB9011B4C0F0F09 /* NBPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9AAB72F77DC9694910FDEC512DE0C4 /* NBPhoneNumber.m */; };
+		B3C2A1FFC57E3F1C6CB7C5030872AA13 /* DWAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 85FE31C65A41343FA9CDBD7BEA59C32E /* DWAddressBook.m */; };
+		B63BE56D7F547A8AD7424533D7161F09 /* DWNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C55B70FEA557A68C1BD7B761FA98FB /* DWNumberView.m */; };
+		C0C7C92612766D96035FAB2ABCCC44C8 /* NBPhoneMetaData.h in Headers */ = {isa = PBXBuildFile; fileRef = EC55F18EE6CE696EA268779242B8110D /* NBPhoneMetaData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C363A643161D7750C9EC98F93BA3DC92 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918958FDA3F3ADA11E80437F4374287D /* Foundation.framework */; };
+		C53B685578D07B35232FD295F7F63AA2 /* DWMobNumberController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98674301989C2985F7B2B9DAE6D4213B /* DWMobNumberController.m */; };
+		CCDFC77EF27308BDFC0DCFF741CB7FD7 /* NBPhoneMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = E3EB39465977AE6720230F10A242A9C8 /* NBPhoneMetaData.m */; };
+		CDBE62BA26CEDEEE7C22DA7727C2B295 /* DWContactController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05515DD1D50CB6384B42F77B3840455F /* DWContactController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1987EB2D7B8660B3CE194D40492B102 /* NBNumberFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = CD8378BD2522934E64E76A99A1E4010D /* NBNumberFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DE4BC53C1D0C9C0BC093C0F5B837D464 /* NBPhoneNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = AB2BC1AD9949F6F520C0444C89EC0CAF /* NBPhoneNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF6443B617389D9CBA4223D2DC1406DD /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = B2678BD9112EDA8995F73C05F1985F8A /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2B38E62AF390C16C19532F4C872EEC4 /* DWAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = B61AA324AC4ACCD78219F871634A96B5 /* DWAddressBook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E33A65467ED335CDF20531C17FE0D41C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7ABA72FA0736DC8E21B80BE0EF75D1F /* AddressBook.framework */; };
+		E347A6BEBA41490DF04578FCB2C845DA /* JCPadButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DAD20779C670FA7FF2742E3CA441231 /* JCPadButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E4FA5C55C8865B21363C68058DF362D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918958FDA3F3ADA11E80437F4374287D /* Foundation.framework */; };
+		E681896CA9F4FBFBDF6FC209DB60C5AE /* NSArray+NBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 576761BD41E34A40BD236F9B033972B8 /* NSArray+NBAdditions.m */; };
+		E6DB11026EB49CCD49ABED53CA951A18 /* JCDialPad.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF1FAA5413551F57040439AA53A837B /* JCDialPad.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7A268C13EFD4AA709D67AD2306EC99A /* Pods-WebRTC-POC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C6180B7EAC9B688E55757D1EBB6C2C /* Pods-WebRTC-POC-dummy.m */; };
+		E849F8BFEF4E95035492F5A258F96CCA /* NBNumberFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E9AC7731090ACB728840DD242942CD /* NBNumberFormat.m */; };
+		EDD8DDBA9F0DF0FCF31C4F6497B4074A /* NBPhoneNumberUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 9226BEC21CD16F19E144915D83E918E6 /* NBPhoneNumberUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EEC0767B8FDCD2CB84AC6228F7D5CF81 /* UIView+FrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6645A02DDF0ADD5B55E3897CF6F323DA /* UIView+FrameAccessor.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FCA67D384AC717BAFE14C5005C59E97B /* Reachability-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D49B00831A7CB91BE8A5CC8AD6A82757 /* Reachability-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6B58B0D4A4961C0CA25DCFA934B6827F /* PBXContainerItemProxy */ = {
+		4E52913E5FDE21BB43FDF52A0CD05847 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EAE9E17A32D7D9B8188EA563C6CCFE15;
 			remoteInfo = DWAddressBook;
 		};
-		99F43A5C8B252F54F266B439B407163F /* PBXContainerItemProxy */ = {
+		4E80E03ADFFC482954651AAFAA8E325F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 03E5FDA1E7B36C83CBDE805F09DBC251;
+			remoteGlobalIDString = 1B648F12A1777E379350F49606733990;
+			remoteInfo = "libPhoneNumber-iOS";
+		};
+		84842C3ADBE24AA83A47472693DE6BE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B648F12A1777E379350F49606733990;
+			remoteInfo = "libPhoneNumber-iOS";
+		};
+		A54C66644AC219697083A4875DA59022 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E6E64B82F39921369B3B185A66D0870;
 			remoteInfo = Reachability;
+		};
+		C7BCB7C8C4C72C01C27C138C16B9FB81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4EC34530D3FDFEF3C9E3D8DD928E444;
+			remoteInfo = JCDialPad;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		042D3D6EC69DF2AC11411E93BAC1CE67 /* resources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = resources.bundle; path = DWAddressBook/resources.bundle; sourceTree = "<group>"; };
-		0A29905C293BDF4BA610C0D67318B926 /* DWMobNumberController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWMobNumberController.m; path = DWAddressBook/DWMobNumberController.m; sourceTree = "<group>"; };
+		05515DD1D50CB6384B42F77B3840455F /* DWContactController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWContactController.h; path = DWAddressBook/DWContactController.h; sourceTree = "<group>"; };
+		062980E2566948514F33EC31EF792B96 /* NBPhoneNumberUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumberUtil.m; path = libPhoneNumber/NBPhoneNumberUtil.m; sourceTree = "<group>"; };
+		073E202B9E5A8B7EDD8955BF6C164466 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		08032AEBDB26B2021C5DF128F5D58CEB /* JCDialPad-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JCDialPad-dummy.m"; sourceTree = "<group>"; };
+		0B6E57CF7406C15D8655D97C08304929 /* PPAddressBookHandle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPAddressBookHandle.m; path = DWAddressBook/PPAddressBookHandle.m; sourceTree = "<group>"; };
+		0B9AAB72F77DC9694910FDEC512DE0C4 /* NBPhoneNumber.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumber.m; path = libPhoneNumber/NBPhoneNumber.m; sourceTree = "<group>"; };
+		0FAE323C6095303270FCEE22DAF6C00F /* NBGeneratedPhoneNumberMetaData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBGeneratedPhoneNumberMetaData.h; path = libPhoneNumber/NBGeneratedPhoneNumberMetaData.h; sourceTree = "<group>"; };
 		12C6180B7EAC9B688E55757D1EBB6C2C /* Pods-WebRTC-POC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WebRTC-POC-dummy.m"; sourceTree = "<group>"; };
-		19F98403019E415E9299D29B270B675A /* DWMobNumberController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWMobNumberController.h; path = DWAddressBook/DWMobNumberController.h; sourceTree = "<group>"; };
+		16D0206FCB20DFB54C234C93CCC833F2 /* Reachability.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Reachability.xcconfig; sourceTree = "<group>"; };
+		193BC50A9AF4D19A88781AB98194515D /* libDWAddressBook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libDWAddressBook.a; path = libDWAddressBook.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E90486C810B956D2ACD894201F65972 /* DWContactController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWContactController.m; path = DWAddressBook/DWContactController.m; sourceTree = "<group>"; };
 		1EB10F4F26D31DC66958000D8C3BE489 /* Pods-WebRTC-POC-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WebRTC-POC-frameworks.sh"; sourceTree = "<group>"; };
-		22EDB559D265BF1B19393914F2E60CE4 /* DWAddressBook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DWAddressBook-dummy.m"; sourceTree = "<group>"; };
-		2435936A7356BB59F892C423BC038FE1 /* PPGetAddressBook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPGetAddressBook.h; path = DWAddressBook/PPGetAddressBook.h; sourceTree = "<group>"; };
-		279ED38473BC49F2220497082BECF509 /* PPAddressBookHandle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPAddressBookHandle.m; path = DWAddressBook/PPAddressBookHandle.m; sourceTree = "<group>"; };
-		2B51E11B3F458E7A72350FD1EA137B5C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		2F01A3DB53AB60538343F370C00A6C77 /* PPPersonModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPPersonModel.m; path = DWAddressBook/PPPersonModel.m; sourceTree = "<group>"; };
-		33393B063D653AD0AF9E3492C565C021 /* DWAddressBook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWAddressBook.m; path = DWAddressBook/DWAddressBook.m; sourceTree = "<group>"; };
-		3A823D9ED4C8C66C922EC7A568231EC3 /* PPSingleton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPSingleton.h; path = DWAddressBook/PPSingleton.h; sourceTree = "<group>"; };
+		1FCCF2146DDB299B92DC18F3365768EA /* libReachability.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libReachability.a; path = libReachability.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2594251462ED97019E333509378A4EC3 /* libPhoneNumber-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "libPhoneNumber-iOS-dummy.m"; sourceTree = "<group>"; };
+		2E7148D671A149D23E5ADC99EAE0398D /* NBPhoneNumberDesc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberDesc.h; path = libPhoneNumber/NBPhoneNumberDesc.h; sourceTree = "<group>"; };
 		3AC31EAAE50E8EDA7C6748921C0055FF /* Pods-WebRTC-POC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WebRTC-POC.debug.xcconfig"; sourceTree = "<group>"; };
-		3DED54BC606C4125B11DB84D628D01D1 /* DWAddressBook-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DWAddressBook-prefix.pch"; sourceTree = "<group>"; };
 		417AACB59DA93F8DA052BD8F6A6ECB3C /* Pods-WebRTC-POC-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WebRTC-POC-acknowledgements.plist"; sourceTree = "<group>"; };
-		4467980C9FBF0461DDAD0F696059315B /* PPGetAddressBook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPGetAddressBook.m; path = DWAddressBook/PPGetAddressBook.m; sourceTree = "<group>"; };
-		4AB4E97BC2BD072FF1C018F86FDF894E /* Reachability.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Reachability.xcconfig; sourceTree = "<group>"; };
-		5C41355F2D05607E50308223DC32BEED /* DWAddressBook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWAddressBook.h; path = DWAddressBook/DWAddressBook.h; sourceTree = "<group>"; };
+		45C55B70FEA557A68C1BD7B761FA98FB /* DWNumberView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWNumberView.m; path = DWAddressBook/DWNumberView.m; sourceTree = "<group>"; };
+		49881C12649B9162149ADD76427E04C0 /* Reachability-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Reachability-prefix.pch"; sourceTree = "<group>"; };
+		4B7146BB7562093CAEA79EEEC1A02C16 /* libPhoneNumber-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "libPhoneNumber-iOS.xcconfig"; sourceTree = "<group>"; };
+		4E15A029EDF2DD1F7515D9174A3A0DC3 /* NBMetadataHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBMetadataHelper.h; path = libPhoneNumber/NBMetadataHelper.h; sourceTree = "<group>"; };
+		4F509B78DBBD1268F2CA59CBE0FB29A5 /* DWNumberView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWNumberView.h; path = DWAddressBook/DWNumberView.h; sourceTree = "<group>"; };
+		528876EF064F78F3FF46B8410DEE90DC /* NBAsYouTypeFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBAsYouTypeFormatter.h; path = libPhoneNumber/NBAsYouTypeFormatter.h; sourceTree = "<group>"; };
+		576761BD41E34A40BD236F9B033972B8 /* NSArray+NBAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+NBAdditions.m"; path = "libPhoneNumber/NSArray+NBAdditions.m"; sourceTree = "<group>"; };
+		5C7274669C0030A823D75B24EDB710C5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		5CCD09D80C99EC3A6747C1DF942DCF2C /* Pods-WebRTC-POC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WebRTC-POC.release.xcconfig"; sourceTree = "<group>"; };
-		6843DE54B153E753023F0035A9B90579 /* Reachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		6645A02DDF0ADD5B55E3897CF6F323DA /* UIView+FrameAccessor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+FrameAccessor.m"; path = "JCDialPad/UIView+FrameAccessor.m"; sourceTree = "<group>"; };
+		6A72C047D789146EF6A88A1C59E21DF2 /* PPPersonModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPPersonModel.h; path = DWAddressBook/PPPersonModel.h; sourceTree = "<group>"; };
 		6B335E6B022959CF57F4F9C5BFB928F9 /* Pods-WebRTC-POC-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WebRTC-POC-acknowledgements.markdown"; sourceTree = "<group>"; };
-		74E163C13D7C1C91F41C8DB13EA90222 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7611ABD7E74BC13372ACE60D4CA03E24 /* Reachability-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Reachability-dummy.m"; sourceTree = "<group>"; };
-		7912038EE3E0B5EA2710B5CB3F72A65C /* DWNumberView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWNumberView.m; path = DWAddressBook/DWNumberView.m; sourceTree = "<group>"; };
-		82050B223E0E9BA55B58DE742F85B195 /* DWNumberView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWNumberView.h; path = DWAddressBook/DWNumberView.h; sourceTree = "<group>"; };
-		8CDE9572B1B9936771653F6C7E249C0B /* DWContactController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWContactController.m; path = DWAddressBook/DWContactController.m; sourceTree = "<group>"; };
+		6E9185D566A07C12007F1B6B6AAE7AFF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		703994EC9014A75283D39CDDD4924009 /* DWAddressBook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DWAddressBook-dummy.m"; sourceTree = "<group>"; };
+		780698ABFA9325FF164918A2DE002215 /* JCPadButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCPadButton.m; path = JCDialPad/JCPadButton.m; sourceTree = "<group>"; };
+		79E61E9E2BE7CC44F914058595AB2A1C /* resources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = resources.bundle; path = DWAddressBook/resources.bundle; sourceTree = "<group>"; };
+		7BF5CC67F71C8537D3D6C314CD09C593 /* NBPhoneNumberDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberDefines.h; path = libPhoneNumber/NBPhoneNumberDefines.h; sourceTree = "<group>"; };
+		7DAD20779C670FA7FF2742E3CA441231 /* JCPadButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCPadButton.h; path = JCDialPad/JCPadButton.h; sourceTree = "<group>"; };
+		85FE31C65A41343FA9CDBD7BEA59C32E /* DWAddressBook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWAddressBook.m; path = DWAddressBook/DWAddressBook.m; sourceTree = "<group>"; };
+		8CC21DCEE3E8E117ECFDC3C2506EAF0F /* PPGetAddressBook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPGetAddressBook.m; path = DWAddressBook/PPGetAddressBook.m; sourceTree = "<group>"; };
+		8EA54442C903024BC65A1D96FF9AFAA7 /* PPGetAddressBook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPGetAddressBook.h; path = DWAddressBook/PPGetAddressBook.h; sourceTree = "<group>"; };
+		918958FDA3F3ADA11E80437F4374287D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9226BEC21CD16F19E144915D83E918E6 /* NBPhoneNumberUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberUtil.h; path = libPhoneNumber/NBPhoneNumberUtil.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9494F6600F89ADBB8166DEC7F77B2B35 /* libDWAddressBook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libDWAddressBook.a; path = libDWAddressBook.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9852D56928A020B171BAEB651A135F3B /* DWAddressBook.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DWAddressBook.xcconfig; sourceTree = "<group>"; };
-		ABE4CA7E875441CAA874F1FABC63B988 /* libReachability.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libReachability.a; path = libReachability.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B94DE67D7D5E510BF63E2CA2693B3F6B /* Reachability-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Reachability-prefix.pch"; sourceTree = "<group>"; };
-		C0E1EC4DCD73490C3FCDE6202BC7ABBF /* PPPersonModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPPersonModel.h; path = DWAddressBook/PPPersonModel.h; sourceTree = "<group>"; };
+		98674301989C2985F7B2B9DAE6D4213B /* DWMobNumberController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DWMobNumberController.m; path = DWAddressBook/DWMobNumberController.m; sourceTree = "<group>"; };
+		9AF1FAA5413551F57040439AA53A837B /* JCDialPad.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCDialPad.h; path = JCDialPad/JCDialPad.h; sourceTree = "<group>"; };
+		9EEBC88E29CA1752E5CA2AABF2082EED /* PPSingleton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPSingleton.h; path = DWAddressBook/PPSingleton.h; sourceTree = "<group>"; };
+		9EEF470EA79A3F90D09D797D20AAFFEA /* UIView+FrameAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+FrameAccessor.h"; path = "JCDialPad/UIView+FrameAccessor.h"; sourceTree = "<group>"; };
+		A07D84FDC42C7A12B4508AE754EA7A1E /* JCDialPad.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCDialPad.m; path = JCDialPad/JCDialPad.m; sourceTree = "<group>"; };
+		A3EE07142CFFF0E6DBA1F053E322CC92 /* libJCDialPad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libJCDialPad.a; path = libJCDialPad.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7ABA72FA0736DC8E21B80BE0EF75D1F /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
+		A92610AA2B9C1E148CA7545472F12654 /* JCDialPad-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JCDialPad-prefix.pch"; sourceTree = "<group>"; };
+		AB2BC1AD9949F6F520C0444C89EC0CAF /* NBPhoneNumber.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumber.h; path = libPhoneNumber/NBPhoneNumber.h; sourceTree = "<group>"; };
+		AFB9C8CF0F0A1D868F2878FFA15D842D /* JCDialPad.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JCDialPad.xcconfig; sourceTree = "<group>"; };
+		B0AF5825EB3D8198820BB0D926B2D710 /* DWAddressBook.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DWAddressBook.xcconfig; sourceTree = "<group>"; };
+		B2678BD9112EDA8995F73C05F1985F8A /* Reachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		B61AA324AC4ACCD78219F871634A96B5 /* DWAddressBook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWAddressBook.h; path = DWAddressBook/DWAddressBook.h; sourceTree = "<group>"; };
+		B63799A24EFD5AC05C1FCB2D055D66BD /* NBMetadataHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBMetadataHelper.m; path = libPhoneNumber/NBMetadataHelper.m; sourceTree = "<group>"; };
+		B804CE15DE2E8C715AFE49D7CCBF7167 /* NBPhoneNumberDesc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumberDesc.m; path = libPhoneNumber/NBPhoneNumberDesc.m; sourceTree = "<group>"; };
+		B9669200C7FBE2D58993FCF0D223DCDD /* PPAddressBookHandle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPAddressBookHandle.h; path = DWAddressBook/PPAddressBookHandle.h; sourceTree = "<group>"; };
+		BA96CC82618F30E148B54ECAC014B0FE /* NSArray+NBAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+NBAdditions.h"; path = "libPhoneNumber/NSArray+NBAdditions.h"; sourceTree = "<group>"; };
+		BE1E9E54FB1404A8C9BF595D7424779F /* PPPersonModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPPersonModel.m; path = DWAddressBook/PPPersonModel.m; sourceTree = "<group>"; };
+		C524582E69E1BD77A49A535BD5A12032 /* NBAsYouTypeFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBAsYouTypeFormatter.m; path = libPhoneNumber/NBAsYouTypeFormatter.m; sourceTree = "<group>"; };
 		C6FFFFD6431296E1DF453AE972CEF3CC /* Pods-WebRTC-POC-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WebRTC-POC-resources.sh"; sourceTree = "<group>"; };
-		CAB2A12B152B1441A0695CB90EEFBA22 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		CCD56ABF67DA88D8A08518C7B5EE932E /* DWContactController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWContactController.h; path = DWAddressBook/DWContactController.h; sourceTree = "<group>"; };
-		DDEE76D61A1444CF0C224C1CCCE980A6 /* Reachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		F215A8CD3B0AD25C8AE46D7C5FEA0FDF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
-		F2B59780D2A55B0558278BB3AC8E1D8F /* libPods-WebRTC-POC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-WebRTC-POC.a"; path = "libPods-WebRTC-POC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE32BCBE4DE470AA07577AB9B4FAB802 /* PPAddressBookHandle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPAddressBookHandle.h; path = DWAddressBook/PPAddressBookHandle.h; sourceTree = "<group>"; };
+		C80749395745B79AC4834A1DE6132909 /* DWMobNumberController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DWMobNumberController.h; path = DWAddressBook/DWMobNumberController.h; sourceTree = "<group>"; };
+		CD8378BD2522934E64E76A99A1E4010D /* NBNumberFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBNumberFormat.h; path = libPhoneNumber/NBNumberFormat.h; sourceTree = "<group>"; };
+		D49B00831A7CB91BE8A5CC8AD6A82757 /* Reachability-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Reachability-dummy.m"; sourceTree = "<group>"; };
+		DBFE48DAD571655F2F63F50A90FAC109 /* NBPhoneNumberDefines.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumberDefines.m; path = libPhoneNumber/NBPhoneNumberDefines.m; sourceTree = "<group>"; };
+		E3EB39465977AE6720230F10A242A9C8 /* NBPhoneMetaData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneMetaData.m; path = libPhoneNumber/NBPhoneMetaData.m; sourceTree = "<group>"; };
+		E5E9AC7731090ACB728840DD242942CD /* NBNumberFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBNumberFormat.m; path = libPhoneNumber/NBNumberFormat.m; sourceTree = "<group>"; };
+		EC55F18EE6CE696EA268779242B8110D /* NBPhoneMetaData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneMetaData.h; path = libPhoneNumber/NBPhoneMetaData.h; sourceTree = "<group>"; };
+		EC591460C8475F77F0B5CDAB02D7779C /* liblibPhoneNumber-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "liblibPhoneNumber-iOS.a"; path = "liblibPhoneNumber-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3192CCDBF32E0B6974DAD0D60536D50 /* libPhoneNumber-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "libPhoneNumber-iOS-prefix.pch"; sourceTree = "<group>"; };
+		F60FDFE9C6C89C6B4B9D68692E6BED67 /* DWAddressBook-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DWAddressBook-prefix.pch"; sourceTree = "<group>"; };
+		F82A0A187E0029A43E5DDF0D0F8C9F49 /* Reachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		FED51B68C28C0388234F5BA5EDC968B6 /* libPods-WebRTC-POC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-WebRTC-POC.a"; path = "libPods-WebRTC-POC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3043863C36B27BF51BD1A8F1F594604A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7C740C0A0F0BEE6D9DC93ADE229FD35B /* Foundation.framework in Frameworks */,
-				97FA8749E37F80877F249CEF7FAD99FF /* SystemConfiguration.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3A352E3CD319DD1108DB04A5011711AB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,25 +190,63 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		492D595E6116B6E8980E43262BE39D60 /* Frameworks */ = {
+		604F2E506BE3F14D1510F3E791F189BA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				378D95CD82DC5DA11B30F934B900AD50 /* Foundation.framework in Frameworks */,
+				9D23C8E3B4381252A7302835A201F44C /* CoreTelephony.framework in Frameworks */,
+				E4FA5C55C8865B21363C68058DF362D3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64E4BDBE5F8C97CA30711A0B089ABA77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5078F968BBDD8B3CDA2136E38372A5E8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E171B019DD69F27C3BD0D5510307233 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D5BA67463C1AD2B169249DF4BD17A8B /* Foundation.framework in Frameworks */,
+				4285D18869DD0C3924A4B76DBE8A15CF /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C281E1103DED937F3C65D21DD021BF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3993729BE953CB47CEA4FE291F6C03C4 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		11EF341D83DDFE5429DD2C143379C91A /* Products */ = {
+		0B06A9183CA3ECD64F99FE1123C96DF9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9494F6600F89ADBB8166DEC7F77B2B35 /* libDWAddressBook.a */,
-				F2B59780D2A55B0558278BB3AC8E1D8F /* libPods-WebRTC-POC.a */,
-				ABE4CA7E875441CAA874F1FABC63B988 /* libReachability.a */,
+				16D0206FCB20DFB54C234C93CCC833F2 /* Reachability.xcconfig */,
+				D49B00831A7CB91BE8A5CC8AD6A82757 /* Reachability-dummy.m */,
+				49881C12649B9162149ADD76427E04C0 /* Reachability-prefix.pch */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/Reachability";
+			sourceTree = "<group>";
+		};
+		12C9BD4DF8546753BE4BEE5569663F97 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				B2678BD9112EDA8995F73C05F1985F8A /* Reachability.h */,
+				F82A0A187E0029A43E5DDF0D0F8C9F49 /* Reachability.m */,
+				0B06A9183CA3ECD64F99FE1123C96DF9 /* Support Files */,
+			);
+			name = Reachability;
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		13DB3AA1C3BC1E583C1EC5736B95E2FE /* Targets Support Files */ = {
@@ -141,25 +255,6 @@
 				1A0C1536141EE0132D5A2738A4A97966 /* Pods-WebRTC-POC */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F1AC8E0642EECA67D4FD40B6D71339E2 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1541FF29434321F7F32D9763E5BF8A95 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				DDEE76D61A1444CF0C224C1CCCE980A6 /* Reachability.h */,
-				6843DE54B153E753023F0035A9B90579 /* Reachability.m */,
-				6CBFE898833D5B1DA0D6C8E75A9A79BA /* Support Files */,
-			);
-			name = Reachability;
-			path = Reachability;
 			sourceTree = "<group>";
 		};
 		1A0C1536141EE0132D5A2738A4A97966 /* Pods-WebRTC-POC */ = {
@@ -177,95 +272,207 @@
 			path = "Target Support Files/Pods-WebRTC-POC";
 			sourceTree = "<group>";
 		};
-		6CBFE898833D5B1DA0D6C8E75A9A79BA /* Support Files */ = {
+		1F5C25ED8FCE167EBFD8D98BC50CBD0B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4AB4E97BC2BD072FF1C018F86FDF894E /* Reachability.xcconfig */,
-				7611ABD7E74BC13372ACE60D4CA03E24 /* Reachability-dummy.m */,
-				B94DE67D7D5E510BF63E2CA2693B3F6B /* Reachability-prefix.pch */,
+				4B7146BB7562093CAEA79EEEC1A02C16 /* libPhoneNumber-iOS.xcconfig */,
+				2594251462ED97019E333509378A4EC3 /* libPhoneNumber-iOS-dummy.m */,
+				F3192CCDBF32E0B6974DAD0D60536D50 /* libPhoneNumber-iOS-prefix.pch */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/Reachability";
+			path = "../Target Support Files/libPhoneNumber-iOS";
+			sourceTree = "<group>";
+		};
+		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				592F487CA71D3F4B3C0D2F7E0C0E8A6F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2515A628482584C8BAF4FF0441F8B9F1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFB9C8CF0F0A1D868F2878FFA15D842D /* JCDialPad.xcconfig */,
+				08032AEBDB26B2021C5DF128F5D58CEB /* JCDialPad-dummy.m */,
+				A92610AA2B9C1E148CA7545472F12654 /* JCDialPad-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/JCDialPad";
+			sourceTree = "<group>";
+		};
+		592F487CA71D3F4B3C0D2F7E0C0E8A6F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A7ABA72FA0736DC8E21B80BE0EF75D1F /* AddressBook.framework */,
+				073E202B9E5A8B7EDD8955BF6C164466 /* CoreTelephony.framework */,
+				918958FDA3F3ADA11E80437F4374287D /* Foundation.framework */,
+				5C7274669C0030A823D75B24EDB710C5 /* SystemConfiguration.framework */,
+				6E9185D566A07C12007F1B6B6AAE7AFF /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		6073842882F4703DADF9F5CB1963C7A9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B0AF5825EB3D8198820BB0D926B2D710 /* DWAddressBook.xcconfig */,
+				703994EC9014A75283D39CDDD4924009 /* DWAddressBook-dummy.m */,
+				F60FDFE9C6C89C6B4B9D68692E6BED67 /* DWAddressBook-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/DWAddressBook";
+			sourceTree = "<group>";
+		};
+		762447100E191ECCA523456B3A46CA3B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				77A3FE82E6DE11E63781B2E9223DDB52 /* DWAddressBook */,
+				EC62B8B34CF9B4F6852C80DB3BC1D7C5 /* JCDialPad */,
+				C11E716A9E342E8DC044BB96C6CC60B6 /* libPhoneNumber-iOS */,
+				12C9BD4DF8546753BE4BEE5569663F97 /* Reachability */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		77A3FE82E6DE11E63781B2E9223DDB52 /* DWAddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				B61AA324AC4ACCD78219F871634A96B5 /* DWAddressBook.h */,
+				85FE31C65A41343FA9CDBD7BEA59C32E /* DWAddressBook.m */,
+				05515DD1D50CB6384B42F77B3840455F /* DWContactController.h */,
+				1E90486C810B956D2ACD894201F65972 /* DWContactController.m */,
+				C80749395745B79AC4834A1DE6132909 /* DWMobNumberController.h */,
+				98674301989C2985F7B2B9DAE6D4213B /* DWMobNumberController.m */,
+				4F509B78DBBD1268F2CA59CBE0FB29A5 /* DWNumberView.h */,
+				45C55B70FEA557A68C1BD7B761FA98FB /* DWNumberView.m */,
+				B9669200C7FBE2D58993FCF0D223DCDD /* PPAddressBookHandle.h */,
+				0B6E57CF7406C15D8655D97C08304929 /* PPAddressBookHandle.m */,
+				8EA54442C903024BC65A1D96FF9AFAA7 /* PPGetAddressBook.h */,
+				8CC21DCEE3E8E117ECFDC3C2506EAF0F /* PPGetAddressBook.m */,
+				6A72C047D789146EF6A88A1C59E21DF2 /* PPPersonModel.h */,
+				BE1E9E54FB1404A8C9BF595D7424779F /* PPPersonModel.m */,
+				9EEBC88E29CA1752E5CA2AABF2082EED /* PPSingleton.h */,
+				F8D44C8A2402B9C57D5C9D89929FD87A /* Resources */,
+				6073842882F4703DADF9F5CB1963C7A9 /* Support Files */,
+			);
+			name = DWAddressBook;
+			path = DWAddressBook;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
-				C544D86967F2925B90D70D4DD5BAC0EF /* Pods */,
-				11EF341D83DDFE5429DD2C143379C91A /* Products */,
+				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
+				762447100E191ECCA523456B3A46CA3B /* Pods */,
+				FCB9E19EE227729B97647B9363452727 /* Products */,
 				13DB3AA1C3BC1E583C1EC5736B95E2FE /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		A3B83AB9B736A71DD00943D2AC207456 /* DWAddressBook */ = {
+		C11E716A9E342E8DC044BB96C6CC60B6 /* libPhoneNumber-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				5C41355F2D05607E50308223DC32BEED /* DWAddressBook.h */,
-				33393B063D653AD0AF9E3492C565C021 /* DWAddressBook.m */,
-				CCD56ABF67DA88D8A08518C7B5EE932E /* DWContactController.h */,
-				8CDE9572B1B9936771653F6C7E249C0B /* DWContactController.m */,
-				19F98403019E415E9299D29B270B675A /* DWMobNumberController.h */,
-				0A29905C293BDF4BA610C0D67318B926 /* DWMobNumberController.m */,
-				82050B223E0E9BA55B58DE742F85B195 /* DWNumberView.h */,
-				7912038EE3E0B5EA2710B5CB3F72A65C /* DWNumberView.m */,
-				FE32BCBE4DE470AA07577AB9B4FAB802 /* PPAddressBookHandle.h */,
-				279ED38473BC49F2220497082BECF509 /* PPAddressBookHandle.m */,
-				2435936A7356BB59F892C423BC038FE1 /* PPGetAddressBook.h */,
-				4467980C9FBF0461DDAD0F696059315B /* PPGetAddressBook.m */,
-				C0E1EC4DCD73490C3FCDE6202BC7ABBF /* PPPersonModel.h */,
-				2F01A3DB53AB60538343F370C00A6C77 /* PPPersonModel.m */,
-				3A823D9ED4C8C66C922EC7A568231EC3 /* PPSingleton.h */,
-				B8A8826C82CB292B38D3D62FC598E7A5 /* Resources */,
-				FA67AFF365B41F4184B1EDCACBCB47BC /* Support Files */,
+				528876EF064F78F3FF46B8410DEE90DC /* NBAsYouTypeFormatter.h */,
+				C524582E69E1BD77A49A535BD5A12032 /* NBAsYouTypeFormatter.m */,
+				0FAE323C6095303270FCEE22DAF6C00F /* NBGeneratedPhoneNumberMetaData.h */,
+				4E15A029EDF2DD1F7515D9174A3A0DC3 /* NBMetadataHelper.h */,
+				B63799A24EFD5AC05C1FCB2D055D66BD /* NBMetadataHelper.m */,
+				CD8378BD2522934E64E76A99A1E4010D /* NBNumberFormat.h */,
+				E5E9AC7731090ACB728840DD242942CD /* NBNumberFormat.m */,
+				EC55F18EE6CE696EA268779242B8110D /* NBPhoneMetaData.h */,
+				E3EB39465977AE6720230F10A242A9C8 /* NBPhoneMetaData.m */,
+				AB2BC1AD9949F6F520C0444C89EC0CAF /* NBPhoneNumber.h */,
+				0B9AAB72F77DC9694910FDEC512DE0C4 /* NBPhoneNumber.m */,
+				7BF5CC67F71C8537D3D6C314CD09C593 /* NBPhoneNumberDefines.h */,
+				DBFE48DAD571655F2F63F50A90FAC109 /* NBPhoneNumberDefines.m */,
+				2E7148D671A149D23E5ADC99EAE0398D /* NBPhoneNumberDesc.h */,
+				B804CE15DE2E8C715AFE49D7CCBF7167 /* NBPhoneNumberDesc.m */,
+				9226BEC21CD16F19E144915D83E918E6 /* NBPhoneNumberUtil.h */,
+				062980E2566948514F33EC31EF792B96 /* NBPhoneNumberUtil.m */,
+				BA96CC82618F30E148B54ECAC014B0FE /* NSArray+NBAdditions.h */,
+				576761BD41E34A40BD236F9B033972B8 /* NSArray+NBAdditions.m */,
+				1F5C25ED8FCE167EBFD8D98BC50CBD0B /* Support Files */,
 			);
-			name = DWAddressBook;
-			path = DWAddressBook;
+			name = "libPhoneNumber-iOS";
+			path = "libPhoneNumber-iOS";
 			sourceTree = "<group>";
 		};
-		B8A8826C82CB292B38D3D62FC598E7A5 /* Resources */ = {
+		EC62B8B34CF9B4F6852C80DB3BC1D7C5 /* JCDialPad */ = {
 			isa = PBXGroup;
 			children = (
-				042D3D6EC69DF2AC11411E93BAC1CE67 /* resources.bundle */,
+				9AF1FAA5413551F57040439AA53A837B /* JCDialPad.h */,
+				A07D84FDC42C7A12B4508AE754EA7A1E /* JCDialPad.m */,
+				7DAD20779C670FA7FF2742E3CA441231 /* JCPadButton.h */,
+				780698ABFA9325FF164918A2DE002215 /* JCPadButton.m */,
+				9EEF470EA79A3F90D09D797D20AAFFEA /* UIView+FrameAccessor.h */,
+				6645A02DDF0ADD5B55E3897CF6F323DA /* UIView+FrameAccessor.m */,
+				2515A628482584C8BAF4FF0441F8B9F1 /* Support Files */,
+			);
+			name = JCDialPad;
+			path = JCDialPad;
+			sourceTree = "<group>";
+		};
+		F8D44C8A2402B9C57D5C9D89929FD87A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				79E61E9E2BE7CC44F914058595AB2A1C /* resources.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		C544D86967F2925B90D70D4DD5BAC0EF /* Pods */ = {
+		FCB9E19EE227729B97647B9363452727 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A3B83AB9B736A71DD00943D2AC207456 /* DWAddressBook */,
-				1541FF29434321F7F32D9763E5BF8A95 /* Reachability */,
+				193BC50A9AF4D19A88781AB98194515D /* libDWAddressBook.a */,
+				A3EE07142CFFF0E6DBA1F053E322CC92 /* libJCDialPad.a */,
+				EC591460C8475F77F0B5CDAB02D7779C /* liblibPhoneNumber-iOS.a */,
+				FED51B68C28C0388234F5BA5EDC968B6 /* libPods-WebRTC-POC.a */,
+				1FCCF2146DDB299B92DC18F3365768EA /* libReachability.a */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		F1AC8E0642EECA67D4FD40B6D71339E2 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				F215A8CD3B0AD25C8AE46D7C5FEA0FDF /* AddressBook.framework */,
-				74E163C13D7C1C91F41C8DB13EA90222 /* Foundation.framework */,
-				2B51E11B3F458E7A72350FD1EA137B5C /* SystemConfiguration.framework */,
-				CAB2A12B152B1441A0695CB90EEFBA22 /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		FA67AFF365B41F4184B1EDCACBCB47BC /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9852D56928A020B171BAEB651A135F3B /* DWAddressBook.xcconfig */,
-				22EDB559D265BF1B19393914F2E60CE4 /* DWAddressBook-dummy.m */,
-				3DED54BC606C4125B11DB84D628D01D1 /* DWAddressBook-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/DWAddressBook";
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		34C43A2F2D16AD78D425DAFCD9A40337 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54E1487B01F429E01DEB138D017FB660 /* NBAsYouTypeFormatter.h in Headers */,
+				059B15FEDA856169563562425AC3A055 /* NBGeneratedPhoneNumberMetaData.h in Headers */,
+				3FB71F4613CBF5085C6AAFE426ADEF65 /* NBMetadataHelper.h in Headers */,
+				D1987EB2D7B8660B3CE194D40492B102 /* NBNumberFormat.h in Headers */,
+				C0C7C92612766D96035FAB2ABCCC44C8 /* NBPhoneMetaData.h in Headers */,
+				DE4BC53C1D0C9C0BC093C0F5B837D464 /* NBPhoneNumber.h in Headers */,
+				94061E504B9B745AD0F5D5F042391CED /* NBPhoneNumberDefines.h in Headers */,
+				518FB2C61F30C6F7A4B4942E27F58965 /* NBPhoneNumberDesc.h in Headers */,
+				EDD8DDBA9F0DF0FCF31C4F6497B4074A /* NBPhoneNumberUtil.h in Headers */,
+				448DD6A542C3AC366685E9C3EF453AB0 /* NSArray+NBAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A50FD3A1451EDB983AEF3C7768C2514 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF6443B617389D9CBA4223D2DC1406DD /* Reachability.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BE088A64688CD8F6BB9B9E005329F9C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6DB11026EB49CCD49ABED53CA951A18 /* JCDialPad.h in Headers */,
+				E347A6BEBA41490DF04578FCB2C845DA /* JCPadButton.h in Headers */,
+				98A74A4B34297B9B9708EF78320F9D1C /* UIView+FrameAccessor.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B85C23D33E59262216060464AEA4090C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,24 +488,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C313496A24B9227A857EF90EB0CDF143 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				83EFCF4E037F0D070EE1FF250BD4CC3B /* Reachability.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		03E5FDA1E7B36C83CBDE805F09DBC251 /* Reachability */ = {
+		1B648F12A1777E379350F49606733990 /* libPhoneNumber-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8B3C8139B2BA5840BBA32E40AC1A3DE0 /* Build configuration list for PBXNativeTarget "Reachability" */;
+			buildConfigurationList = 90BC7405FA5212FF283FAD6445DD0035 /* Build configuration list for PBXNativeTarget "libPhoneNumber-iOS" */;
 			buildPhases = (
-				E5A0ECE02FA77453DD809B1200DF9427 /* Sources */,
-				3043863C36B27BF51BD1A8F1F594604A /* Frameworks */,
-				C313496A24B9227A857EF90EB0CDF143 /* Headers */,
+				2D70B8C4CCCA299D198418C7F04F61C8 /* Sources */,
+				604F2E506BE3F14D1510F3E791F189BA /* Frameworks */,
+				34C43A2F2D16AD78D425DAFCD9A40337 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "libPhoneNumber-iOS";
+			productName = "libPhoneNumber-iOS";
+			productReference = EC591460C8475F77F0B5CDAB02D7779C /* liblibPhoneNumber-iOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5E6E64B82F39921369B3B185A66D0870 /* Reachability */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9ED1EF8DF88754721079C7E44D726F4 /* Build configuration list for PBXNativeTarget "Reachability" */;
+			buildPhases = (
+				981CFEFB3D4D9DB830B7B7B010216F76 /* Sources */,
+				8E171B019DD69F27C3BD0D5510307233 /* Frameworks */,
+				9A50FD3A1451EDB983AEF3C7768C2514 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -306,25 +522,45 @@
 			);
 			name = Reachability;
 			productName = Reachability;
-			productReference = ABE4CA7E875441CAA874F1FABC63B988 /* libReachability.a */;
+			productReference = 1FCCF2146DDB299B92DC18F3365768EA /* libReachability.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		E39FB9E896549695F2EAF8F1B9D8AC4A /* Pods-WebRTC-POC */ = {
+		AC86AA78E4EA5D5282928462AEAE0B68 /* Pods-WebRTC-POC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 32A8B800A3031F7A973B3990B9E4E83A /* Build configuration list for PBXNativeTarget "Pods-WebRTC-POC" */;
+			buildConfigurationList = 6DE4256CAABDF7330E20920EDBD7245E /* Build configuration list for PBXNativeTarget "Pods-WebRTC-POC" */;
 			buildPhases = (
-				9EFC079714A4B6E93301489D90E8EF29 /* Sources */,
-				492D595E6116B6E8980E43262BE39D60 /* Frameworks */,
+				60AF2343F1A1773B7ECBF5B32F47ACBD /* Sources */,
+				9C281E1103DED937F3C65D21DD021BF4 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				53E83988239D7BFB24FB13BCF47AC096 /* PBXTargetDependency */,
-				045B70EC8D668C5A479903011AB11721 /* PBXTargetDependency */,
+				9855F308023AB73F86F1A15F17DFF0CF /* PBXTargetDependency */,
+				CBA8DD934D8F3158AFAA6F47057008B8 /* PBXTargetDependency */,
+				A066AEE34C15D4BC27B66193B413610A /* PBXTargetDependency */,
+				1451E6738E379CF480973DD3A1113559 /* PBXTargetDependency */,
 			);
 			name = "Pods-WebRTC-POC";
 			productName = "Pods-WebRTC-POC";
-			productReference = F2B59780D2A55B0558278BB3AC8E1D8F /* libPods-WebRTC-POC.a */;
+			productReference = FED51B68C28C0388234F5BA5EDC968B6 /* libPods-WebRTC-POC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C4EC34530D3FDFEF3C9E3D8DD928E444 /* JCDialPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EC6276793A426B90CBF12AF1C438431 /* Build configuration list for PBXNativeTarget "JCDialPad" */;
+			buildPhases = (
+				2271E4AF99A1EA0974C6BAB27561CDB0 /* Sources */,
+				64E4BDBE5F8C97CA30711A0B089ABA77 /* Frameworks */,
+				9BE088A64688CD8F6BB9B9E005329F9C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				161BB0F4890FF9DF610282D5EF3FE84F /* PBXTargetDependency */,
+			);
+			name = JCDialPad;
+			productName = JCDialPad;
+			productReference = A3EE07142CFFF0E6DBA1F053E322CC92 /* libJCDialPad.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		EAE9E17A32D7D9B8188EA563C6CCFE15 /* DWAddressBook */ = {
@@ -341,7 +577,7 @@
 			);
 			name = DWAddressBook;
 			productName = DWAddressBook;
-			productReference = 9494F6600F89ADBB8166DEC7F77B2B35 /* libDWAddressBook.a */;
+			productReference = 193BC50A9AF4D19A88781AB98194515D /* libDWAddressBook.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -361,18 +597,56 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 11EF341D83DDFE5429DD2C143379C91A /* Products */;
+			productRefGroup = FCB9E19EE227729B97647B9363452727 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				EAE9E17A32D7D9B8188EA563C6CCFE15 /* DWAddressBook */,
-				E39FB9E896549695F2EAF8F1B9D8AC4A /* Pods-WebRTC-POC */,
-				03E5FDA1E7B36C83CBDE805F09DBC251 /* Reachability */,
+				C4EC34530D3FDFEF3C9E3D8DD928E444 /* JCDialPad */,
+				1B648F12A1777E379350F49606733990 /* libPhoneNumber-iOS */,
+				AC86AA78E4EA5D5282928462AEAE0B68 /* Pods-WebRTC-POC */,
+				5E6E64B82F39921369B3B185A66D0870 /* Reachability */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2271E4AF99A1EA0974C6BAB27561CDB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CE73BDAE92479887131D10633C6D4F8 /* JCDialPad-dummy.m in Sources */,
+				69433B81E5DC2F4BB34294445508D2B0 /* JCDialPad.m in Sources */,
+				45A818D6D2D6769114984FF69A416E4A /* JCPadButton.m in Sources */,
+				EEC0767B8FDCD2CB84AC6228F7D5CF81 /* UIView+FrameAccessor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D70B8C4CCCA299D198418C7F04F61C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EBDB24E68F1E95737A3190114C6AE3D /* libPhoneNumber-iOS-dummy.m in Sources */,
+				42C17E18FF6B9703040ABBFCA4E51A4E /* NBAsYouTypeFormatter.m in Sources */,
+				6BB77EDDAA84EE6B2A403585B9793183 /* NBMetadataHelper.m in Sources */,
+				E849F8BFEF4E95035492F5A258F96CCA /* NBNumberFormat.m in Sources */,
+				CCDFC77EF27308BDFC0DCFF741CB7FD7 /* NBPhoneMetaData.m in Sources */,
+				B1CA67D5F937965B5EB9011B4C0F0F09 /* NBPhoneNumber.m in Sources */,
+				8F2FF0F23C5147FA08FDB727897110F6 /* NBPhoneNumberDefines.m in Sources */,
+				44FD026E195895AABA67147F29CDF23F /* NBPhoneNumberDesc.m in Sources */,
+				1D65D77835067ED7DCAD2B1B08F289B4 /* NBPhoneNumberUtil.m in Sources */,
+				E681896CA9F4FBFBDF6FC209DB60C5AE /* NSArray+NBAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60AF2343F1A1773B7ECBF5B32F47ACBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7A268C13EFD4AA709D67AD2306EC99A /* Pods-WebRTC-POC-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9475626679BF395A8E3D2A290AACDDF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,66 +662,54 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9EFC079714A4B6E93301489D90E8EF29 /* Sources */ = {
+		981CFEFB3D4D9DB830B7B7B010216F76 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5487898B69828BB1A513D61B53D282A /* Pods-WebRTC-POC-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E5A0ECE02FA77453DD809B1200DF9427 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F035C464F75C3AC0E0B4E08D08317FE /* Reachability-dummy.m in Sources */,
-				EFA5BC3E7F02F27ABC1F4205592FE7CD /* Reachability.m in Sources */,
+				FCA67D384AC717BAFE14C5005C59E97B /* Reachability-dummy.m in Sources */,
+				818FDFB18600D55C98DC090BC935928D /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		045B70EC8D668C5A479903011AB11721 /* PBXTargetDependency */ = {
+		1451E6738E379CF480973DD3A1113559 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Reachability;
-			target = 03E5FDA1E7B36C83CBDE805F09DBC251 /* Reachability */;
-			targetProxy = 99F43A5C8B252F54F266B439B407163F /* PBXContainerItemProxy */;
+			name = "libPhoneNumber-iOS";
+			target = 1B648F12A1777E379350F49606733990 /* libPhoneNumber-iOS */;
+			targetProxy = 84842C3ADBE24AA83A47472693DE6BE4 /* PBXContainerItemProxy */;
 		};
-		53E83988239D7BFB24FB13BCF47AC096 /* PBXTargetDependency */ = {
+		161BB0F4890FF9DF610282D5EF3FE84F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libPhoneNumber-iOS";
+			target = 1B648F12A1777E379350F49606733990 /* libPhoneNumber-iOS */;
+			targetProxy = 4E80E03ADFFC482954651AAFAA8E325F /* PBXContainerItemProxy */;
+		};
+		9855F308023AB73F86F1A15F17DFF0CF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DWAddressBook;
 			target = EAE9E17A32D7D9B8188EA563C6CCFE15 /* DWAddressBook */;
-			targetProxy = 6B58B0D4A4961C0CA25DCFA934B6827F /* PBXContainerItemProxy */;
+			targetProxy = 4E52913E5FDE21BB43FDF52A0CD05847 /* PBXContainerItemProxy */;
+		};
+		A066AEE34C15D4BC27B66193B413610A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Reachability;
+			target = 5E6E64B82F39921369B3B185A66D0870 /* Reachability */;
+			targetProxy = A54C66644AC219697083A4875DA59022 /* PBXContainerItemProxy */;
+		};
+		CBA8DD934D8F3158AFAA6F47057008B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JCDialPad;
+			target = C4EC34530D3FDFEF3C9E3D8DD928E444 /* JCDialPad */;
+			targetProxy = C7BCB7C8C4C72C01C27C138C16B9FB81 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		067C78539B522400F497E99A0F664FB7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4AB4E97BC2BD072FF1C018F86FDF894E /* Reachability.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/Reachability/Reachability-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		0B92CC773974D9899CD55170A6F8DE59 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9852D56928A020B171BAEB651A135F3B /* DWAddressBook.xcconfig */;
+			baseConfigurationReference = B0AF5825EB3D8198820BB0D926B2D710 /* DWAddressBook.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -467,26 +729,91 @@
 			};
 			name = Release;
 		};
-		4B41DCD782535429FE229225482C852E /* Release */ = {
+		35F58D184EF2CB3338A7CD4C881EF119 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5CCD09D80C99EC3A6747C1DF942DCF2C /* Pods-WebRTC-POC.release.xcconfig */;
+			baseConfigurationReference = 4B7146BB7562093CAEA79EEEC1A02C16 /* libPhoneNumber-iOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				MACH_O_TYPE = staticlib;
+				GCC_PREFIX_HEADER = "Target Support Files/libPhoneNumber-iOS/libPhoneNumber-iOS-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		465733D0514005CAE711BB233CC8D4E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16D0206FCB20DFB54C234C93CCC833F2 /* Reachability.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Reachability/Reachability-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		49D51B2746A0E3E384557AA39F77B7B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16D0206FCB20DFB54C234C93CCC833F2 /* Reachability.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Reachability/Reachability-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		527A976C5A214FEF608C89D163B06225 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFB9C8CF0F0A1D868F2878FFA15D842D /* JCDialPad.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/JCDialPad/JCDialPad-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
 		};
 		621AB785940626574F07364CB14760E1 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -543,15 +870,15 @@
 			};
 			name = Release;
 		};
-		9FF0472494414DFAD461DF5E124D6BC3 /* Debug */ = {
+		664AF128CE8E11954FFAAC153A09BDB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4AB4E97BC2BD072FF1C018F86FDF894E /* Reachability.xcconfig */;
+			baseConfigurationReference = 4B7146BB7562093CAEA79EEEC1A02C16 /* libPhoneNumber-iOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/Reachability/Reachability-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/libPhoneNumber-iOS/libPhoneNumber-iOS-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -563,6 +890,27 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
+		};
+		6C153A5B60E41BBD73D804EDFBA188F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CCD09D80C99EC3A6747C1DF942DCF2C /* Pods-WebRTC-POC.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
 		};
 		B57C09D404C607DDE283C5C44183B2A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -624,28 +972,7 @@
 			};
 			name = Debug;
 		};
-		C6366A2F9B8E8EF5DC2DE6DF6078133D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9852D56928A020B171BAEB651A135F3B /* DWAddressBook.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/DWAddressBook/DWAddressBook-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		F326B3D53C75C76E7335DE4E7407BEDB /* Debug */ = {
+		C36D1231930583A54A722D67E70361A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AC31EAAE50E8EDA7C6748921C0055FF /* Pods-WebRTC-POC.debug.xcconfig */;
 			buildSettings = {
@@ -665,6 +992,49 @@
 			};
 			name = Debug;
 		};
+		C6366A2F9B8E8EF5DC2DE6DF6078133D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0AF5825EB3D8198820BB0D926B2D710 /* DWAddressBook.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/DWAddressBook/DWAddressBook-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E5ED5B3EC44F938011AC19C3171AD763 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFB9C8CF0F0A1D868F2878FFA15D842D /* JCDialPad.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/JCDialPad/JCDialPad-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -677,20 +1047,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		32A8B800A3031F7A973B3990B9E4E83A /* Build configuration list for PBXNativeTarget "Pods-WebRTC-POC" */ = {
+		4EC6276793A426B90CBF12AF1C438431 /* Build configuration list for PBXNativeTarget "JCDialPad" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F326B3D53C75C76E7335DE4E7407BEDB /* Debug */,
-				4B41DCD782535429FE229225482C852E /* Release */,
+				527A976C5A214FEF608C89D163B06225 /* Debug */,
+				E5ED5B3EC44F938011AC19C3171AD763 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8B3C8139B2BA5840BBA32E40AC1A3DE0 /* Build configuration list for PBXNativeTarget "Reachability" */ = {
+		6DE4256CAABDF7330E20920EDBD7245E /* Build configuration list for PBXNativeTarget "Pods-WebRTC-POC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9FF0472494414DFAD461DF5E124D6BC3 /* Debug */,
-				067C78539B522400F497E99A0F664FB7 /* Release */,
+				C36D1231930583A54A722D67E70361A2 /* Debug */,
+				6C153A5B60E41BBD73D804EDFBA188F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90BC7405FA5212FF283FAD6445DD0035 /* Build configuration list for PBXNativeTarget "libPhoneNumber-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				664AF128CE8E11954FFAAC153A09BDB2 /* Debug */,
+				35F58D184EF2CB3338A7CD4C881EF119 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -700,6 +1079,15 @@
 			buildConfigurations = (
 				C6366A2F9B8E8EF5DC2DE6DF6078133D /* Debug */,
 				0B92CC773974D9899CD55170A6F8DE59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9ED1EF8DF88754721079C7E44D726F4 /* Build configuration list for PBXNativeTarget "Reachability" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				465733D0514005CAE711BB233CC8D4E9 /* Debug */,
+				49D51B2746A0E3E384557AA39F77B7B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

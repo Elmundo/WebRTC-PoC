@@ -11,6 +11,8 @@
 #import <Contacts/Contacts.h>
 #import <mavenir.webrtc/WebRTC.h>
 #import <mavenir.webrtc/WebRTCiOS.h>
+#import <JCDialPad.h>
+
 #import "NSString+WebRTC.h"
 #import "AudioService.h"
 
@@ -20,7 +22,7 @@
 
 @end
 
-@interface CallerVC : UIViewController
+@interface CallerVC : UIViewController<JCDialPadDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *callingPersonL;
 @property (weak, nonatomic) IBOutlet UILabel *constantCallingL;
 @property (weak, nonatomic) IBOutlet UIImageView *callingPersonIV;
@@ -30,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *muteBtn;
 @property (weak, nonatomic) IBOutlet UIButton *addCallBtn;
 @property (weak, nonatomic) IBOutlet UIButton *speakerBtn;
+@property (weak, nonatomic) IBOutlet UIButton *dialPad;
 
 @property (weak, nonatomic) id<CallerDelegate> delegate;
 
