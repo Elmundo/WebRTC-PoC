@@ -133,17 +133,19 @@ typedef void (^SecondCallBlock)();
 
 #pragma mark - Methdos
 - (void)configureSecondCall {
-    std::string callId    = [_callId cStringWebRTC];
-    WebRTC::mavInstance().mavCallHold(callId, false);
-    secondCallBlock = ^{
-        std::string callie    = [_secondtargetMsisdn cStringWebRTC];
-        std::string caller    = [_caller cStringWebRTC];
-        std::string dynamicId = [_sessionId cStringWebRTC];
+    if (_callId) {
         std::string callId    = [_callId cStringWebRTC];
-        
-        WebRTC::mavInstance().mavCallStart(callie, dynamicId, false, WEBRTC_AUDIO_WIRED_HEADSET, caller);
-        [[CallManager sharedManager] startCall:_secondtargetMsisdn videoEnabled:false];
-    };
+        WebRTC::mavInstance().mavCallHold(callId, false);
+        secondCallBlock = ^{
+            std::string callie    = [_secondtargetMsisdn cStringWebRTC];
+            std::string caller    = [_caller cStringWebRTC];
+            std::string dynamicId = [_sessionId cStringWebRTC];
+            std::string callId    = [_callId cStringWebRTC];
+            
+            WebRTC::mavInstance().mavCallStart(callie, dynamicId, false, WEBRTC_AUDIO_WIRED_HEADSET, caller);
+            [[CallManager sharedManager] startCall:_secondtargetMsisdn videoEnabled:false];
+        };
+    }
 }
 
 #pragma mark - Actions

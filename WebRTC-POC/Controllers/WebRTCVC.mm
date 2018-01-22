@@ -274,7 +274,7 @@
     std::string workline    = "WebRTC worline";
     
 //    WEBRTC_STATUS_CODE status = WebRTC::mavInstance().mavRegisterAgain([_sessionId cStringWebRTC]);
-    
+       
     _sessionId = [self getUserDefaultsWithKey:@"sessionId"];
     WEBRTC_STATUS_CODE status;
 //    if (_sessionId) {
