@@ -7,6 +7,8 @@
 //
 
 #import <Reachability/Reachability.h>
+#import <CoreTelephony/CoreTelephonyDefines.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
 
 #import "WebRTCVC.h"
 #import "Call/CallerVC.h"
@@ -68,7 +70,7 @@
 #pragma mark - Built-in Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self initDatas];
     [self initWidgets];
     [self initPickerViews];
@@ -200,8 +202,10 @@
     reach.reachableBlock = ^(Reachability *reachability) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self addLog:@"Internet if online."];
-            std::string sessionId  = [_sessionId cStringWebRTC];
-            WebRTC::mavInstance().mavRegisterAgain(sessionId);
+            if (_sessionId) {
+                std::string sessionId  = [_sessionId cStringWebRTC];
+                WebRTC::mavInstance().mavRegisterAgain(sessionId);
+            }
         });
     };
 
