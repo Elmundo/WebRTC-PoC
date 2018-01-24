@@ -25,6 +25,7 @@
 @interface CallerVC : UIViewController<JCDialPadDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *callingPersonL;
 @property (weak, nonatomic) IBOutlet UILabel *constantCallingL;
+@property (weak, nonatomic) IBOutlet UILabel *secondCallL;
 @property (weak, nonatomic) IBOutlet UIImageView *callingPersonIV;
 @property (weak, nonatomic) IBOutlet UIButton *declineBtn;
 @property (weak, nonatomic) IBOutlet UIView *containerView;

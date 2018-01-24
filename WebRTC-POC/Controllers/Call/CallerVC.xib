@@ -20,6 +20,7 @@
                 <outlet property="dialPad" destination="ZEb-8t-LSt" id="ZGD-Gw-j3L"/>
                 <outlet property="holdBtn" destination="c7O-RI-2ON" id="iTB-Zn-GqT"/>
                 <outlet property="muteBtn" destination="q6p-a2-hWC" id="bGL-HM-G2q"/>
+                <outlet property="secondCallL" destination="9xx-Vz-ulA" id="oXa-gq-TgJ"/>
                 <outlet property="speakerBtn" destination="Oju-zs-1SV" id="POK-HC-Cr2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -146,9 +147,21 @@
                                 <action selector="dialpad_Action:" destination="-1" eventType="touchUpInside" id="mUf-Rs-ZyT"/>
                             </connections>
                         </button>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="second call is made" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xx-Vz-ulA" userLabel="CallingPersonL">
+                            <rect key="frame" x="29" y="146" width="231" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="KpJ-h4-QZw"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="PeU-cw-SFX"/>
+                                <constraint firstAttribute="width" constant="231" id="VbY-T7-QIc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="9xx-Vz-ulA" firstAttribute="leading" secondItem="CQE-uf-v1o" secondAttribute="leading" constant="29" id="1SR-3F-lYx"/>
                         <constraint firstItem="Oju-zs-1SV" firstAttribute="top" secondItem="c7O-RI-2ON" secondAttribute="bottom" constant="25" id="5dq-Vc-t2D"/>
                         <constraint firstItem="q6p-a2-hWC" firstAttribute="leading" secondItem="c7O-RI-2ON" secondAttribute="trailing" constant="48" id="8RC-C6-E9F"/>
                         <constraint firstItem="c7O-RI-2ON" firstAttribute="top" secondItem="CQE-uf-v1o" secondAttribute="top" constant="245" id="A1U-RV-PGO"/>
@@ -156,6 +169,7 @@
                         <constraint firstItem="q6p-a2-hWC" firstAttribute="top" secondItem="CQE-uf-v1o" secondAttribute="top" constant="245" id="CgU-wK-00F"/>
                         <constraint firstItem="3w4-PM-0P1" firstAttribute="leading" secondItem="p8h-Mj-R9i" secondAttribute="leading" id="McB-KG-bnl"/>
                         <constraint firstAttribute="trailing" secondItem="OhX-Ss-uJW" secondAttribute="trailing" constant="15" id="SFU-gr-d0C"/>
+                        <constraint firstItem="9xx-Vz-ulA" firstAttribute="top" secondItem="3w4-PM-0P1" secondAttribute="bottom" constant="8" id="Td3-oZ-bwf"/>
                         <constraint firstItem="1ZM-Fd-M2h" firstAttribute="top" secondItem="CQE-uf-v1o" secondAttribute="top" constant="245" id="UY5-QY-rMq"/>
                         <constraint firstItem="p8h-Mj-R9i" firstAttribute="leading" secondItem="CQE-uf-v1o" secondAttribute="leading" constant="29" id="Y4e-Mv-WsD"/>
                         <constraint firstItem="c7O-RI-2ON" firstAttribute="leading" secondItem="CQE-uf-v1o" secondAttribute="leading" constant="16" id="YJg-Pw-hxf"/>
