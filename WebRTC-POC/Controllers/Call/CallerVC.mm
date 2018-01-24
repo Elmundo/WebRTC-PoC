@@ -140,7 +140,7 @@ typedef void (^SecondCallBlock)();
         secondCallBlock = ^{
             std::string callie    = [_secondtargetMsisdn cStringWebRTC];
             std::string caller    = [_caller cStringWebRTC];
-            std::string dynamicId = [_sessionId cStringWebRTC];
+            std::string dynamicId = [_sessionInfo cStringWebRTC];
             std::string callId    = [_callId cStringWebRTC];
             
             WebRTC::mavInstance().mavCallStart(callie, dynamicId, false, WEBRTC_AUDIO_WIRED_HEADSET, caller);

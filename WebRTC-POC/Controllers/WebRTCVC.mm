@@ -48,7 +48,7 @@
     NSString *_secondTargetMsisdn;
     NSString *_fid;
     NSString *_did;
-    NSString *_sessionId;
+    NSString *_sessionInfo;
     NSString *_clientId;
     NSString *_callId;
     NSString *_secondCallId;
@@ -76,15 +76,15 @@
     [self initPickerViews];
     [self initTableView];
     [self initWebRTC];
-    [self initReachability];
+//    [self initReachability];
 //    WebRTC::mavInstance().mavUnRegister(true);
     
     [self addNotifications];
     
-    _sessionId = [self getUserDefaultsWithKey:@"sessionId"];
+    _sessionInfo = [self getUserDefaultsWithKey:@"sessionInfo"];
     WEBRTC_STATUS_CODE status;
-    if (_sessionId) {
-        status = WebRTC::mavInstance().mavRegisterAgain([_sessionId cStringWebRTC]);
+    if (_sessionInfo) {
+        status = WebRTC::mavInstance().mavRegisterAgain([_sessionInfo cStringWebRTC]);
     }
 }
 
@@ -202,9 +202,9 @@
     reach.reachableBlock = ^(Reachability *reachability) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self addLog:@"Internet if online."];
-            if (_sessionId) {
-                std::string sessionId  = [_sessionId cStringWebRTC];
-                WebRTC::mavInstance().mavRegisterAgain(sessionId);
+            if (_sessionInfo) {
+                std::string sessionInfo  = [_sessionInfo cStringWebRTC];
+                WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
             }
         });
     };
@@ -275,27 +275,27 @@
     
 //    WEBRTC_STATUS_CODE status = WebRTC::mavInstance().mavRegisterAgain([_sessionId cStringWebRTC]);
        
-    _sessionId = [self getUserDefaultsWithKey:@"sessionId"];
+    _sessionInfo = [self getUserDefaultsWithKey:@"sessionInfo"];
     WEBRTC_STATUS_CODE status;
-//    if (_sessionId) {
-//        status = WebRTC::mavInstance().mavRegisterAgain([_sessionId cStringWebRTC]);
-//    }else {
-//        status = WebRTC::mavInstance().mavRegister(baseURL, // Base URL
-//                                                   authCode,    // IAM Auth code
-//                                                   displayName,              // Display name of URI
-//                                                   deviceName,          // Friendly name used switch device
-//                                                   msisdn,      // Phone number of device
-//                                                   workline            // ??? Common workline
-//                                                   );
-//    }
+    if (_sessionInfo) {
+        status = WebRTC::mavInstance().mavRegisterAgain([_sessionInfo cStringWebRTC]);
+    }else {
+        status = WebRTC::mavInstance().mavRegister(baseURL, // Base URL
+                                                   authCode,    // IAM Auth code
+                                                   displayName,              // Display name of URI
+                                                   deviceName,          // Friendly name used switch device
+                                                   msisdn,      // Phone number of device
+                                                   workline            // ??? Common workline
+                                                   );
+    }
     
-    status= WebRTC::mavInstance().mavRegister(baseURL, // Base URL
-                                              authCode,    // IAM Auth code
-                                              displayName,              // Display name of URI
-                                              deviceName,          // Friendly name used switch device
-                                              msisdn,      // Phone number of device
-                                              workline            // ??? Common workline
-                                              );
+//    status= WebRTC::mavInstance().mavRegister(baseURL, // Base URL
+//                                              authCode,    // IAM Auth code
+//                                              displayName,              // Display name of URI
+//                                              deviceName,          // Friendly name used switch device
+//                                              msisdn,      // Phone number of device
+//                                              workline            // ??? Common workline
+//                                              );
     
     switch (status) {
         case WEBRTC_STATUS_OK:
@@ -331,7 +331,7 @@
     
     vc.caller                       = _msisdn;
     vc.secondtargetMsisdn           = _secondTargetMsisdn;
-    vc.sessionId                    = _sessionId;
+    vc.sessionInfo                  = _sessionInfo;
     
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:vc];
     [navigation setNavigationBarHidden:true];
@@ -456,7 +456,7 @@
     if (isWebRTCAvailable) {
         std::string callie    = [_targetMsisdn cStringWebRTC];
         std::string caller    = [_msisdn cStringWebRTC];
-        std::string dynamicId = [_sessionId cStringWebRTC];
+        std::string dynamicId = [_sessionInfo cStringWebRTC];
         
         WebRTC::mavInstance().mavCallStart(callie, dynamicId, false, WEBRTC_AUDIO_WIRED_HEADSET, caller);
         [[CallManager sharedManager] startCall:_targetMsisdn videoEnabled:false];
@@ -511,10 +511,10 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    if ([_sessionId cStringWebRTC]) {
-        std::string sessionId  = [_sessionId cStringWebRTC];
+    if ([_sessionInfo cStringWebRTC]) {
+        std::string sessionInfo  = [_sessionInfo cStringWebRTC];
         std::string nativeline = [_msisdn cStringWebRTC];
-        WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavRegisterAgain(sessionId);
+        WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
     }
 }
 
@@ -530,17 +530,17 @@
 - (void)mavOnReceivedRegisterSuccess:(std::string)did fid:(std::string)fid sessionid:(std::string)sessionid clientid:(std::string)clientid {
     _did       = [NSString stringWithCharList:did.c_str()];
     _fid       = [NSString stringWithCharList:fid.c_str()];
-    _sessionId = [NSString stringWithCharList:sessionid.c_str()];
+//    _sessionI_ = [NSString stringWithCharList:sessionid.c_str()];
     _clientId  = [NSString stringWithCharList:clientid.c_str()];
     
-    [self setUserDefaultsWithKey:@"sessionId" value:_sessionId];
+//    [self setUserDefaultsWithKey:@"sessionId" value:_sessionId];
     [self addLog:@"WebRTC mavOnReceivedRegisterSuccess!"];
 }
 
 -(void)mavOnReceivedReRegisterSuccess:(std::string)did fid:(std::string)fid sessionid:(std::string)sessionid clientid:(std::string)clientid {
     _did       = [NSString stringWithCharList:did.c_str()];
     _fid       = [NSString stringWithCharList:fid.c_str()];
-    _sessionId = [NSString stringWithCharList:sessionid.c_str()];
+//    _sessionId = [NSString stringWithCharList:sessionid.c_str()];
     _clientId  = [NSString stringWithCharList:clientid.c_str()];
     
     [self addLog:@"WebRTC mavOnReceivedReRegisterSuccess!"];
@@ -556,6 +556,8 @@
 }
 
 -(void)mavOnReceivedSessionInfo:(std::string)session_info {
+    [self setUserDefaultsWithKey:@"sessionInfo" value:[NSString stringWithCharList:session_info.c_str()]];
+    _sessionInfo = [NSString stringWithCharList:session_info.c_str()];
     [self setWebRTCStatus:true];
     [self addLog:@"WebRTC mavOnReceivedSessionInfo!"];
 }
@@ -567,10 +569,10 @@
     if (self.presentedViewController) {
         [self.presentedViewController dismissViewControllerAnimated:true completion:nil];
     }
-    std::string sessionId  = [_sessionId cStringWebRTC];
+    std::string sessionInfo  = [_sessionInfo cStringWebRTC];
     std::string nativeline = [_msisdn cStringWebRTC];
     
-    WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavReRegister(sessionId, nativeline);
+    WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavReRegister(sessionInfo, nativeline);
 }
 
 -(void)mavOnReceivedRegisterError:(int)responsecode errorcode:(int)errorcode {
