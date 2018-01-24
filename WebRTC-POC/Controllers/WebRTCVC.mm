@@ -774,4 +774,9 @@
     NSLog(@"************************* mavOnReceivedCallUnhold");
 }
 
+-(void)mavOnAdHocConfStatus:(std::string)callid status:(std::string)status {
+    [self addLog: [NSString stringWithFormat:@"WebRTC mavOnAdHocConfStatus! callid: %@", [NSString stringWithCharList:callid.c_str()] ]];
+    _callId = [NSString stringWithCharList:callid.c_str()] ;
+}
+
 @end
