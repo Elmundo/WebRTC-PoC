@@ -121,7 +121,7 @@
                   @"908502284044@superims.com", @"905390000098@ims.mnc001.mcc286.3gppnetwork.org",
                   @"905390000530@ims.mnc001.mcc286.3gppnetwork.org", @"905390000058@ims.mnc001.mcc286.3gppnetwork.org",
                   @"05390000075@ims.mnc001.mcc286.3gppnetwork.org", @"05390001903@ims.mnc001.mcc286.3gppnetwork.org",
-                  @"905322106528@ims.mnc001.mcc286.3gppnetwork.org", nil];
+                  @"905322106528@ims.mnc001.mcc286.3gppnetwork.org", @"905309724511@ims.mnc001.mcc286.3gppnetwork.org", nil];
     
     _authCode           = [authCodes objectAtIndex:4];
     _msisdn             = [msisdnList objectAtIndex:7];

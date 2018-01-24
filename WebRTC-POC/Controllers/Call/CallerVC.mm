@@ -262,9 +262,10 @@ typedef void (^SecondCallBlock)();
 
 -(void)onCallHold_Action:(NSNotification *)userInfo {
     _callId = [userInfo.userInfo  objectForKey:@"data"];
-    
-    secondCallBlock();
-    secondCallBlock = nil;
+    if (secondCallBlock) {
+        secondCallBlock();
+        secondCallBlock = nil;
+    }
 }
 
 -(void)onCallUnhold_Action:(NSNotification *)userInfo {
