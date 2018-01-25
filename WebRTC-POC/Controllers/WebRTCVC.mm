@@ -425,6 +425,7 @@
         
         Call *call = [[CallManager sharedManager] getActiveCall];
         [[CallManager sharedManager] endCall:call];
+        [self addLog:[NSString stringWithFormat:@"WebRTC::mavInstance().mavCallEnd(callId); callId:%@!", _callId]];
     }
 }
 
@@ -456,10 +457,12 @@
     if (isWebRTCAvailable) {
         std::string callie    = [_targetMsisdn cStringWebRTC];
         std::string caller    = [_msisdn cStringWebRTC];
-        std::string dynamicId = [_sessionInfo cStringWebRTC];
+        std::string callId    = [@"" cStringWebRTC];
         
-        WebRTC::mavInstance().mavCallStart(callie, dynamicId, false, WEBRTC_AUDIO_WIRED_HEADSET, caller);
+        WebRTC::mavInstance().mavCallStart(callie, callId, false, WEBRTC_AUDIO_WIRED_HEADSET, caller);
+        _callId = [NSString stringWithCharList:callId.c_str()];
         [[CallManager sharedManager] startCall:_targetMsisdn videoEnabled:false];
+        [self addLog:[NSString stringWithFormat:@"WebRTC::mavInstance().mavCallStart; callId:%@!", _callId]];
 
         [self navigateToCallerVC];
     }else {
@@ -631,8 +634,8 @@
         call.state = CallStateActive;
         [call answer];
         
-        std::string confcallId = [_secondCallId cStringWebRTC];
-        std::string callId = [_callId cStringWebRTC];
+        std::string confcallId = [@"" cStringWebRTC];
+        std::string callId = [_secondCallId cStringWebRTC];
         std::string activeUri = [_secondTargetMsisdn cStringWebRTC];
         std::string holdUri = [_targetMsisdn cStringWebRTC];
         std::string lineinfo = [_msisdn cStringWebRTC];
