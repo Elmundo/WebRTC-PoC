@@ -118,14 +118,14 @@
     authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"48", @"49", @"50", @"56", @"57", nil];
     msisdnList = [[NSArray<NSString *> alloc] initWithObjects:
                   @"908502284041@superims.com", @"908502284042@superims.com",
-                  @"908502284044@superims.com", @"905390000098@ims.mnc001.mcc286.3gppnetwork.org",
+                  @"905390000098@ims.mnc001.mcc286.3gppnetwork.org",
                   @"905390000530@ims.mnc001.mcc286.3gppnetwork.org", @"905390000058@ims.mnc001.mcc286.3gppnetwork.org",
-                  @"05390000075@ims.mnc001.mcc286.3gppnetwork.org", @"05390001903@ims.mnc001.mcc286.3gppnetwork.org",
-                  @"905322106528@ims.mnc001.mcc286.3gppnetwork.org", @"905309724511@ims.mnc001.mcc286.3gppnetwork.org", nil];
+                  @"905332108283@ims.mnc001.mcc286.3gppnetwork.org", @"905326704476@ims.mnc001.mcc286.3gppnetwork.org",
+                  @"905308812074@ims.mnc001.mcc286.3gppnetwork.org", nil];
     
     _authCode           = [authCodes objectAtIndex:4];
-    _msisdn             = [msisdnList objectAtIndex:7];
-    _targetMsisdn       = [msisdnList objectAtIndex:4];
+    _msisdn             = [msisdnList objectAtIndex:3];
+    _targetMsisdn       = [msisdnList objectAtIndex:7];
     _secondTargetMsisdn = [msisdnList objectAtIndex:3];
     
     self.authCodeTF.text           = _authCode;
@@ -199,12 +199,17 @@
 - (void)initReachability {
     Reachability *reach = [Reachability reachabilityWithHostName:@"www.google.com"];
 
+    static bool firstOpening = false;
     reach.reachableBlock = ^(Reachability *reachability) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self addLog:@"Internet if online."];
-            if (_sessionInfo) {
-                std::string sessionInfo  = [_sessionInfo cStringWebRTC];
-                WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
+            if (firstOpening) {
+                [self addLog:@"Internet if online."];
+                if (_sessionInfo) {
+//                    std::string sessionInfo  = [_sessionInfo cStringWebRTC];
+//                    WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
+                }
+            }else {
+                firstOpening = true;
             }
         });
     };
@@ -288,15 +293,7 @@
                                                    workline            // ??? Common workline
                                                    );
     }
-    
-//    status= WebRTC::mavInstance().mavRegister(baseURL, // Base URL
-//                                              authCode,    // IAM Auth code
-//                                              displayName,              // Display name of URI
-//                                              deviceName,          // Friendly name used switch device
-//                                              msisdn,      // Phone number of device
-//                                              workline            // ??? Common workline
-//                                              );
-    
+
     switch (status) {
         case WEBRTC_STATUS_OK:
 //            [self addLog:@"WebRTC registration is success!"];
@@ -393,7 +390,7 @@
     NSString *title;
     if ([pickerView isEqual:authCodePV]) {
         title = [authCodes objectAtIndex:row];
-    }else if ([pickerView isEqual:msisdnPV]){
+    }else if ([pickerView isEqual:msisdnPV]) {
         title = [msisdnList objectAtIndex:row];
     }else {
         title = [msisdnList objectAtIndex:row];
@@ -604,11 +601,7 @@
                     [NSString stringWithCharList:LineInfo.c_str()] ]];
     _callId = [NSString stringWithCharList:callid.c_str()];
     
-    CXCallUpdate *update = [[CXCallUpdate alloc] init];
     NSString *handle = [NSString stringWithCharList:uri.c_str()];
-    update.remoteHandle = [[CXHandle alloc] initWithType:CXHandleTypePhoneNumber value:handle];
-    update.hasVideo = false;
-
     [[ProviderManager sharedManager] reportIncomingCallWithUUID:[NSUUID UUID] handle:handle hasVideo:false completion:^(NSError *error) {
         if(error) {
             NSLog(@"Error: %@", [error description]);
@@ -680,8 +673,10 @@
 //        [[NSNotificationCenter defaultCenter] postNotificationName:@"CallStatus" object:nil userInfo:@{@"data": _callId}];
         
         Call *call = [[CallManager sharedManager] getActiveCall];
-        call.connectionState = ConnectedStateComplete;
-        call.connectedStateChanged();
+        if (call) {
+            call.connectionState = ConnectedStateComplete;
+            call.connectedStateChanged();
+        }
         NSLog(@"************************* StatusCode = 200");
     }
 

@@ -53,6 +53,7 @@
 #pragma mark - Actions
 
 -(void)startCall:(NSString *)handle videoEnabled:(bool)videoEnabled {
+    NSLog(@"************************* CallManager::startCall");
     CXHandle *cxHandle = [[CXHandle alloc] initWithType:CXHandleTypePhoneNumber value:handle];
     CXStartCallAction *startCallAction = [[CXStartCallAction alloc] initWithCallUUID:[NSUUID UUID] handle:cxHandle];
     [startCallAction setVideo:videoEnabled];
@@ -62,6 +63,7 @@
 }
 
 -(void)endCall:(Call *)call {
+    NSLog(@"************************* CallManager::endCall");
     if (call.uuid) {
         CXEndCallAction *endCallAction = [[CXEndCallAction alloc] initWithCallUUID:call.uuid];
         CXTransaction *transaction = [[CXTransaction alloc] initWithAction:endCallAction];
@@ -71,6 +73,7 @@
 }
 
 -(void)setHeld:(Call *)call onHold:(bool)onHold {
+    NSLog(@"************************* CallManager::setHeld");
     CXSetHeldCallAction *heldCallAction = [[CXSetHeldCallAction alloc] initWithCallUUID:call.uuid onHold:onHold];
     CXTransaction *transaction = [[CXTransaction alloc] initWithAction:heldCallAction];
     
@@ -78,6 +81,7 @@
 }
 
 - (void)setMute:(Call *)call isMuted:(bool)isMuted {
+    NSLog(@"************************* CallManager::setMute");
     CXSetMutedCallAction *muteCallAction = [[CXSetMutedCallAction alloc] initWithCallUUID:call.uuid muted:isMuted];
     CXTransaction *transaction = [[CXTransaction alloc] initWithAction:muteCallAction];
     
@@ -85,6 +89,7 @@
 }
 
 - (void)setGroup:(Call *)call mergeCall:(Call *)mergeCall{
+    NSLog(@"************************* CallManager::setGroup");
     CXSetGroupCallAction *groupCallAction = [[CXSetGroupCallAction alloc] initWithCallUUID:call.uuid callUUIDToGroupWith:mergeCall.uuid];
     CXTransaction *transaction = [[CXTransaction alloc] initWithAction:groupCallAction];
     
@@ -92,6 +97,7 @@
 }
 
 - (void)setPlayDTMF:(Call *)call digits:(NSString *)digits {
+    NSLog(@"************************* CallManager::setPlayDTMF");
     CXPlayDTMFCallAction *dtmfCallAction = [[CXPlayDTMFCallAction alloc] initWithCallUUID:call.uuid digits:digits type:CXPlayDTMFCallActionTypeSingleTone];
     CXTransaction *transaction = [[CXTransaction alloc] initWithAction:dtmfCallAction];
     

@@ -44,8 +44,8 @@ typedef void (^AnswerCallBlock)(Call *call);
     return self;
 }
 
-- (void)reportIncomingCallWithUUID:(NSUUID *)uuid handle:(NSString *)handle hasVideo:(bool)hasVideo completion:( void(^)(NSError *error)) completion answer:( void(^)(Call *call)) answer
-{
+- (void)reportIncomingCallWithUUID:(NSUUID *)uuid handle:(NSString *)handle hasVideo:(bool)hasVideo completion:( void(^)(NSError *error)) completion answer:( void(^)(Call *call)) answer {
+    NSLog(@"************************* ProviderManager::reportIncomingCallWithUUID:");
     CXCallUpdate *update = [CXCallUpdate new];
     update.remoteHandle = [[CXHandle alloc] initWithType:CXHandleTypePhoneNumber value:handle];
     update.hasVideo = hasVideo;
@@ -64,6 +64,7 @@ typedef void (^AnswerCallBlock)(Call *call);
 #pragma mark - CXProviderDelegate
 #pragma mark Call Actions
 -(void)provider:(CXProvider *)provider performStartCallAction:(CXStartCallAction *)action {
+    NSLog(@"************************* provider:(CXProvider *)provider performStartCallAction:(CXStartCallAction *)action");
     Call *call = [[Call alloc] initWithUUID:action.callUUID outgoing:true handle:action.handle.value];
     call.state = CallStateConnection;
     [[AudioService sharedManager] configureAudioSession];
@@ -88,6 +89,7 @@ typedef void (^AnswerCallBlock)(Call *call);
 }
 
 -(void)provider:(CXProvider *)provider performAnswerCallAction:(CXAnswerCallAction *)action {
+    NSLog(@"************************* provider:(CXProvider *)provider performAnswerCallAction:(CXAnswerCallAction *)action");
     Call *call = [_callManager callWithUUID:action.callUUID];
     call.state = CallStateActive;
     if (call == nil) {
@@ -103,6 +105,7 @@ typedef void (^AnswerCallBlock)(Call *call);
 }
 
 -(void)provider:(CXProvider *)provider performEndCallAction:(CXEndCallAction *)action {
+    NSLog(@"************************* provider:(CXProvider *)provider performEndCallAction:(CXEndCallAction *)action");
     Call *call = [_callManager callWithUUID:action.callUUID];
     call.state = CallStateEnded;
     if (call == nil) {
@@ -111,13 +114,14 @@ typedef void (^AnswerCallBlock)(Call *call);
     }
     
     [[AudioService sharedManager] stopAudio];
-    
+    // TODO: End WebRTC call here.
     [call end];
     [action fulfill];
     [_callManager remove:call];
 }
 
 -(void)provider:(CXProvider *)provider performSetHeldCallAction:(CXSetHeldCallAction *)action {
+    NSLog(@"************************* provider performSetHeldCallAction:(CXSetHeldCallAction *)action");
     Call *call = [_callManager callWithUUID:action.callUUID];
     call.state = CallStateHeld;
     if (call == nil) {
@@ -137,6 +141,7 @@ typedef void (^AnswerCallBlock)(Call *call);
 }
 
 -(void)provider:(CXProvider *)provider performSetMutedCallAction:(CXSetMutedCallAction *)action {
+    NSLog(@"************************* provider performSetMutedCallAction:(CXSetMutedCallAction *)action");
     Call *call = [_callManager callWithUUID:action.callUUID];
     if (call == nil) {
         [action fail];
@@ -147,6 +152,7 @@ typedef void (^AnswerCallBlock)(Call *call);
 }
 
 -(void)provider:(CXProvider *)provider performSetGroupCallAction:(CXSetGroupCallAction *)action {
+    NSLog(@"************************* provider performSetGroupCallAction:(CXSetGroupCallAction *)action");
     Call *call = [_callManager callWithUUID:action.callUUID];
     if (call == nil) {
         [action fail];
@@ -157,6 +163,7 @@ typedef void (^AnswerCallBlock)(Call *call);
 }
 
 -(void)provider:(CXProvider *)provider performPlayDTMFCallAction:(CXPlayDTMFCallAction *)action {
+    NSLog(@"************************* provider performPlayDTMFCallAction:(CXPlayDTMFCallAction *)action");
     Call *call = [_callManager callWithUUID:action.callUUID];
     if (call == nil) {
         [action fail];
@@ -167,6 +174,7 @@ typedef void (^AnswerCallBlock)(Call *call);
 }
 
 -(void)providerDidReset:(CXProvider *)provider {
+    NSLog(@"************************* providerDidReset:(CXProvider *)provider");
     [[AudioService sharedManager] stopAudio];
     
     for (Call *call in _callManager.calls) {
@@ -178,10 +186,12 @@ typedef void (^AnswerCallBlock)(Call *call);
 
 #pragma mark Activation Audio Session
 -(void)provider:(CXProvider *)provider didActivateAudioSession:(AVAudioSession *)audioSession {
+    NSLog(@"************************* provider:(CXProvider *)provider didActivateAudioSession:(AVAudioSession *)audioSession");
     [[AudioService sharedManager] startAudio];
 }
 
 -(void)provider:(CXProvider *)provider didDeactivateAudioSession:(AVAudioSession *)audioSession {
+    NSLog(@"************************* provider:(CXProvider *)provider didDeactivateAudioSession:(AVAudioSession *)audioSession");
     [[AudioService sharedManager] stopAudio];
 }
 
