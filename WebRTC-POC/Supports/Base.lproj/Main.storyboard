@@ -215,6 +215,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7EK-vy-UGe">
+                                <rect key="frame" x="0.0" y="0.0" width="76" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="n2k-bD-v0A"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="x4J-BH-pMf"/>
+                                </constraints>
+                                <state key="normal" title="Unregister"/>
+                                <connections>
+                                    <action selector="unregister_Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vch-Nj-k0T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -226,6 +237,7 @@
                             <constraint firstItem="3US-wP-Z0f" firstAttribute="leading" secondItem="cjb-IN-CDp" secondAttribute="trailing" constant="20" id="59Y-Ov-Uw6"/>
                             <constraint firstItem="WTy-St-NXl" firstAttribute="top" secondItem="1fw-MB-gNP" secondAttribute="top" constant="29" id="6WY-gd-qUK"/>
                             <constraint firstItem="3US-wP-Z0f" firstAttribute="top" secondItem="WTy-St-NXl" secondAttribute="bottom" constant="26" id="6k7-q8-igS"/>
+                            <constraint firstItem="7EK-vy-UGe" firstAttribute="leading" secondItem="1fw-MB-gNP" secondAttribute="leading" id="8Bt-ku-SET"/>
                             <constraint firstItem="1dK-Cs-imN" firstAttribute="top" secondItem="xM4-A9-Flj" secondAttribute="bottom" constant="2" id="8GL-Ou-nrP"/>
                             <constraint firstItem="VYI-Zm-gQy" firstAttribute="trailing" secondItem="1fw-MB-gNP" secondAttribute="trailingMargin" id="8Q8-jw-me9"/>
                             <constraint firstAttribute="trailing" secondItem="PCM-ih-h9e" secondAttribute="trailing" constant="3" id="C0L-BD-CqG"/>
@@ -238,6 +250,7 @@
                             <constraint firstItem="LKG-tU-KH5" firstAttribute="leading" secondItem="1fw-MB-gNP" secondAttribute="leading" constant="16" id="KM1-h4-d5g"/>
                             <constraint firstItem="LKG-tU-KH5" firstAttribute="top" secondItem="1dK-Cs-imN" secondAttribute="bottom" constant="3" id="LM7-9U-E3D"/>
                             <constraint firstItem="cWV-GN-3Ed" firstAttribute="top" secondItem="fMN-TJ-rHC" secondAttribute="bottom" constant="9" id="Okx-Yn-Knd"/>
+                            <constraint firstItem="7EK-vy-UGe" firstAttribute="top" secondItem="1fw-MB-gNP" secondAttribute="top" id="Uq8-fW-B0a"/>
                             <constraint firstItem="1ev-3I-RR7" firstAttribute="trailing" secondItem="1fw-MB-gNP" secondAttribute="trailingMargin" constant="16" id="VKJ-yU-RDl"/>
                             <constraint firstItem="PCM-ih-h9e" firstAttribute="top" secondItem="VYI-Zm-gQy" secondAttribute="bottom" constant="18" id="VTS-lg-7Wk"/>
                             <constraint firstAttribute="trailing" secondItem="pFG-4D-Vjj" secondAttribute="trailing" constant="3" id="Wyv-oA-fkV"/>

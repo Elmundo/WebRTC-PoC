@@ -1,3 +1,5 @@
+
+
 //
 //  ProviderManager.m
 //  WebRTC-POC
@@ -14,7 +16,7 @@ typedef void (^AnswerCallBlock)(Call *call);
 {
     CXProvider *_prodiver;
     AnswerCallBlock _answerCallBlock;
-    
+    // CallManager *callManager;
 }
 
 + (id)sharedManager {
@@ -68,7 +70,7 @@ typedef void (^AnswerCallBlock)(Call *call);
     Call *call = [[Call alloc] initWithUUID:action.callUUID outgoing:true handle:action.handle.value];
     call.state = CallStateConnection;
     [[AudioService sharedManager] configureAudioSession];
-    
+
     call.connectedStateChanged = ^{
         if (call.connectionState == ConnectedStatePending) {
             [_prodiver reportOutgoingCallWithUUID:call.uuid startedConnectingAtDate:nil];
@@ -132,11 +134,12 @@ typedef void (^AnswerCallBlock)(Call *call);
     call.state = (action.isOnHold) ? CallStateHeld : CallStateActive;
     
     if (call.state == CallStateHeld) {
+        // TODO: Hold WebRTC call here.
         [[AudioService sharedManager] stopAudio];
     }else {
+        // TODO: Resume WebRTC call here.
         [[AudioService sharedManager] startAudio];
     }
-    
     [action fulfill];
 }
 
@@ -147,7 +150,6 @@ typedef void (^AnswerCallBlock)(Call *call);
         [action fail];
         return;
     }
-    
     [action fulfill];
 }
 
@@ -158,7 +160,6 @@ typedef void (^AnswerCallBlock)(Call *call);
         [action fail];
         return;
     }
-    
     [action fulfill];
 }
 
@@ -169,18 +170,16 @@ typedef void (^AnswerCallBlock)(Call *call);
         [action fail];
         return;
     }
-    
     [action fulfill];
 }
 
 -(void)providerDidReset:(CXProvider *)provider {
     NSLog(@"************************* providerDidReset:(CXProvider *)provider");
+    // Clean up any ongoing calls
     [[AudioService sharedManager] stopAudio];
-    
     for (Call *call in _callManager.calls) {
         [call end];
     }
-    
     [_callManager removeAllCalls];
 }
 

@@ -59,6 +59,7 @@
     switch (state) {
         case AudioCallStateEarPierce:
             NSLog(@"************************* AudioService::switchTo:  AudioCallStateEarPierce");
+            
             [_audioSession setCategory:AVAudioSessionCategoryPlayAndRecord
                   withOptions:AVAudioSessionCategoryOptionAllowBluetooth
                                  error:&error];

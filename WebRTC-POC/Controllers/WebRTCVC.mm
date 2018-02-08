@@ -49,6 +49,7 @@
     NSString *_fid;
     NSString *_did;
     NSString *_sessionInfo;
+    NSString *_sessionId;
     NSString *_clientId;
     NSString *_callId;
     NSString *_secondCallId;
@@ -115,17 +116,20 @@
     activeConnectionCount = 0;
     
     logs       = [[NSMutableArray<LogModel *> alloc] init];
-    authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"48", @"49", @"50", @"56", @"57", nil];
+    authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"48", @"49", @"50", @"56", @"57", @"59", nil];
     msisdnList = [[NSArray<NSString *> alloc] initWithObjects:
                   @"908502284041@superims.com", @"908502284042@superims.com",
                   @"905390000098@ims.mnc001.mcc286.3gppnetwork.org",
                   @"905390000530@ims.mnc001.mcc286.3gppnetwork.org", @"905390000058@ims.mnc001.mcc286.3gppnetwork.org",
-                  @"905332108283@ims.mnc001.mcc286.3gppnetwork.org", @"905326704476@ims.mnc001.mcc286.3gppnetwork.org",
-                  @"905308812074@ims.mnc001.mcc286.3gppnetwork.org", nil];
+                  @"05390000058@ims.mnc001.mcc286.3gppnetwork.org",
+                  @"05332108283@ims.mnc001.mcc286.3gppnetwork.org", @"905326704476@ims.mnc001.mcc286.3gppnetwork.org",
+                  @"905308812074@ims.mnc001.mcc286.3gppnetwork.org", @"905390001903@ims.mnc001.mcc286.3gppnetwork.org",
+                  @"05304556754@ims.mnc001.mcc286.3gppnetwork.org", @"05322106528@ims.mnc001.mcc286.3gppnetwork.org",
+                  @"908502290000@ims.mnc001.mcc286.3gppnetwork.org",nil];
     
-    _authCode           = [authCodes objectAtIndex:4];
-    _msisdn             = [msisdnList objectAtIndex:3];
-    _targetMsisdn       = [msisdnList objectAtIndex:7];
+    _authCode           = [authCodes objectAtIndex:3];
+    _msisdn             = [msisdnList objectAtIndex:4];
+    _targetMsisdn       = [msisdnList objectAtIndex:6];
     _secondTargetMsisdn = [msisdnList objectAtIndex:3];
     
     self.authCodeTF.text           = _authCode;
@@ -205,8 +209,8 @@
             if (firstOpening) {
                 [self addLog:@"Internet if online."];
                 if (_sessionInfo) {
-//                    std::string sessionInfo  = [_sessionInfo cStringWebRTC];
-//                    WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
+                    std::string sessionInfo  = [_sessionInfo cStringWebRTC];
+                    WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
                 }
             }else {
                 firstOpening = true;
@@ -278,8 +282,7 @@
     std::string msisdn      = [_msisdn cStringWebRTC];
     std::string workline    = "WebRTC worline";
     
-//    WEBRTC_STATUS_CODE status = WebRTC::mavInstance().mavRegisterAgain([_sessionId cStringWebRTC]);
-       
+
     _sessionInfo = [self getUserDefaultsWithKey:@"sessionInfo"];
     WEBRTC_STATUS_CODE status;
     if (_sessionInfo) {
@@ -456,7 +459,7 @@
         std::string caller    = [_msisdn cStringWebRTC];
         std::string callId    = [@"" cStringWebRTC];
         
-        WebRTC::mavInstance().mavCallStart(callie, callId, false, WEBRTC_AUDIO_WIRED_HEADSET, caller);
+        WebRTC::mavInstance().mavCallStart(callie, callId, false, WEBRTC_AUDIO_SPEAKER, caller);
         _callId = [NSString stringWithCharList:callId.c_str()];
         [[CallManager sharedManager] startCall:_targetMsisdn videoEnabled:false];
         [self addLog:[NSString stringWithFormat:@"WebRTC::mavInstance().mavCallStart; callId:%@!", _callId]];
@@ -506,7 +509,6 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    NSLog(@"");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -519,9 +521,6 @@
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    NSLog(@"");
 }
 
 #pragma mark -
@@ -530,7 +529,7 @@
 - (void)mavOnReceivedRegisterSuccess:(std::string)did fid:(std::string)fid sessionid:(std::string)sessionid clientid:(std::string)clientid {
     _did       = [NSString stringWithCharList:did.c_str()];
     _fid       = [NSString stringWithCharList:fid.c_str()];
-//    _sessionI_ = [NSString stringWithCharList:sessionid.c_str()];
+    _sessionId = [NSString stringWithCharList:sessionid.c_str()];
     _clientId  = [NSString stringWithCharList:clientid.c_str()];
     
 //    [self setUserDefaultsWithKey:@"sessionId" value:_sessionId];
@@ -540,7 +539,7 @@
 -(void)mavOnReceivedReRegisterSuccess:(std::string)did fid:(std::string)fid sessionid:(std::string)sessionid clientid:(std::string)clientid {
     _did       = [NSString stringWithCharList:did.c_str()];
     _fid       = [NSString stringWithCharList:fid.c_str()];
-//    _sessionId = [NSString stringWithCharList:sessionid.c_str()];
+    _sessionId = [NSString stringWithCharList:sessionid.c_str()];
     _clientId  = [NSString stringWithCharList:clientid.c_str()];
     
     [self addLog:@"WebRTC mavOnReceivedReRegisterSuccess!"];
@@ -569,10 +568,10 @@
     if (self.presentedViewController) {
         [self.presentedViewController dismissViewControllerAnimated:true completion:nil];
     }
-    std::string sessionInfo  = [_sessionInfo cStringWebRTC];
+    std::string sessionId  = [_sessionId cStringWebRTC];
     std::string nativeline = [_msisdn cStringWebRTC];
     
-    WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavReRegister(sessionInfo, nativeline);
+    WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavReRegister(sessionId, nativeline);
 }
 
 -(void)mavOnReceivedRegisterError:(int)responsecode errorcode:(int)errorcode {
@@ -602,10 +601,12 @@
     _callId = [NSString stringWithCharList:callid.c_str()];
     
     NSString *handle = [NSString stringWithCharList:uri.c_str()];
+    UIBackgroundTaskIdentifier backgroundTaskIdentifier = [UIApplication.sharedApplication beginBackgroundTaskWithExpirationHandler:nil];
     [[ProviderManager sharedManager] reportIncomingCallWithUUID:[NSUUID UUID] handle:handle hasVideo:false completion:^(NSError *error) {
         if(error) {
             NSLog(@"Error: %@", [error description]);
         }
+        [UIApplication.sharedApplication endBackgroundTask:backgroundTaskIdentifier];
     } answer:^(Call *call) {
         std::string callId = [_callId cStringWebRTC];
         WebRTC::mavInstance().mavCallAccept(callId, false, WEBRTC_AUDIO_EAR_PIECE);
@@ -626,13 +627,13 @@
         Call *call = [[CallManager sharedManager] getActiveCall];
         call.state = CallStateActive;
         [call answer];
-        
+
         std::string confcallId = [@"" cStringWebRTC];
         std::string callId = [_secondCallId cStringWebRTC];
         std::string activeUri = [_secondTargetMsisdn cStringWebRTC];
         std::string holdUri = [_targetMsisdn cStringWebRTC];
         std::string lineinfo = [_msisdn cStringWebRTC];
-        
+
         WebRTC::mavInstance().mavStartAdHocConf(confcallId, callId, activeUri, holdUri, WEBRTC_AUDIO_EAR_PIECE, lineinfo);
     }else {
         _callId = [NSString stringWithCharList:callid.c_str()];
@@ -648,12 +649,12 @@
 -(void)mavOnReceivedCallStatus:(std::string)callid statuscode:(int)statuscode {
     [self addLog: [NSString stringWithFormat:@"WebRTC mavOnReceivedCallStatus! callid: %@ statusCode: %d", [NSString stringWithCharList:callid.c_str()], statuscode]];
     
-    // Who knows?
+    // Ringing
     if (statuscode == 183) {
         NSLog(@"************************* StatusCode = 183");
     }
     
-    // Incoming Call
+    // Ringing
     if (statuscode == 180) {
         Call *call = [[CallManager sharedManager] getActiveCall];
         call.connectionState = ConnectedStatePending;
@@ -707,6 +708,13 @@
             [self.presentedViewController dismissViewControllerAnimated:true completion:nil];
         }
         NSLog(@"************************* StatusCode = 500");
+    }
+    
+    if (statuscode >= 300) {
+        if (self.presentedViewController) {
+            [self.presentedViewController dismissViewControllerAnimated:true completion:nil];
+            NSLog(@"************************* StatusCode >= 300 - General Error.");
+        }
     }
 }
 
@@ -777,6 +785,15 @@
 -(void)mavOnAdHocConfStatus:(std::string)callid status:(std::string)status {
     [self addLog: [NSString stringWithFormat:@"WebRTC mavOnAdHocConfStatus! callid: %@", [NSString stringWithCharList:callid.c_str()] ]];
     _callId = [NSString stringWithCharList:callid.c_str()] ;
+}
+-(void)OnMavUnRegisterStatus:(bool)status {
+    NSLog(@"OnMavUnRegisterStatus status: %d", status);
+}
+
+- (IBAction)unregister_Action:(id)sender {
+    WebRTC::mavInstance().mavUnRegister(true);
+    _sessionInfo = nil;
+    [self setUserDefaultsWithKey:@"sessionInfo" value:nil];
 }
 
 @end
