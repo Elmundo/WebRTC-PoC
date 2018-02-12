@@ -8,7 +8,6 @@
 
 #import <DWAddressBook.h>
 #import <JCPadButton.h>
-
 #import "CallerVC.h"
 #import "CallManager.h"
 
@@ -20,7 +19,6 @@ typedef void (^SecondCallBlock)();
 
 @implementation CallerVC
 {
-    NSString *_callId;
     WebRTC *webRTC;
     CNContactPickerViewController *contactController;
     DWAddressBook *addressbook;
@@ -133,20 +131,27 @@ typedef void (^SecondCallBlock)();
 
 #pragma mark - Methdos
 - (void)configureSecondCall {
-    if (_callId) {
+    
+    WebRTCCall *webrtcCall = [_webRTCController getActiveWebRTCCall];
+    if (webrtcCall) {
         [self.secondCallL setHidden:false];
-        std::string callId    = [_callId cStringWebRTC];
+        std::string callId    = [webrtcCall.callId cStringWebRTC];
         WebRTC::mavInstance().mavCallHold(callId, false);
+        webrtcCall.state = WebRTCCallStateHold;
+        
+        // When first call is holded, this block of code will be executed immediately.
         secondCallBlock = ^{
-            std::string callie    = [_secondtargetMsisdn cStringWebRTC];
-            std::string caller    = [_caller cStringWebRTC];
-            std::string dynamicId = [_sessionInfo cStringWebRTC];
-            std::string callId    = [_callId cStringWebRTC];
-            
-            WebRTC::mavInstance().mavCallStart(callie, dynamicId, false, WEBRTC_AUDIO_WIRED_HEADSET, caller);
+            std::string callie       = [_secondtargetMsisdn cStringWebRTC];
+            std::string caller       = [_caller cStringWebRTC];
+            std::string secondCallId = [@"" cStringWebRTC];
+
+            WebRTC::mavInstance().mavCallStart(callie, secondCallId, false, WEBRTC_AUDIO_WIRED_HEADSET, caller);
+            NSString *ns_secondCallId = [NSString stringWithUTF8String:secondCallId.c_str()];
+        
+            WebRTCCall *webrtcCall = [[WebRTCCall alloc] initWith:ns_secondCallId msisdn:_caller callee:_secondtargetMsisdn outgoing:true];
+            [_webRTCController addWebRTCCall:webrtcCall];
             [[CallManager sharedManager] startCall:_secondtargetMsisdn videoEnabled:false];
         };
-        
     }
 }
 
@@ -163,25 +168,28 @@ typedef void (^SecondCallBlock)();
     UIButton *btn = (UIButton *)sender;
     NSString *text = btn.titleLabel.text;
     
-    if ([text isEqualToString:@"Hold"]) {
-        if (_callId) {
-            std::string c_callId = [_callId cStringWebRTC];
+    WebRTCCall *webrtcCall = [[_webRTCController calls] firstObject];
+    if (webrtcCall) {
+        if ([text isEqualToString:@"Hold"]) {
+            std::string c_callId = [webrtcCall.callId cStringWebRTC];
             WebRTC::mavInstance().mavCallHold(c_callId, true);
             [btn setTitle:@"Resume" forState:UIControlStateNormal];
+            webrtcCall.state = WebRTCCallStateHold;
             
             Call *call = [[CallManager sharedManager] getActiveCall];
             call.state = CallStateHeld;
-            [[CallManager sharedManager] setHeld:call onHold:true];
-        }
-    }else if ([text isEqualToString:@"Resume"]) {
-        if (_callId) {
-            std::string c_callId = [_callId cStringWebRTC];
+//            [[CallManager sharedManager] setHeld:call onHold:true];
+            
+        }else if ([text isEqualToString:@"Resume"]) {
+            
+            std::string c_callId = [webrtcCall.callId cStringWebRTC];
             WebRTC::mavInstance().mavCallUnhold(c_callId);
             [btn setTitle:@"Hold" forState:UIControlStateNormal];
+            webrtcCall.state = WebRTCCallStateActive;
             
             Call *call = [[CallManager sharedManager] getActiveCall];
             call.state = CallStateActive;
-            [[CallManager sharedManager] setHeld:call onHold:false];
+//            [[CallManager sharedManager] setHeld:call onHold:false];
         }
     }
 }
@@ -190,20 +198,19 @@ typedef void (^SecondCallBlock)();
     UIButton *btn = (UIButton *)sender;
     NSString *text = btn.titleLabel.text;
     
-    if ([text isEqualToString:@"Mute"]) {
-        if (_callId) {
-            std::string c_callId = [_callId cStringWebRTC];
+    WebRTCCall *webrtcCall = [[_webRTCController calls] firstObject];
+    if (webrtcCall) {
+        if ([text isEqualToString:@"Mute"]) {
+            std::string c_callId = [webrtcCall.callId cStringWebRTC];
             WebRTC::mavInstance().mavCallMute(c_callId);
             [btn setTitle:@"Unmute" forState:UIControlStateNormal];
             
             Call *call = [[CallManager sharedManager] getActiveCall];
             call.state = CallStateActive;
             [[CallManager sharedManager] setHeld:call onHold:false];
-        }
-        
-    }else if ([text isEqualToString:@"Unmute"]) {
-        if (_callId) {
-            std::string c_callId = [_callId cStringWebRTC];
+
+        }else if ([text isEqualToString:@"Unmute"]) {
+            std::string c_callId = [webrtcCall.callId cStringWebRTC];
             WebRTC::mavInstance().mavCallUnMute(c_callId);
             [btn setTitle:@"Mute" forState:UIControlStateNormal];
             
@@ -223,24 +230,24 @@ typedef void (^SecondCallBlock)();
     UIButton *btn = (UIButton *)sender;
     NSString *text = btn.titleLabel.text;
     
-    if ([text isEqualToString:@"Speaker"]) {
-        if (_callId) {
-            std::string c_callId = [_callId cStringWebRTC];
+    WebRTCCall *webrtcCall = [[_webRTCController calls] firstObject];
+    if (webrtcCall) {
+        if ([text isEqualToString:@"Speaker"]) {
+            std::string c_callId = [webrtcCall.callId cStringWebRTC];
+            [btn setTitle:@"Earpiece" forState:UIControlStateNormal];
+            [[AudioService sharedManager] switchTo:AudioCallStateSpeaker];
+            
+        }else if ([text isEqualToString:@"Earpiece"]) {
+            std::string c_callId = [webrtcCall.callId cStringWebRTC];
+            [btn setTitle:@"Speaker" forState:UIControlStateNormal];
+            [[AudioService sharedManager] switchTo:AudioCallStateEarPierce];
         }
-        [btn setTitle:@"Earpiece" forState:UIControlStateNormal];
-        [[AudioService sharedManager] switchTo:AudioCallStateSpeaker];
-        
-    }else if ([text isEqualToString:@"Earpiece"]) {
-        if (_callId) {
-            std::string c_callId = [_callId cStringWebRTC];
-        }
-        [btn setTitle:@"Speaker" forState:UIControlStateNormal];
-        [[AudioService sharedManager] switchTo:AudioCallStateEarPierce];
     }
 }
 
 - (IBAction)dialpad_Action:(id)sender {
-    if (_callId != nil) {
+    WebRTCCall *webrtcCall = [_webRTCController getActiveWebRTCCall];
+    if (webrtcCall) {
         [self.view addSubview:dialpad];
     }
 }
@@ -248,31 +255,47 @@ typedef void (^SecondCallBlock)();
 #pragma mark - Notifications
 
 -(void)onCallActive_Action:(NSNotification *)userInfo {
-    _callId = [userInfo.userInfo objectForKey:@"data"];
+    WebRTCCall *webrtcCall = [userInfo.userInfo objectForKey:@"data"];
 }
 
 -(void)onCallStatus_Action:(NSNotification *)userInfo {
-    _callId = [userInfo.userInfo objectForKey:@"data"];
+    WebRTCCall *webrtcCall = [userInfo.userInfo objectForKey:@"data"];
 }
 
 -(void)onCallEnd_Action:(NSNotification *)userInfo {
-    _callId = [userInfo.userInfo objectForKey:@"data"];
+    WebRTCCall *webrtcCall = [userInfo.userInfo objectForKey:@"data"];
 }
 
 -(void)onCallReject_Action:(NSNotification *)userInfo {
-    _callId = [userInfo.userInfo objectForKey:@"data"];
+    WebRTCCall *webrtcCall = [userInfo.userInfo objectForKey:@"data"];
 }
 
 -(void)onCallHold_Action:(NSNotification *)userInfo {
-    _callId = [userInfo.userInfo  objectForKey:@"data"];
+    WebRTCCall *webrtcCall = [userInfo.userInfo  objectForKey:@"data"];
     if (secondCallBlock) {
         secondCallBlock();
         secondCallBlock = nil;
     }
 }
+- (IBAction)onCallMerge:(id)sender {
+    WebRTCCall *webrtcSecondCall = [_webRTCController getActiveWebRTCCall];
+    WebRTCCall *webrtcHoldedCall = [_webRTCController getWebRTCCallWithState:WebRTCCallStateHold isOutgoing:true];
+    
+    Call *call = [[CallManager sharedManager] getActiveCall];
+    call.state = CallStateActive;
+    [call answer];
+
+    std::string confcallId  = [@"" cStringWebRTC];
+    std::string callId      = [webrtcSecondCall.callId cStringWebRTC];
+    std::string activeUri   = [webrtcSecondCall.callee cStringWebRTC];
+    std::string holdUri     = [webrtcHoldedCall.callee cStringWebRTC];
+    std::string lineinfo    = [webrtcSecondCall.msisdn cStringWebRTC];
+
+    WebRTC::mavInstance().mavStartAdHocConf(confcallId, callId, activeUri, holdUri, WEBRTC_AUDIO_EAR_PIECE, lineinfo);
+}
 
 -(void)onCallUnhold_Action:(NSNotification *)userInfo {
-    _callId = [userInfo.userInfo objectForKey:@"data"];
+    WebRTCCall *webrtcCall = [userInfo.userInfo objectForKey:@"data"];
 }
 
 #pragma mark - Delegates
@@ -283,9 +306,17 @@ typedef void (^SecondCallBlock)();
     }else {
         NSLog(@"Pressed button is: %@", text);
         char digit = [text cStringWebRTC][0];
-        WebRTC::mavInstance().mavCallDTMF([_callId cStringWebRTC] , digit);
+        WebRTCCall *webrtcCall = [_webRTCController getActiveWebRTCCall];
+        if (webrtcCall) {
+            WebRTC::mavInstance().mavCallDTMF([webrtcCall.callId cStringWebRTC] , digit);
+        }
     }
     return true;
+}
+
+#pragma mark - GETTERS & SETTERS
+-(NSMutableArray<WebRTCCall *> *)webrtcCalls {
+    return self.webRTCController.calls;
 }
 
 @end

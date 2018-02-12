@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		443B81F6202C3BA8007E9307 /* WebRTCCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 443B81F5202C3BA8007E9307 /* WebRTCCall.m */; };
 		443FC53920038A1900B6F6ED /* TableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 443FC53820038A1900B6F6ED /* TableViewDelegate.m */; };
 		4445FD561FAB2BB8004A9EDF /* WebRTCVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4445FD551FAB2BB8004A9EDF /* WebRTCVC.mm */; };
 		4445FD591FAB2BD3004A9EDF /* mavenir.webrtc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445FD581FAB2BD3004A9EDF /* mavenir.webrtc.framework */; };
@@ -50,7 +51,7 @@
 		446F12FE1FAB2927009BA230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446F12FC1FAB2927009BA230 /* LaunchScreen.storyboard */; };
 		446F13011FAB2927009BA230 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 446F13001FAB2927009BA230 /* main.m */; };
 		44BB0AC61FDA79DC00BB9180 /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0AC51FDA79DC00BB9180 /* CallManager.m */; };
-		44BB0AC91FDA79E800BB9180 /* ProviderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0AC81FDA79E800BB9180 /* ProviderManager.m */; };
+		44BB0AC91FDA79E800BB9180 /* ProviderManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0AC81FDA79E800BB9180 /* ProviderManager.mm */; };
 		44BB0ACC1FDA7BB000BB9180 /* Call.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0ACB1FDA7BB000BB9180 /* Call.m */; };
 		44BB0ACF1FDAB85100BB9180 /* AudioService.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BB0ACE1FDAB85100BB9180 /* AudioService.m */; };
 		44BFC7241FBEA9F600BE5830 /* CallerVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 44BFC7221FBEA9F600BE5830 /* CallerVC.mm */; };
@@ -81,6 +82,8 @@
 /* Begin PBXFileReference section */
 		0DAEA27A5EEE4BAD5531B8EE /* Pods-WebRTC-POC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTC-POC.release.xcconfig"; path = "Pods/Target Support Files/Pods-WebRTC-POC/Pods-WebRTC-POC.release.xcconfig"; sourceTree = "<group>"; };
 		2196CDB4DD52AA0415A64200 /* libPods-WebRTC-POC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WebRTC-POC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		443B81F4202C3BA8007E9307 /* WebRTCCall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebRTCCall.h; sourceTree = "<group>"; };
+		443B81F5202C3BA8007E9307 /* WebRTCCall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebRTCCall.m; sourceTree = "<group>"; };
 		443FC53720038A1900B6F6ED /* TableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewDelegate.h; sourceTree = "<group>"; };
 		443FC53820038A1900B6F6ED /* TableViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewDelegate.m; sourceTree = "<group>"; };
 		4445FD541FAB2BB8004A9EDF /* WebRTCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebRTCVC.h; path = "WebRTC-POC/Controllers/WebRTCVC.h"; sourceTree = SOURCE_ROOT; };
@@ -136,7 +139,7 @@
 		44BB0AC41FDA79DC00BB9180 /* CallManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallManager.h; sourceTree = "<group>"; };
 		44BB0AC51FDA79DC00BB9180 /* CallManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallManager.m; sourceTree = "<group>"; };
 		44BB0AC71FDA79E800BB9180 /* ProviderManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProviderManager.h; sourceTree = "<group>"; };
-		44BB0AC81FDA79E800BB9180 /* ProviderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProviderManager.m; sourceTree = "<group>"; };
+		44BB0AC81FDA79E800BB9180 /* ProviderManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ProviderManager.mm; sourceTree = "<group>"; };
 		44BB0ACA1FDA7BB000BB9180 /* Call.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Call.h; sourceTree = "<group>"; };
 		44BB0ACB1FDA7BB000BB9180 /* Call.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Call.m; sourceTree = "<group>"; };
 		44BB0ACD1FDAB85100BB9180 /* AudioService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioService.h; sourceTree = "<group>"; };
@@ -312,7 +315,7 @@
 				44BB0AC41FDA79DC00BB9180 /* CallManager.h */,
 				44BB0AC51FDA79DC00BB9180 /* CallManager.m */,
 				44BB0AC71FDA79E800BB9180 /* ProviderManager.h */,
-				44BB0AC81FDA79E800BB9180 /* ProviderManager.m */,
+				44BB0AC81FDA79E800BB9180 /* ProviderManager.mm */,
 				44BB0ACD1FDAB85100BB9180 /* AudioService.h */,
 				44BB0ACE1FDAB85100BB9180 /* AudioService.m */,
 				44BB0ACA1FDA7BB000BB9180 /* Call.h */,
@@ -345,6 +348,8 @@
 			children = (
 				44BFC7371FBF058E00BE5830 /* LogModel.h */,
 				44BFC7381FBF058E00BE5830 /* LogModel.m */,
+				443B81F4202C3BA8007E9307 /* WebRTCCall.h */,
+				443B81F5202C3BA8007E9307 /* WebRTCCall.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -536,12 +541,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44BB0AC91FDA79E800BB9180 /* ProviderManager.m in Sources */,
+				44BB0AC91FDA79E800BB9180 /* ProviderManager.mm in Sources */,
 				44BB0ACC1FDA7BB000BB9180 /* Call.m in Sources */,
 				44BFC7361FBED64600BE5830 /* LogTVC.m in Sources */,
 				446F13011FAB2927009BA230 /* main.m in Sources */,
 				44BFC7391FBF058E00BE5830 /* LogModel.m in Sources */,
 				44BFC7241FBEA9F600BE5830 /* CallerVC.mm in Sources */,
+				443B81F6202C3BA8007E9307 /* WebRTCCall.m in Sources */,
 				443FC53920038A1900B6F6ED /* TableViewDelegate.m in Sources */,
 				44BFC72C1FBEAA1F00BE5830 /* CallieVC.mm in Sources */,
 				446F12F31FAB2927009BA230 /* AppDelegate.m in Sources */,

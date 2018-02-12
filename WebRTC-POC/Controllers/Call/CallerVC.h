@@ -12,6 +12,8 @@
 #import <mavenir.webrtc/WebRTC.h>
 #import <mavenir.webrtc/WebRTCiOS.h>
 #import <JCDialPad.h>
+#import "WebRTCCall.h"
+#import "WebRTCVC.h"
 
 #import "NSString+WebRTC.h"
 #import "AudioService.h"
@@ -33,13 +35,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *muteBtn;
 @property (weak, nonatomic) IBOutlet UIButton *addCallBtn;
 @property (weak, nonatomic) IBOutlet UIButton *speakerBtn;
+@property (weak, nonatomic) IBOutlet UIButton *mergeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *dialPad;
 
 @property (weak, nonatomic) id<CallerDelegate> delegate;
 
 @property (nonatomic, copy) NSString *caller;
-@property (nonatomic, copy) NSString *secondCallId;
 @property (nonatomic, copy) NSString *secondtargetMsisdn;
 @property (nonatomic, copy) NSString *sessionInfo;
+
+@property (weak, nonatomic) WebRTCVC *webRTCController;
+@property (weak, nonatomic) NSMutableArray<WebRTCCall *> *webrtcCalls;
 
 @end

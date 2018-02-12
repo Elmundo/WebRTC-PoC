@@ -70,6 +70,7 @@
         
         [self requestTransaction:transaction];
     }
+    [self.calls removeObject:call];
 }
 
 -(void)setHeld:(Call *)call onHold:(bool)onHold {
@@ -107,9 +108,9 @@
 -(void)requestTransaction:(CXTransaction *)transaction {
     [_callController requestTransaction:transaction completion:^(NSError * _Nullable error) {
         if (error) {
-            NSLog(@"Error");
+//            NSLog(@"Error");
         }else {
-            NSLog(@"Success");
+//            NSLog(@"Success");
         }
     }];
 }

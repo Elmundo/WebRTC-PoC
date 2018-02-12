@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnullability-completeness"
+
 typedef enum : NSUInteger {
     CallStateConnection = 0,
     CallStateActive,
@@ -23,6 +26,11 @@ typedef enum : NSUInteger {
 
 @interface Call : NSObject
 
+// WebRTC properties
+@property (nullable, nonatomic, strong) NSString *callId;
+@property (nullable, nonatomic, strong) NSString *msisdn;
+@property (nullable, nonatomic, strong) NSString *callee;
+// CallKit properties
 @property (nonatomic, strong) NSUUID *uuid;
 @property (nonatomic, copy) NSString *handle;
 @property (nonatomic, assign) bool isOutgoing;
@@ -36,4 +44,7 @@ typedef enum : NSUInteger {
 - (void)startWithBlock:( void (^__nullable)(bool success))completion;
 - (void)answer;
 - (void)end;
+
 @end
+
+#pragma clang diagnostic pop

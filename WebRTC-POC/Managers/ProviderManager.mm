@@ -8,6 +8,13 @@
 //  Copyright © 2017 BARIS YILMAZ. All rights reserved.
 //
 
+#import <mavenir.webrtc/WebRTC.h>
+#import <mavenir.webrtc/WebRTCiOS.h>
+#import "WebRTCVC.h"
+#import "CallManager.h"
+#import "NSString+WebRTC.h"
+#import "WebRTCCall.h"
+
 #import "ProviderManager.h"
 
 typedef void (^AnswerCallBlock)(Call *call);
@@ -15,8 +22,8 @@ typedef void (^AnswerCallBlock)(Call *call);
 @implementation ProviderManager
 {
     CXProvider *_prodiver;
+    WebRTC *_webRTC;
     AnswerCallBlock _answerCallBlock;
-    // CallManager *callManager;
 }
 
 + (id)sharedManager {
@@ -41,6 +48,8 @@ typedef void (^AnswerCallBlock)(Call *call);
     if (self = [super init]) {
         // Some init operations
         _prodiver = [[CXProvider alloc] initWithConfiguration:[ProviderManager providerConfig]];
+        _webRTC = &WebRTC::mavInstance();
+        _callManager = [CallManager sharedManager];
         [_prodiver setDelegate:self queue:nil];
     }
     return self;
@@ -66,18 +75,25 @@ typedef void (^AnswerCallBlock)(Call *call);
 #pragma mark - CXProviderDelegate
 #pragma mark Call Actions
 -(void)provider:(CXProvider *)provider performStartCallAction:(CXStartCallAction *)action {
-    NSLog(@"************************* provider:(CXProvider *)provider performStartCallAction:(CXStartCallAction *)action");
+    NSLog(@"************************* provider:(CXProvider *)provider performStartCallAction:(CXStartCallAction *)action => action.callUUID: %@", [action.callUUID UUIDString]);
     Call *call = [[Call alloc] initWithUUID:action.callUUID outgoing:true handle:action.handle.value];
     call.state = CallStateConnection;
     [[AudioService sharedManager] configureAudioSession];
-
+    
+    __weak Call *weakCall = call;
     call.connectedStateChanged = ^{
         if (call.connectionState == ConnectedStatePending) {
-            [_prodiver reportOutgoingCallWithUUID:call.uuid startedConnectingAtDate:nil];
+            [_prodiver reportOutgoingCallWithUUID:weakCall.uuid startedConnectingAtDate:nil];
         }else if (call.connectionState == ConnectedStateComplete) {
-            [_prodiver reportOutgoingCallWithUUID:call.uuid connectedAtDate:nil];
+            [_prodiver reportOutgoingCallWithUUID:weakCall.uuid connectedAtDate:nil];
         }
     };
+    
+    WebRTCCall *webrtcCall = [_webrtcController getWebRTCCallWithState:WebRTCCallStatePending isOutgoing:true];
+    if (webrtcCall) {
+        NSLog(@"************************* provider:(CXProvider *)provider performStartCallAction:(CXStartCallAction *)action => CallId: %@  webrtcCall.callUUID = %@", webrtcCall.callId, [call.uuid UUIDString]);
+        webrtcCall.callUUID = call.uuid;
+    }
     
     [call startWithBlock:^(bool success) {
         if (success) {
@@ -91,7 +107,7 @@ typedef void (^AnswerCallBlock)(Call *call);
 }
 
 -(void)provider:(CXProvider *)provider performAnswerCallAction:(CXAnswerCallAction *)action {
-    NSLog(@"************************* provider:(CXProvider *)provider performAnswerCallAction:(CXAnswerCallAction *)action");
+    NSLog(@"************************* provider:(CXProvider *)provider performAnswerCallAction:(CXAnswerCallAction *)action => action.callUUID: %@", [action.callUUID UUIDString]);
     Call *call = [_callManager callWithUUID:action.callUUID];
     call.state = CallStateActive;
     if (call == nil) {
@@ -102,69 +118,97 @@ typedef void (^AnswerCallBlock)(Call *call);
     [[AudioService sharedManager] configureAudioSession];
     [call answer];
     _answerCallBlock(call);
-    
     [action fulfill];
 }
 
 -(void)provider:(CXProvider *)provider performEndCallAction:(CXEndCallAction *)action {
-    NSLog(@"************************* provider:(CXProvider *)provider performEndCallAction:(CXEndCallAction *)action");
-    Call *call = [_callManager callWithUUID:action.callUUID];
-    call.state = CallStateEnded;
-    if (call == nil) {
-        [action fail];
-        return;
+    NSLog(@"************************* provider:(CXProvider *)provider performEndCallAction:(CXEndCallAction *)action = > action.callUUID: %@", [action.callUUID UUIDString]);
+    WebRTCCall *webrtcCall = [_webrtcController getActiveWebRTCCall];
+    if (webrtcCall) {
+        NSLog(@"************************* provider:(CXProvider *)provider performEndCallAction:(CXEndCallAction *)action = > _webRTC->mavCallEnd(%@)  webrtcCall.UUID: %@", webrtcCall.callId, [webrtcCall.callUUID UUIDString]);
+        if ([[webrtcCall.callUUID UUIDString] isEqualToString:[action.callUUID UUIDString]]) {
+            _webRTC->mavCallEnd([webrtcCall.callId cStringWebRTC]);
+        }
     }
     
     [[AudioService sharedManager] stopAudio];
-    // TODO: End WebRTC call here.
-    [call end];
     [action fulfill];
-    [_callManager remove:call];
 }
 
 -(void)provider:(CXProvider *)provider performSetHeldCallAction:(CXSetHeldCallAction *)action {
-    NSLog(@"************************* provider performSetHeldCallAction:(CXSetHeldCallAction *)action");
+    NSLog(@"************************* provider performSetHeldCallAction:(CXSetHeldCallAction *)action = > action.callUUID: %@", [action.callUUID UUIDString]);
     Call *call = [_callManager callWithUUID:action.callUUID];
-    call.state = CallStateHeld;
     if (call == nil) {
         [action fail];
         return;
     }
-    
+    NSLog(@"************************* provider performSetHeldCallAction:(CXSetHeldCallAction *)action => action.isOnHold = %d", action.isOnHold);
     call.state = (action.isOnHold) ? CallStateHeld : CallStateActive;
     
     if (call.state == CallStateHeld) {
         // TODO: Hold WebRTC call here.
+        WebRTCCall *webrtcCall = [_webrtcController getWebRTCCallWithState:WebRTCCallStateActive isOutgoing:true];
+        if (webrtcCall) {
+            NSLog(@"************************* provider:(CXProvider *)provider performSetHeldCallAction:(CXSetHeldCallAction *)action = > _webRTC->mavCallHold(%@)  webrtcCall.UUID: %@", webrtcCall.callId, [webrtcCall.callUUID UUIDString]);
+            if ([[webrtcCall.callUUID UUIDString] isEqualToString:[action.callUUID UUIDString]]) {
+                _webRTC->mavCallHold([webrtcCall.callId cStringWebRTC], false);
+            }
+        }
+        
         [[AudioService sharedManager] stopAudio];
     }else {
         // TODO: Resume WebRTC call here.
+        WebRTCCall *webrtcCall = [_webrtcController getWebRTCCallWithState:WebRTCCallStateHold isOutgoing:true];
+        if (webrtcCall) {
+            NSLog(@"************************* provider:(CXProvider *)provider performSetHeldCallAction:(CXSetHeldCallAction *)action = > _webRTC->mavCallUnHold(%@)  webrtcCall.callUUID = %@", webrtcCall.callId, [webrtcCall.callUUID UUIDString]);
+            if ([[webrtcCall.callUUID UUIDString] isEqualToString:[action.callUUID UUIDString]]) {
+                _webRTC->mavCallUnhold([webrtcCall.callId cStringWebRTC]);
+            }
+        }
+        
         [[AudioService sharedManager] startAudio];
     }
     [action fulfill];
 }
 
 -(void)provider:(CXProvider *)provider performSetMutedCallAction:(CXSetMutedCallAction *)action {
-    NSLog(@"************************* provider performSetMutedCallAction:(CXSetMutedCallAction *)action");
+    NSLog(@"************************* provider performSetMutedCallAction:(CXSetMutedCallAction *)action = > action.callUUID: %@", [action.callUUID UUIDString]);
     Call *call = [_callManager callWithUUID:action.callUUID];
     if (call == nil) {
         [action fail];
         return;
+    }
+    
+    WebRTCCall *webrtcCall = [_webrtcController getActiveWebRTCCall];
+    if (webrtcCall) {
+        NSLog(@"************************* provider:(CXProvider *)provider performSetMutedCallAction:(CXSetMutedCallAction *)action = > _webRTC->mavCallMute(%@)  webrtcCall.callUUID = %@", webrtcCall.callId, [webrtcCall.callUUID UUIDString]);
+        if ([[webrtcCall.callUUID UUIDString] isEqualToString:[action.callUUID UUIDString]]) {
+            _webRTC->mavCallMute([webrtcCall.callId cStringWebRTC]);
+        }
     }
     [action fulfill];
 }
 
 -(void)provider:(CXProvider *)provider performSetGroupCallAction:(CXSetGroupCallAction *)action {
-    NSLog(@"************************* provider performSetGroupCallAction:(CXSetGroupCallAction *)action");
+    NSLog(@"************************* provider performSetGroupCallAction:(CXSetGroupCallAction *)action = > action.callUUID: %@", [action.callUUID UUIDString]);
     Call *call = [_callManager callWithUUID:action.callUUID];
     if (call == nil) {
         [action fail];
         return;
     }
+    
+    WebRTCCall *webrtcCall = [_webrtcController getActiveWebRTCCall];
+    if (webrtcCall) {
+        NSLog(@"************************* provider:(CXProvider *)provider performSetGroupCallAction:(CXSetGroupCallAction *)action = > _webRTC->mavCallUnMute(%@)  webrtcCall.callUUID = %@", webrtcCall.callId, [webrtcCall.callUUID UUIDString]);
+        if ([[webrtcCall.callUUID UUIDString] isEqualToString:[action.callUUID UUIDString]]) {
+            _webRTC->mavCallUnMute([webrtcCall.callId cStringWebRTC]);
+        }
+    }
     [action fulfill];
 }
 
 -(void)provider:(CXProvider *)provider performPlayDTMFCallAction:(CXPlayDTMFCallAction *)action {
-    NSLog(@"************************* provider performPlayDTMFCallAction:(CXPlayDTMFCallAction *)action");
+    NSLog(@"************************* provider performPlayDTMFCallAction:(CXPlayDTMFCallAction *)action = > action.callUUID: %@", [action.callUUID UUIDString]);
     Call *call = [_callManager callWithUUID:action.callUUID];
     if (call == nil) {
         [action fail];

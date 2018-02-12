@@ -48,7 +48,7 @@
 - (void)stopAudio {
     NSLog(@"************************* AudioService::stopAudio");
     NSError *error;
-    [_audioSession setActive:true error:&error];
+    [_audioSession setActive:false error:&error];
     if (error) {
         NSLog(@"Error: %@", [error description]);
     }
@@ -59,7 +59,6 @@
     switch (state) {
         case AudioCallStateEarPierce:
             NSLog(@"************************* AudioService::switchTo:  AudioCallStateEarPierce");
-            
             [_audioSession setCategory:AVAudioSessionCategoryPlayAndRecord
                   withOptions:AVAudioSessionCategoryOptionAllowBluetooth
                                  error:&error];

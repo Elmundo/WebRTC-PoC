@@ -19,6 +19,7 @@
                 <outlet property="declineBtn" destination="PGb-JC-gX9" id="mWF-sI-y4h"/>
                 <outlet property="dialPad" destination="ZEb-8t-LSt" id="ZGD-Gw-j3L"/>
                 <outlet property="holdBtn" destination="c7O-RI-2ON" id="iTB-Zn-GqT"/>
+                <outlet property="mergeBtn" destination="qrJ-EP-Y1j" id="wKH-HW-5w9"/>
                 <outlet property="muteBtn" destination="q6p-a2-hWC" id="bGL-HM-G2q"/>
                 <outlet property="secondCallL" destination="9xx-Vz-ulA" id="oXa-gq-TgJ"/>
                 <outlet property="speakerBtn" destination="Oju-zs-1SV" id="POK-HC-Cr2"/>
@@ -33,8 +34,8 @@
                 <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQE-uf-v1o" userLabel="ContainerView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Renata Wiliams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8h-Mj-R9i" userLabel="CallingPersonL">
-                            <rect key="frame" x="29" y="69" width="231" height="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Handsome Guy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8h-Mj-R9i" userLabel="CallingPersonL">
+                            <rect key="frame" x="29" y="69" width="234.5" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="xcZ-eo-Dvr"/>
                             </constraints>
@@ -51,7 +52,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="OhX-Ss-uJW" userLabel="CallingPersonIV">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vesika" translatesAutoresizingMaskIntoConstraints="NO" id="OhX-Ss-uJW" userLabel="CallingPersonIV">
                             <rect key="frame" x="280" y="62" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="FEt-qQ-zwi"/>
@@ -147,6 +148,24 @@
                                 <action selector="dialpad_Action:" destination="-1" eventType="touchUpInside" id="mUf-Rs-ZyT"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrJ-EP-Y1j" userLabel="MergeBtn">
+                            <rect key="frame" x="276" y="348" width="83" height="78"/>
+                            <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="83" id="5rh-W4-OmI"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="78" id="HAr-sL-dtz"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="83" id="Hlc-Ac-mWT"/>
+                                <constraint firstAttribute="width" constant="83" id="MmG-0G-7Sw"/>
+                                <constraint firstAttribute="height" constant="78" id="NTa-9R-Tlx"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="78" id="uFV-nv-jo3"/>
+                            </constraints>
+                            <state key="normal" title="Merge Calls">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="onCallMerge:" destination="-1" eventType="touchUpInside" id="BE1-rI-hbI"/>
+                            </connections>
+                        </button>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="second call is made" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xx-Vz-ulA" userLabel="CallingPersonL">
                             <rect key="frame" x="29" y="146" width="231" height="40"/>
                             <constraints>
@@ -168,9 +187,11 @@
                         <constraint firstItem="ZEb-8t-LSt" firstAttribute="top" secondItem="q6p-a2-hWC" secondAttribute="bottom" constant="25" id="BKX-zW-kuy"/>
                         <constraint firstItem="q6p-a2-hWC" firstAttribute="top" secondItem="CQE-uf-v1o" secondAttribute="top" constant="245" id="CgU-wK-00F"/>
                         <constraint firstItem="3w4-PM-0P1" firstAttribute="leading" secondItem="p8h-Mj-R9i" secondAttribute="leading" id="McB-KG-bnl"/>
+                        <constraint firstItem="qrJ-EP-Y1j" firstAttribute="top" secondItem="1ZM-Fd-M2h" secondAttribute="bottom" constant="25" id="MuC-xZ-hBe"/>
                         <constraint firstAttribute="trailing" secondItem="OhX-Ss-uJW" secondAttribute="trailing" constant="15" id="SFU-gr-d0C"/>
                         <constraint firstItem="9xx-Vz-ulA" firstAttribute="top" secondItem="3w4-PM-0P1" secondAttribute="bottom" constant="8" id="Td3-oZ-bwf"/>
                         <constraint firstItem="1ZM-Fd-M2h" firstAttribute="top" secondItem="CQE-uf-v1o" secondAttribute="top" constant="245" id="UY5-QY-rMq"/>
+                        <constraint firstItem="qrJ-EP-Y1j" firstAttribute="leading" secondItem="ZEb-8t-LSt" secondAttribute="trailing" constant="46" id="WLr-7e-mvR"/>
                         <constraint firstItem="p8h-Mj-R9i" firstAttribute="leading" secondItem="CQE-uf-v1o" secondAttribute="leading" constant="29" id="Y4e-Mv-WsD"/>
                         <constraint firstItem="c7O-RI-2ON" firstAttribute="leading" secondItem="CQE-uf-v1o" secondAttribute="leading" constant="16" id="YJg-Pw-hxf"/>
                         <constraint firstAttribute="bottom" secondItem="PGb-JC-gX9" secondAttribute="bottom" constant="86" id="cIb-iB-tUD"/>
@@ -198,7 +219,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Vesika" width="2481" height="3000"/>
         <image name="decline" width="80" height="80"/>
-        <image name="placeholder" width="360" height="328"/>
     </resources>
 </document>

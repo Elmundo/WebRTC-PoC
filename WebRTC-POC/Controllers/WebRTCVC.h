@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <mavenir.webrtc/WebRTC.h>
 #import <mavenir.webrtc/WebRTCiOS.h>
-
+#import "WebRTCCall.h"
 #import "NSString+WebRTC.h"
+
 
 @interface WebRTCVC : UIViewController <WebRTCiOSDelegate>
 
@@ -24,5 +25,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *targetMsisdnTF;
 @property (weak, nonatomic) IBOutlet UITextField *secondTargetMsisdnTF;
 @property (weak, nonatomic) IBOutlet UIButton *callBtn;
+
+@property (strong, nonatomic) NSMutableArray<WebRTCCall *> *calls;
+
+- (WebRTCCall *)getActiveWebRTCCall;
+- (WebRTCCall *)getWebRTCCallWithState:(WebRTCCallState)state isOutgoing:(BOOL)isOutgoing;
+- (WebRTCCall *)getWebRTCCallWithCallId:(NSString *)callId;
+- (WebRTCCall *)getWebRTCCallWithCallUUID:(NSString *)callUUID;
+- (WebRTCCall *)getFirstWebRTCCall;
+- (void)addWebRTCCall:(WebRTCCall *)call;
+- (void)removeWebRTCCall:(WebRTCCall *)call;
 
 @end
