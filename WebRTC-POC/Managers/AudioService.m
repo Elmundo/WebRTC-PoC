@@ -25,6 +25,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         _audioState = AudioCallStateEarPierce;
+        [self configureAudioSession];
     }
     return self;
 }
@@ -33,7 +34,14 @@
     NSError *error;
     _audioSession = [AVAudioSession sharedInstance];
     [_audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    if (error) {
+        NSLog(@"setCategory: error: %@", [error description]);
+    }
+    
     [_audioSession setMode:AVAudioSessionModeVoiceChat error:&error];
+    if (error) {
+        NSLog(@"setCategory: error: %@", [error description]);
+    }
 }
 
 - (void)startAudio {

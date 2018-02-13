@@ -39,8 +39,26 @@ typedef void (^SecondCallBlock)();
     
     [self initWidgets];
     [self initContactController];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioSessionEvent:) name:AVAudioSessionInterruptionNotification object:nil];
 }
 
+- (void) onAudioSessionEvent: (NSNotification *) notification
+{
+    //Check the type of notification, especially if you are sending multiple AVAudioSession events here
+    if ([notification.name isEqualToString:AVAudioSessionInterruptionNotification]) {
+        NSLog(@"Interruption notification received!");
+        
+        //Check to see if it was a Begin interruption
+        if ([[notification.userInfo valueForKey:AVAudioSessionInterruptionTypeKey] isEqualToNumber:[NSNumber numberWithInt:AVAudioSessionInterruptionTypeBegan]]) {
+            NSLog(@"Interruption began!");
+            
+        } else {
+            NSLog(@"Interruption ended!");
+            //Resume your audio
+        }
+    }
+}
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self initDialPad];
@@ -131,7 +149,6 @@ typedef void (^SecondCallBlock)();
 
 #pragma mark - Methdos
 - (void)configureSecondCall {
-    
     WebRTCCall *webrtcCall = [_webRTCController getActiveWebRTCCall];
     if (webrtcCall) {
         [self.secondCallL setHidden:false];
@@ -168,6 +185,13 @@ typedef void (^SecondCallBlock)();
     UIButton *btn = (UIButton *)sender;
     NSString *text = btn.titleLabel.text;
     
+    // TODO: Baris - This need to be checked cause it needs to be removed where call is end.
+    if ([_webRTCController calls].count > 1) {
+        WebRTCCall *firstOne = [[_webRTCController calls] firstObject];
+        NSLog(@"************************* Removed One => CallerVC::hold_Action: CallID = %@", firstOne.callId);
+        [[_webRTCController calls] removeObjectAtIndex:0];
+    }
+    
     WebRTCCall *webrtcCall = [[_webRTCController calls] firstObject];
     if (webrtcCall) {
         if ([text isEqualToString:@"Hold"]) {
@@ -175,6 +199,8 @@ typedef void (^SecondCallBlock)();
             WebRTC::mavInstance().mavCallHold(c_callId, true);
             [btn setTitle:@"Resume" forState:UIControlStateNormal];
             webrtcCall.state = WebRTCCallStateHold;
+            
+            NSLog(@"************************* CallerVC::hold_Action: CallID = %@", webrtcCall.callId);
             
             Call *call = [[CallManager sharedManager] getActiveCall];
             call.state = CallStateHeld;
@@ -236,11 +262,13 @@ typedef void (^SecondCallBlock)();
             std::string c_callId = [webrtcCall.callId cStringWebRTC];
             [btn setTitle:@"Earpiece" forState:UIControlStateNormal];
             [[AudioService sharedManager] switchTo:AudioCallStateSpeaker];
+            WebRTC::mavInstance().uccSetAudioOutputDevice(WEBRTC_AUDIO_SPEAKER, [webrtcCall.callId cStringWebRTC]);
             
         }else if ([text isEqualToString:@"Earpiece"]) {
             std::string c_callId = [webrtcCall.callId cStringWebRTC];
             [btn setTitle:@"Speaker" forState:UIControlStateNormal];
             [[AudioService sharedManager] switchTo:AudioCallStateEarPierce];
+            WebRTC::mavInstance().uccSetAudioOutputDevice(WEBRTC_AUDIO_EAR_PIECE, [webrtcCall.callId cStringWebRTC]);
         }
     }
 }

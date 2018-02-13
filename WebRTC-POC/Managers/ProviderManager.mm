@@ -123,7 +123,7 @@ typedef void (^AnswerCallBlock)(Call *call);
 
 -(void)provider:(CXProvider *)provider performEndCallAction:(CXEndCallAction *)action {
     NSLog(@"************************* provider:(CXProvider *)provider performEndCallAction:(CXEndCallAction *)action = > action.callUUID: %@", [action.callUUID UUIDString]);
-    WebRTCCall *webrtcCall = [_webrtcController getActiveWebRTCCall];
+    WebRTCCall *webrtcCall = [_webrtcController getWebRTCCallWithCallUUID:[action.callUUID UUIDString] ];
     if (webrtcCall) {
         NSLog(@"************************* provider:(CXProvider *)provider performEndCallAction:(CXEndCallAction *)action = > _webRTC->mavCallEnd(%@)  webrtcCall.UUID: %@", webrtcCall.callId, [webrtcCall.callUUID UUIDString]);
         if ([[webrtcCall.callUUID UUIDString] isEqualToString:[action.callUUID UUIDString]]) {

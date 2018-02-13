@@ -75,9 +75,8 @@
     [self initPickerViews];
     [self initTableView];
     [self initWebRTC];
-//    [self initReachability];
-//    WebRTC::mavInstance().mavUnRegister(true);
-    
+    [self initReachability];
+
     [self addNotifications];
     
     _sessionInfo = [self getUserDefaultsWithKey:@"sessionInfo"];
@@ -125,7 +124,8 @@
                   @"905308812074@ims.mnc001.mcc286.3gppnetwork.org", @"905390001903@ims.mnc001.mcc286.3gppnetwork.org",
                   @"05304556754@ims.mnc001.mcc286.3gppnetwork.org" , @"05322106528@ims.mnc001.mcc286.3gppnetwork.org",
                   @"908502290000@ims.mnc001.mcc286.3gppnetwork.org", @"05368657930@ims.mnc001.mcc286.3gppnetwork.org",
-                  @"05360760924@ims.mnc001.mcc286.3gppnetwork.org" ,nil];
+                  @"05360760924@ims.mnc001.mcc286.3gppnetwork.org" , @"05332109683@ims.mnc001.mcc286.3gppnetwork.org",
+                  nil];
     
     _authCode           = [authCodes objectAtIndex:3];
     _msisdn             = [msisdnList objectAtIndex:4];
@@ -203,23 +203,31 @@
 - (void)initReachability {
     Reachability *reach = [Reachability reachabilityWithHostName:@"www.google.com"];
 
-    static bool firstOpening = false;
+    static bool isInternetGoneFirst = false;
     reach.reachableBlock = ^(Reachability *reachability) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (firstOpening) {
+            if (isInternetGoneFirst) {
                 [self addLog:@"Internet if online."];
                 if (_sessionInfo) {
                     std::string sessionInfo  = [_sessionInfo cStringWebRTC];
                     WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
                 }
-            }else {
-                firstOpening = true;
             }
         });
     };
 
     reach.unreachableBlock = ^(Reachability *reachability) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            isInternetGoneFirst = true;
+            WebRTCCall *webrtcCall = [self getFirstWebRTCCall];
+            if (webrtcCall) {
+                WebRTC::mavInstance().mavCallEnd([webrtcCall.callId cStringWebRTC]);
+                if (self.presentedViewController) {
+                    [self.presentedViewController dismissViewControllerAnimated:true completion:nil];
+                }
+                Call *call = [[CallManager sharedManager] getActiveCall];
+                [[CallManager sharedManager] endCall:call];
+            }
             [self addLog:@"Internet if offline."];
         });
     };
@@ -255,12 +263,17 @@
 
 - (void)initWebRTC {
     WebRTCConfig config;
-    WEBRTC_STATUS_CODE status = WebRTC::mavInstance().mavInitialize(config);
-    WebRTCiOS *controller     = [WebRTCiOS mavGetInstance];
-    controller.delegate       = self;
+    std::string sdkBuildVersionInfo = [@"" cStringWebRTC];
+    WEBRTC_STATUS_CODE status = WebRTC::mavInstance().mavInitialize(config, sdkBuildVersionInfo);
+    
+    NSString *sdkVersion  = [NSString stringWithFormat:@"SDK Build Version: %@", [NSString stringWithCharList:sdkBuildVersionInfo.c_str()]];
+    WebRTCiOS *controller = [WebRTCiOS mavGetInstance];
+    controller.delegate   = self;
+    
     switch (status) {
         case WEBRTC_STATUS_OK:
             [self addLog:@"WebRTC initiated."];
+            [self addLog:[NSString stringWithFormat:@"SDK Build Version: %@", sdkVersion]];
             break;
             
         case WEBRTC_STATUS_FAILED:
@@ -591,7 +604,10 @@
     if ([_sessionInfo cStringWebRTC]) {
         std::string sessionInfo  = [_sessionInfo cStringWebRTC];
         std::string nativeline = [_msisdn cStringWebRTC];
-        WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
+        WebRTCCall *webrtcCall = [self getActiveWebRTCCall];
+        if (!webrtcCall) {
+            WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
+        }
     }
 }
 
@@ -777,6 +793,7 @@
     }
 }
 
+// Benim yaptığım hold sonucunda çaırılıyor
 -(void)mavOnCallHoldStatus:(std::string)callid status:(std::string)status {
     NSLog(@"************************* mavOnCallHoldStatus StatusCode = %@", [NSString stringWithCharList:status.c_str()]);
     
@@ -787,7 +804,7 @@
     Call *call = [[CallManager sharedManager] getActiveCall];
     call.state = CallStateHeld;
 //    [[CallManager sharedManager] setHeld:call onHold:true];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"CallHold" object:nil userInfo:@{@"data": webrtcCall}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CallHold" object:nil userInfo:@{@"data": webrtcCall}];
 }
 
 -(void)mavOnCallUnHoldStatus:(std::string)callid status:(std::string)status {
@@ -800,7 +817,7 @@
     Call *call = [[CallManager sharedManager] getActiveCall];
     call.state = CallStateActive;
 //    [[CallManager sharedManager] setHeld:call onHold:false];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"CallUnHold" object:nil userInfo:@{@"data": webrtcCall}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CallUnHold" object:nil userInfo:@{@"data": webrtcCall}];
 }
 
 -(void)mavOnReceivedCallEnd:(std::string)callid {
@@ -840,6 +857,7 @@
     }
 }
 
+// Birisi beni hold a aldığında cagırılıyor
 -(void)mavOnReceivedCallHold:(std::string)callid {
     [self addLog: [NSString stringWithFormat:@"WebRTC mavOnReceivedCallHold! callid: %@", [NSString stringWithCharList:callid.c_str()] ]];
     
@@ -869,7 +887,7 @@
 }
 
 -(void)mavOnAdHocConfStatus:(std::string)callid status:(std::string)status {
-    [self addLog: [NSString stringWithFormat:@"WebRTC mavOnAdHocConfStatus! callid: %@", [NSString stringWithCharList:callid.c_str()] ]];
+    [self addLog: [NSString stringWithFormat:@"WebRTC mavOnAdHocConfStatus! callid: %@  status: %@", [NSString stringWithCharList:callid.c_str()], [NSString stringWithCharList:status.c_str()] ]];
     NSString *callId = [NSString stringWithCharList:callid.c_str()];
     WebRTCCall *webrtcCall = [self getWebRTCCallWithCallId:callId];
     if (webrtcCall) {
