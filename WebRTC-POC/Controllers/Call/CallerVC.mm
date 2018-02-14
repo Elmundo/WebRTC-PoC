@@ -81,6 +81,7 @@ typedef void (^SecondCallBlock)();
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallReject_Action:) name:@"CellRejected" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallHold_Action:)   name:@"CallHold" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallUnhold_Action:) name:@"CallUnhold" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallAdHocConf_Action:) name:@"AdHocConf" object:nil];
 }
 
 - (void)removeObservers {
@@ -305,6 +306,13 @@ typedef void (^SecondCallBlock)();
         secondCallBlock = nil;
     }
 }
+
+-(void)onCallAdHocConf_Action:(NSNotification *)userInfo {
+    WebRTCCall *webrtcCall = [userInfo.userInfo  objectForKey:@"data"];
+    self.constantCallingL.text = @"AdHocCallConf is made!";
+    self.secondCallL.text = [NSString stringWithFormat:@"AdHocConf CallID: %@", webrtcCall.callId];
+}
+
 - (IBAction)onCallMerge:(id)sender {
     WebRTCCall *webrtcSecondCall = [_webRTCController getActiveWebRTCCall];
     WebRTCCall *webrtcHoldedCall = [_webRTCController getWebRTCCallWithState:WebRTCCallStateHold isOutgoing:true];

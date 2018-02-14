@@ -167,11 +167,11 @@
                             </connections>
                         </button>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="second call is made" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xx-Vz-ulA" userLabel="CallingPersonL">
-                            <rect key="frame" x="29" y="146" width="231" height="40"/>
+                            <rect key="frame" x="29" y="146" width="338" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="KpJ-h4-QZw"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="PeU-cw-SFX"/>
-                                <constraint firstAttribute="width" constant="231" id="VbY-T7-QIc"/>
+                                <constraint firstAttribute="width" constant="338" id="VbY-T7-QIc"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
