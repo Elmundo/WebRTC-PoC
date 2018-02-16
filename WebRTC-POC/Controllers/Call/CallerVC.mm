@@ -234,7 +234,7 @@ typedef void (^SecondCallBlock)();
             
             Call *call = [[CallManager sharedManager] getActiveCall];
             call.state = CallStateActive;
-            [[CallManager sharedManager] setHeld:call onHold:false];
+            [[CallManager sharedManager] setMute:call isMuted:true];
 
         }else if ([text isEqualToString:@"Unmute"]) {
             std::string c_callId = [webrtcCall.callId cStringWebRTC];
@@ -243,7 +243,7 @@ typedef void (^SecondCallBlock)();
             
             Call *call = [[CallManager sharedManager] getActiveCall];
             call.state = CallStateActive;
-            [[CallManager sharedManager] setHeld:call onHold:false];
+            [[CallManager sharedManager] setMute:call isMuted:false];
         }
     }
 }

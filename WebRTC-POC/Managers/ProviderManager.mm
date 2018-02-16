@@ -65,6 +65,7 @@ typedef void (^AnswerCallBlock)(Call *call);
     [_prodiver reportNewIncomingCallWithUUID:uuid update:update completion:^(NSError * _Nullable error) {
         if (error == nil) {
             Call *call = [[Call alloc] initWithUUID:uuid outgoing:false handle:handle];
+            
             [_callManager add:call];
         }else {
             NSLog(@"error: %@", [error description]);
@@ -93,6 +94,7 @@ typedef void (^AnswerCallBlock)(Call *call);
     if (webrtcCall) {
         NSLog(@"************************* provider:(CXProvider *)provider performStartCallAction:(CXStartCallAction *)action => CallId: %@  webrtcCall.callUUID = %@", webrtcCall.callId, [call.uuid UUIDString]);
         webrtcCall.callUUID = call.uuid;
+        call.callId = webrtcCall.callId;
     }
     
     [call startWithBlock:^(bool success) {

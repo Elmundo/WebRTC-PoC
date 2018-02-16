@@ -134,6 +134,15 @@
     return nil;
 }
 
+- (Call *)getCallWithCallId:(NSString *)callId {
+    for (Call *c  in self.calls) {
+        if ([callId isEqualToString:c.callId]) {
+            return c;
+        }
+    }
+    return nil;
+}
+
 @end
 
 

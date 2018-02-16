@@ -41,4 +41,6 @@ typedef void(^CallsChangedHandler)(void);
 
 - (Call *)getActiveCall;
 
+- (Call *)getCallWithCallId:(NSString *)callId;
+
 @end
