@@ -7,6 +7,8 @@
 //
 
 #import "CallManager.h"
+
+
 @implementation CallManager
 {
     CXCallController *_callController;
@@ -52,25 +54,28 @@
 
 #pragma mark - Actions
 
--(void)startCall:(NSString *)handle videoEnabled:(bool)videoEnabled {
-    NSLog(@"************************* CallManager::startCall");
+-(void)startCall:(NSString *)handle videoEnabled:(bool)videoEnabled webrtcCall:(WebRTCCall *)webrtcCall {
     CXHandle *cxHandle = [[CXHandle alloc] initWithType:CXHandleTypePhoneNumber value:handle];
     CXStartCallAction *startCallAction = [[CXStartCallAction alloc] initWithCallUUID:[NSUUID UUID] handle:cxHandle];
     [startCallAction setVideo:videoEnabled];
     CXTransaction *transaction = [[CXTransaction alloc] initWithAction:startCallAction];
+    if (webrtcCall) {
+        webrtcCall.callUUID = startCallAction.callUUID;
+    }
     
+    NSLog(@"************************* CallManager::startCall callId: %@ callUUID: %@", webrtcCall.callId, [startCallAction.callUUID UUIDString]);
     [self requestTransaction:transaction];
 }
 
 -(void)endCall:(Call *)call {
-    NSLog(@"************************* CallManager::endCall");
+    NSLog(@"************************* CallManager::endCall callUUID: %@", [call.uuid UUIDString]);
+    [self.calls removeObject:call];
     if (call.uuid) {
         CXEndCallAction *endCallAction = [[CXEndCallAction alloc] initWithCallUUID:call.uuid];
         CXTransaction *transaction = [[CXTransaction alloc] initWithAction:endCallAction];
-        
+
         [self requestTransaction:transaction];
     }
-    [self.calls removeObject:call];
 }
 
 -(void)setHeld:(Call *)call onHold:(bool)onHold {
@@ -126,14 +131,6 @@
     return nil;
 }
 
-- (Call *)getActiveCall {
-    for (Call *c  in self.calls) {
-        return c;
-    }
-    
-    return nil;
-}
-
 - (Call *)getCallWithCallId:(NSString *)callId {
     for (Call *c  in self.calls) {
         if ([callId isEqualToString:c.callId]) {
@@ -141,6 +138,17 @@
         }
     }
     return nil;
+}
+
+- (NSArray<Call *> *)getCalls {
+    return self.calls;
+}
+
+- (void)endAllCalls {
+    for (Call *c  in self.calls) {
+        [self endCall:c];
+    }
+    [self.calls removeAllObjects];
 }
 
 @end

@@ -133,6 +133,11 @@ typedef void (^AnswerCallBlock)(Call *call);
         }
     }
     
+    Call *call = [_callManager callWithUUID:webrtcCall.callUUID];
+    if (call) {
+        [_callManager endCall:call];
+    }
+    
     [[AudioService sharedManager] stopAudio];
     [action fulfill];
 }

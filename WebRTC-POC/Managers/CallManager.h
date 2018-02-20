@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CallKit/CallKit.h>
 #import "Call.h"
+#import "WebRTCCall.h"
 
 typedef void(^CallsChangedHandler)(void);
 
@@ -25,7 +26,7 @@ typedef void(^CallsChangedHandler)(void);
 
 - (void)removeAllCalls;
 
-- (void)startCall:(NSString *)handle videoEnabled:(bool)videoEnabled;
+- (void)startCall:(NSString *)handle videoEnabled:(bool)videoEnabled webrtcCall:(WebRTCCall *)webrtcCall;
 
 - (void)endCall:(Call *)call;
 
@@ -39,8 +40,10 @@ typedef void(^CallsChangedHandler)(void);
 
 - (Call *)callWithUUID:(NSUUID *)uuid;
 
-- (Call *)getActiveCall;
-
 - (Call *)getCallWithCallId:(NSString *)callId;
+
+- (NSArray<Call *> *)getCalls;
+
+- (void)endAllCalls;
 
 @end

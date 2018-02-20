@@ -155,6 +155,7 @@ typedef void (^SecondCallBlock)();
         [self.secondCallL setHidden:false];
         std::string callId    = [webrtcCall.callId cStringWebRTC];
         WebRTC::mavInstance().mavCallHold(callId, false);
+        NSLog(@"CallerVC::configureSecondCall  mavCallHold: callId: %@   callUUID: %@", webrtcCall.callId, [webrtcCall.callUUID UUIDString]);
         webrtcCall.state = WebRTCCallStateHold;
         
         // When first call is holded, this block of code will be executed immediately.
@@ -168,7 +169,7 @@ typedef void (^SecondCallBlock)();
         
             WebRTCCall *webrtcCall = [[WebRTCCall alloc] initWith:ns_secondCallId msisdn:_caller callee:_secondtargetMsisdn outgoing:true];
             [_webRTCController addWebRTCCall:webrtcCall];
-            [[CallManager sharedManager] startCall:_secondtargetMsisdn videoEnabled:false];
+            [[CallManager sharedManager] startCall:_secondtargetMsisdn videoEnabled:false webrtcCall:webrtcCall];
         };
     }
 }
@@ -203,10 +204,11 @@ typedef void (^SecondCallBlock)();
             
             NSLog(@"************************* CallerVC::hold_Action: CallID = %@", webrtcCall.callId);
             
-            Call *call = [[CallManager sharedManager] getActiveCall];
-            call.state = CallStateHeld;
-//            [[CallManager sharedManager] setHeld:call onHold:true];
-            
+            Call *call = [[CallManager sharedManager] callWithUUID:webrtcCall.callUUID];
+            if (call) {
+                call.state = CallStateHeld;
+//                [[CallManager sharedManager] setHeld:call onHold:true];
+            }
         }else if ([text isEqualToString:@"Resume"]) {
             
             std::string c_callId = [webrtcCall.callId cStringWebRTC];
@@ -214,9 +216,12 @@ typedef void (^SecondCallBlock)();
             [btn setTitle:@"Hold" forState:UIControlStateNormal];
             webrtcCall.state = WebRTCCallStateActive;
             
-            Call *call = [[CallManager sharedManager] getActiveCall];
-            call.state = CallStateActive;
-//            [[CallManager sharedManager] setHeld:call onHold:false];
+            Call *call = [[CallManager sharedManager] callWithUUID:webrtcCall.callUUID];
+            if (call) {
+                call.state = CallStateActive;
+                //            [[CallManager sharedManager] setHeld:call onHold:false];
+            }
+
         }
     }
 }
@@ -231,19 +236,23 @@ typedef void (^SecondCallBlock)();
             std::string c_callId = [webrtcCall.callId cStringWebRTC];
             WebRTC::mavInstance().mavCallMute(c_callId);
             [btn setTitle:@"Unmute" forState:UIControlStateNormal];
-            
-            Call *call = [[CallManager sharedManager] getActiveCall];
-            call.state = CallStateActive;
-            [[CallManager sharedManager] setMute:call isMuted:true];
 
+            Call *call = [[CallManager sharedManager] callWithUUID:webrtcCall.callUUID];
+            if (call) {
+                call.state = CallStateActive;
+                [[CallManager sharedManager] setMute:call isMuted:true];
+            }
+            
         }else if ([text isEqualToString:@"Unmute"]) {
             std::string c_callId = [webrtcCall.callId cStringWebRTC];
             WebRTC::mavInstance().mavCallUnMute(c_callId);
             [btn setTitle:@"Mute" forState:UIControlStateNormal];
-            
-            Call *call = [[CallManager sharedManager] getActiveCall];
-            call.state = CallStateActive;
-            [[CallManager sharedManager] setMute:call isMuted:false];
+
+            Call *call = [[CallManager sharedManager] callWithUUID:webrtcCall.callUUID];
+            if (call) {
+                call.state = CallStateActive;
+                [[CallManager sharedManager] setMute:call isMuted:false];
+            }
         }
     }
 }
@@ -316,10 +325,6 @@ typedef void (^SecondCallBlock)();
 - (IBAction)onCallMerge:(id)sender {
     WebRTCCall *webrtcSecondCall = [_webRTCController getActiveWebRTCCall];
     WebRTCCall *webrtcHoldedCall = [_webRTCController getWebRTCCallWithState:WebRTCCallStateHold isOutgoing:true];
-    
-    Call *call = [[CallManager sharedManager] getActiveCall];
-    call.state = CallStateActive;
-    [call answer];
 
     std::string confcallId  = [@"" cStringWebRTC];
     std::string callId      = [webrtcSecondCall.callId cStringWebRTC];

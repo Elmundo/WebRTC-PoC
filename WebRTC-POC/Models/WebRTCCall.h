@@ -12,6 +12,8 @@ typedef enum : NSUInteger {
     WebRTCCallStatePending = 0,
     WebRTCCallStateActive,
     WebRTCCallStateHold,
+    WebRTCCallStateEndPending,
+    WebRTCCallStateEnded,
 } WebRTCCallState;
 
 @interface WebRTCCall : NSObject
