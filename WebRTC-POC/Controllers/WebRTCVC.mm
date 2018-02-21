@@ -635,8 +635,8 @@
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
     WebRTCCall *webrtcCall = [self getActiveWebRTCCall];
     if (webrtcCall) {
-        [[AudioService sharedManager] configureAudioSession];
-        [[AudioService sharedManager] startAudio];
+//        [[AudioService sharedManager] configureAudioSession];
+//        [[AudioService sharedManager] startAudio];
     }
 }
 
@@ -740,7 +740,7 @@
     NSLog(@"-(void)mavOnReceivedCallActive:(std::string)callid: %@  callUUID: %@ ", [NSString stringWithCharList:callid.c_str()], [call.uuid UUIDString]);
     [self addLog: [NSString stringWithFormat:@"WebRTC mavOnReceivedCallActive! callid: %@  callUUID: %@", [NSString stringWithCharList:callid.c_str()], [call.uuid UUIDString]]];
     
-    [[AudioService sharedManager] startAudio];
+//    [[AudioService sharedManager] startAudio];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CallActive" object:nil userInfo:@{@"data": webrtcCall}];
     NSLog(@"************************* mavOnReceivedCallActive");
 }
@@ -850,34 +850,39 @@
 -(void)mavOnCallHoldStatus:(std::string)callid status:(std::string)status {
     NSString *callId = [NSString stringWithCharList:callid.c_str()];
     WebRTCCall *webrtcCall = [self getWebRTCCallWithCallId:callId];
-    webrtcCall.state = WebRTCCallStateHold;
+//    webrtcCall.state = WebRTCCallStateHold;
     
     Call *call = [[CallManager sharedManager] callWithUUID:webrtcCall.callUUID];
+    // TODO: Baris - Needed to be checked. It could affect some part of flow.
+    NSLog(@"************************* mavOnCallHoldStatus callId: %@  callUUID:%@ StatusCode = %@", callId, [call.uuid UUIDString], [NSString stringWithCharList:status.c_str()]);
+    
     if (call) {
         call.state = CallStateHeld;
         // TODO: Must be ucommented
-        //    [[CallManager sharedManager] setHeld:call onHold:true];
+            [[CallManager sharedManager] setHeld:call onHold:true];
     }
-    // TODO: Baris - Needed to be checked. It could affect some part of flow.
-    NSLog(@"************************* mavOnCallHoldStatus callId: %@  callUUID:%@ StatusCode = %@", callId, [call.uuid UUIDString], [NSString stringWithCharList:status.c_str()]);
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CallHold" object:nil userInfo:@{@"data": webrtcCall}];
 }
 
+// Benim yaptığım hold sonucunda çağırılıyor
 -(void)mavOnCallUnHoldStatus:(std::string)callid status:(std::string)status {
     NSLog(@"************************* mavOnCallUnHoldStatus StatusCode = %@", [NSString stringWithCharList:status.c_str()]);
     
     NSString *callId = [NSString stringWithCharList:callid.c_str()];
     WebRTCCall *webrtcCall = [self getWebRTCCallWithCallId:callId];
-    webrtcCall.state = WebRTCCallStateActive;
+//    webrtcCall.state = WebRTCCallStateActive;
     
     Call *call = [[CallManager sharedManager] callWithUUID:webrtcCall.callUUID];
+    NSLog(@"************************* mavOnCallUnHoldStatus callId: %@  callUUID:%@ StatusCode = %@", callId, [call.uuid UUIDString], [NSString stringWithCharList:status.c_str()]);
+    
     if (call) {
         call.state = CallStateActive;
         // TODO: Must be ucommented
-        //    [[CallManager sharedManager] setHeld:call onHold:false];
+            [[CallManager sharedManager] setHeld:call onHold:false];
     }
     // TODO: Baris - Needed to be checked. It could affect some part of flow.
-    NSLog(@"************************* mavOnCallUnHoldStatus callId: %@  callUUID:%@ StatusCode = %@", callId, [call.uuid UUIDString], [NSString stringWithCharList:status.c_str()]);
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CallUnHold" object:nil userInfo:@{@"data": webrtcCall}];
 }
 
@@ -943,7 +948,6 @@
     NSString *callId = [NSString stringWithCharList:callid.c_str()];
     WebRTCCall *webrtcCall = [self getWebRTCCallWithCallId:callId];
     if (webrtcCall) {
-        WebRTCCall *webrtcCall = [self getWebRTCCallWithCallId:callId];
         webrtcCall.state = WebRTCCallStateHold;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"CallHold" object:nil userInfo:@{@"data": webrtcCall}];
     }
@@ -955,13 +959,13 @@
     NSLog(@"************************* mavOnReceivedCallHold");
 }
 
+// Birisi beni unhold a aldığında cagırılıyor
 -(void)mavOnReceivedCallUnhold:(std::string)callid {
     [self addLog: [NSString stringWithFormat:@"WebRTC mavOnReceivedCallUnhold! callid: %@", [NSString stringWithCharList:callid.c_str()] ]];
     
     NSString *callId = [NSString stringWithCharList:callid.c_str()];
     WebRTCCall *webrtcCall = [self getWebRTCCallWithCallId:callId];
     if (webrtcCall) {
-        WebRTCCall *webrtcCall = [self getWebRTCCallWithCallId:callId];
         webrtcCall.state = WebRTCCallStateActive;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"CallUnhold" object:nil userInfo:@{@"data": webrtcCall}];
     }

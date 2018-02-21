@@ -202,13 +202,8 @@ typedef void (^SecondCallBlock)();
             [btn setTitle:@"Resume" forState:UIControlStateNormal];
             webrtcCall.state = WebRTCCallStateHold;
             
-            NSLog(@"************************* CallerVC::hold_Action: CallID = %@", webrtcCall.callId);
-            
             Call *call = [[CallManager sharedManager] callWithUUID:webrtcCall.callUUID];
-            if (call) {
-                call.state = CallStateHeld;
-//                [[CallManager sharedManager] setHeld:call onHold:true];
-            }
+            NSLog(@"************************* CallerVC::hold_Action: CallID = %@ callUUID: %@", webrtcCall.callId, [call.uuid UUIDString]);
         }else if ([text isEqualToString:@"Resume"]) {
             
             std::string c_callId = [webrtcCall.callId cStringWebRTC];
@@ -217,11 +212,7 @@ typedef void (^SecondCallBlock)();
             webrtcCall.state = WebRTCCallStateActive;
             
             Call *call = [[CallManager sharedManager] callWithUUID:webrtcCall.callUUID];
-            if (call) {
-                call.state = CallStateActive;
-                //            [[CallManager sharedManager] setHeld:call onHold:false];
-            }
-
+            NSLog(@"************************* CallerVC::unHold_Action: CallID = %@ callUUID: %@", webrtcCall.callId, [call.uuid UUIDString]);
         }
     }
 }

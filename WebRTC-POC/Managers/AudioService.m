@@ -12,6 +12,7 @@
 {
     AVAudioSession *_audioSession;
     AudioCallState _audioState;
+    bool _isAudioActive;
 }
 + (id)sharedManager {
     static AudioService *_sharedManager = nil;
@@ -25,6 +26,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         _audioState = AudioCallStateEarPierce;
+        _isAudioActive = false;
         [self configureAudioSession];
     }
     return self;
@@ -45,6 +47,11 @@
 }
 
 - (void)startAudio {
+    if (_isAudioActive == true) {
+        NSLog(@"************************* AudioService::startAudio NO NEED TO START AUDIO AGAIN");
+        return;
+    }
+    _isAudioActive = true;
     NSLog(@"************************* AudioService::startAudio");
     NSError *error;
     [_audioSession setActive:true error:&error];
@@ -54,6 +61,11 @@
 }
 
 - (void)stopAudio {
+    if (_isAudioActive == false) {
+        NSLog(@"************************* AudioService::stopAudio NO NEED TO STOP AUDIO AGAIN");
+        return;
+    }
+    _isAudioActive = false;
     NSLog(@"************************* AudioService::stopAudio");
     NSError *error;
     [_audioSession setActive:false error:&error];
