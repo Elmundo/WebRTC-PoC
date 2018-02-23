@@ -235,28 +235,15 @@ typedef void (^AnswerCallBlock)(Call *call);
 #pragma mark Activation Audio Session
 -(void)provider:(CXProvider *)provider didActivateAudioSession:(AVAudioSession *)audioSession {
     
-    NSError *error = nil;
-    [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
-    if (error) {
-        NSLog(@"setCategory: error: %@", [error description]);
-    }
-    
-    [audioSession setMode:AVAudioSessionModeVoiceChat error:&error];
-    if (error) {
-        NSLog(@"setMode: error: %@", [error description]);
-    }
-    
-    [audioSession setActive:true error:&error];
-    if (error) {
-        NSLog(@"setActive: error: %@", [error description]);
-    }
     NSLog(@"************************* provider:(CXProvider *)provider didActivateAudioSession:(AVAudioSession *)audioSession");
 //    [[AudioService sharedManager] startAudio];
+    WebRTC::mavInstance().audioActivated(audioSession);
 }
 
 -(void)provider:(CXProvider *)provider didDeactivateAudioSession:(AVAudioSession *)audioSession {
     NSLog(@"************************* provider:(CXProvider *)provider didDeactivateAudioSession:(AVAudioSession *)audioSession");
 //    [[AudioService sharedManager] stopAudio];
+    WebRTC::mavInstance().audioDeactivated();
 }
 
 @end
