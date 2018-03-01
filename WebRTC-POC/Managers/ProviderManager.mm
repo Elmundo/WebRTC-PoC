@@ -183,13 +183,13 @@ typedef void (^AnswerCallBlock)(Call *call);
         return;
     }
     
-    WebRTCCall *webrtcCall = [_webrtcController getActiveWebRTCCall];
-    if (webrtcCall) {
-        NSLog(@"************************* provider:(CXProvider *)provider performSetMutedCallAction:(CXSetMutedCallAction *)action = > _webRTC->mavCallMute(%@)  webrtcCall.callUUID = %@", webrtcCall.callId, [webrtcCall.callUUID UUIDString]);
-        if ([[webrtcCall.callUUID UUIDString] isEqualToString:[action.callUUID UUIDString]]) {
-            _webRTC->mavCallMute([webrtcCall.callId cStringWebRTC]);
-        }
-    }
+//    WebRTCCall *webrtcCall = [_webrtcController getActiveWebRTCCall];
+//    if (webrtcCall) {
+//        NSLog(@"************************* provider:(CXProvider *)provider performSetMutedCallAction:(CXSetMutedCallAction *)action = > _webRTC->mavCallMute(%@)  webrtcCall.callUUID = %@", webrtcCall.callId, [webrtcCall.callUUID UUIDString]);
+//        if ([[webrtcCall.callUUID UUIDString] isEqualToString:[action.callUUID UUIDString]]) {
+//            _webRTC->mavCallMute([webrtcCall.callId cStringWebRTC]);
+//        }
+//    }
     [action fulfill];
 }
 
