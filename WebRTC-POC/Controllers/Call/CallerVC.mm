@@ -262,13 +262,13 @@ typedef void (^SecondCallBlock)();
         if ([text isEqualToString:@"Speaker"]) {
             std::string c_callId = [webrtcCall.callId cStringWebRTC];
             [btn setTitle:@"Earpiece" forState:UIControlStateNormal];
-            [[AudioService sharedManager] switchTo:AudioCallStateSpeaker];
+//            [[AudioService sharedManager] switchTo:AudioCallStateSpeaker];
             WebRTC::mavInstance().uccSetAudioOutputDevice(WEBRTC_AUDIO_SPEAKER, [webrtcCall.callId cStringWebRTC]);
             
         }else if ([text isEqualToString:@"Earpiece"]) {
             std::string c_callId = [webrtcCall.callId cStringWebRTC];
             [btn setTitle:@"Speaker" forState:UIControlStateNormal];
-            [[AudioService sharedManager] switchTo:AudioCallStateEarPierce];
+//            [[AudioService sharedManager] switchTo:AudioCallStateEarPierce];
             WebRTC::mavInstance().uccSetAudioOutputDevice(WEBRTC_AUDIO_EAR_PIECE, [webrtcCall.callId cStringWebRTC]);
         }
     }

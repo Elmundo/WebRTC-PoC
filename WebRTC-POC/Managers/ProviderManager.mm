@@ -79,8 +79,7 @@ typedef void (^AnswerCallBlock)(Call *call);
     NSLog(@"************************* provider:(CXProvider *)provider performStartCallAction:(CXStartCallAction *)action => action.callUUID: %@", [action.callUUID UUIDString]);
     Call *call = [[Call alloc] initWithUUID:action.callUUID outgoing:true handle:action.handle.value];
     call.state = CallStateConnection;
-//    [[AudioService sharedManager] configureAudioSession];
-    
+
     __weak Call *weakCall = call;
     call.connectedStateChanged = ^{
         if (call.connectionState == ConnectedStatePending) {
@@ -234,16 +233,13 @@ typedef void (^AnswerCallBlock)(Call *call);
 
 #pragma mark Activation Audio Session
 -(void)provider:(CXProvider *)provider didActivateAudioSession:(AVAudioSession *)audioSession {
-    
     NSLog(@"************************* provider:(CXProvider *)provider didActivateAudioSession:(AVAudioSession *)audioSession");
-//    [[AudioService sharedManager] startAudio];
-    WebRTC::mavInstance().audioActivated(audioSession);
+    WebRTC::mavInstance().mavActivatedaudio(audioSession);
 }
 
 -(void)provider:(CXProvider *)provider didDeactivateAudioSession:(AVAudioSession *)audioSession {
     NSLog(@"************************* provider:(CXProvider *)provider didDeactivateAudioSession:(AVAudioSession *)audioSession");
-//    [[AudioService sharedManager] stopAudio];
-    WebRTC::mavInstance().audioDeactivated();
+    WebRTC::mavInstance().mavDeactivatedaudio();
 }
 
 @end
