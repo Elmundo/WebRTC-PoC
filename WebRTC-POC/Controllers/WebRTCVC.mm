@@ -61,6 +61,7 @@
     bool isWebRTCAvailable;
     bool needReRegister;
     int activeConnectionCount;
+    bool isInternetOnline;
 }
 @end
 
@@ -115,7 +116,9 @@
     
     [[ProviderManager sharedManager] setWebrtcController:self];
     logs       = [[NSMutableArray<LogModel *> alloc] init];
-    authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"48", @"49", @"50", @"56", @"57", @"59", nil];
+    authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjoiQmVhcmVyIiwiYWdlbnQiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCA2LjEpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS82NC4wLjMyODIuMTg2IFNhZmFyaS81MzcuMzYiLCJwcm9kdWN0aWQiOiIxIiwidXNlcmlkIjoiNWE5NmJjYjYyNDllYTZiMGVhNWExM2E0IiwidG9rZW5UeXBlIjoxLCJleHAiOjE1MjU4MjgxNTAsImlhdCI6MTUxOTgyODE1MH0.PA4jpdTVMNDOF7ajZuq0X9jhc-vYXIT59ABz2LwVuHE",
+                  @"49", @"50", @"56", @"57", @"59", nil];
+    
     msisdnList = [[NSArray<NSString *> alloc] initWithObjects:
                   @"908502284041@superims.com", @"908502284042@superims.com",
                   @"905390000098@ims.mnc001.mcc286.3gppnetwork.org", @"905390000530@ims.mnc001.mcc286.3gppnetwork.org",
@@ -125,13 +128,14 @@
                   @"05304556754@ims.mnc001.mcc286.3gppnetwork.org" , @"05322106528@ims.mnc001.mcc286.3gppnetwork.org",
                   @"908502290000@ims.mnc001.mcc286.3gppnetwork.org", @"05368657930@ims.mnc001.mcc286.3gppnetwork.org",
                   @"05360760924@ims.mnc001.mcc286.3gppnetwork.org" , @"05332109683@ims.mnc001.mcc286.3gppnetwork.org",
-                  @"05398602011@ims.mnc001.mcc286.3gppnetwork.org",
-                  nil];
+                  @"05398602011@ims.mnc001.mcc286.3gppnetwork.org" , @"05332109203@ims.mnc001.mcc286.3gppnetwork.org",
+                  @"05307339475@ims.mnc001.mcc286.3gppnetwork.org" , @"05376306220@ims.mnc001.mcc286.3gppnetwork.org",
+                  @"05557090896@ims.mnc001.mcc286.3gppnetwork.org" , nil];
     
-    _authCode           = [authCodes objectAtIndex:3];
-    _msisdn             = [msisdnList objectAtIndex:4];
-    _targetMsisdn       = [msisdnList objectAtIndex:13];
-    _secondTargetMsisdn = [msisdnList objectAtIndex:16];
+    _authCode           = [authCodes objectAtIndex:0];
+    _msisdn             = [msisdnList objectAtIndex:18];
+    _targetMsisdn       = [msisdnList objectAtIndex:20];
+    _secondTargetMsisdn = [msisdnList objectAtIndex:19];
     
     self.authCodeTF.text           = _authCode;
     self.msisdnTF.text             = _msisdn;
@@ -211,14 +215,22 @@
                 [self addLog:@"Internet if online."];
                 if (_sessionInfo) {
                     std::string sessionInfo  = [_sessionInfo cStringWebRTC];
-                    WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
+                    if (isInternetOnline == false) {
+                        WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
+                    }
+                }else {
+                    if (isInternetOnline == false) {
+                        [self registerWebRTC];
+                    }
                 }
             }
+            isInternetOnline = true;
         });
     };
 
     reach.unreachableBlock = ^(Reachability *reachability) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            isInternetOnline = false;
             [self setWebRTCStatus:false];
             isInternetGoneFirst = true;
             WebRTCCall *webrtcCall = [self getFirstWebRTCCall];
@@ -294,7 +306,7 @@
 
 - (void)registerWebRTC {
     std::string authCode    = [_authCode cStringWebRTC];
-    std::string baseURL     = "https://92.45.96.182:8082";
+    std::string baseURL     = "https://91.93.249.10:8082";
     std::string displayName = "Baris Yilmaz";
     std::string deviceName  = "Baris - iPhone 7";
     std::string msisdn      = [_msisdn cStringWebRTC];
