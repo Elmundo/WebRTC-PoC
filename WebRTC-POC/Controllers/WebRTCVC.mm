@@ -619,7 +619,9 @@
         std::string nativeline = [_msisdn cStringWebRTC];
         WebRTCCall *webrtcCall = [self getActiveWebRTCCall];
         if (!webrtcCall) {
-            WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
+            if ([[CallManager sharedManager] calls].count <= 0) {
+                WEBRTC_STATUS_CODE statusCode = WebRTC::mavInstance().mavRegisterAgain(sessionInfo);
+            }
         }
     }
 }
