@@ -117,7 +117,8 @@
     [[ProviderManager sharedManager] setWebrtcController:self];
     logs       = [[NSMutableArray<LogModel *> alloc] init];
     authCodes  = [[NSArray<NSString *> alloc] initWithObjects:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjoiQmVhcmVyIiwiYWdlbnQiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCA2LjEpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS82NC4wLjMyODIuMTg2IFNhZmFyaS81MzcuMzYiLCJwcm9kdWN0aWQiOiIxIiwidXNlcmlkIjoiNWE5NmJjYjYyNDllYTZiMGVhNWExM2E0IiwidG9rZW5UeXBlIjoxLCJleHAiOjE1MjU4MjgxNTAsImlhdCI6MTUxOTgyODE1MH0.PA4jpdTVMNDOF7ajZuq0X9jhc-vYXIT59ABz2LwVuHE",
-                  @"49", @"50", @"56", @"57", @"59", nil];
+                  @"49", @"50", @"56", @"57", @"59", @"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjoiQmVhcmVyIiwiYWdlbnQiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCA2LjEpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS82My4wLjMyMzkuMTMyIFNhZmFyaS81MzcuMzYiLCJwcm9kdWN0aWQiOiIxIiwidXNlcmlkIjoiNWE3ZDU4YWIyNDllYTZiMGVhNWEwZDAwIiwidG9rZW5UeXBlIjoxLCJleHAiOjE1MjU3MTYzMzAsImlhdCI6MTUxOTcxNjMzMH0.1tGdMte8oq4ozafozCRaWza5kWxpR5UMIzn3OtlVOOw",
+                  nil];
     
     msisdnList = [[NSArray<NSString *> alloc] initWithObjects:
                   @"908502284041@superims.com", @"908502284042@superims.com",
@@ -132,8 +133,8 @@
                   @"05307339475@ims.mnc001.mcc286.3gppnetwork.org" , @"05376306220@ims.mnc001.mcc286.3gppnetwork.org",
                   @"05557090896@ims.mnc001.mcc286.3gppnetwork.org" , nil];
     
-    _authCode           = [authCodes objectAtIndex:0];
-    _msisdn             = [msisdnList objectAtIndex:18];
+    _authCode           = [authCodes objectAtIndex:6];
+    _msisdn             = [msisdnList objectAtIndex:11];
     _targetMsisdn       = [msisdnList objectAtIndex:20];
     _secondTargetMsisdn = [msisdnList objectAtIndex:19];
     
