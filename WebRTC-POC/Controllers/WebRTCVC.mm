@@ -283,6 +283,9 @@
 
 - (void)initWebRTC {
     WebRTCConfig config;
+    config.TurnServerIP = "stun.l.google.com";
+    config.TurnServerUDPPort = 443;
+    
     std::string sdkBuildVersionInfo = [@"" cStringWebRTC];
     WEBRTC_STATUS_CODE status = WebRTC::mavInstance().mavInitialize(config, sdkBuildVersionInfo);
     
