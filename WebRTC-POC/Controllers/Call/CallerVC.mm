@@ -316,13 +316,14 @@ typedef void (^SecondCallBlock)();
 - (IBAction)onCallMerge:(id)sender {
     WebRTCCall *webrtcSecondCall = [_webRTCController getActiveWebRTCCall];
     WebRTCCall *webrtcHoldedCall = [_webRTCController getWebRTCCallWithState:WebRTCCallStateHold isOutgoing:true];
-
+    
     std::string confcallId  = [@"" cStringWebRTC];
     std::string callId      = [webrtcSecondCall.callId cStringWebRTC];
     std::string activeUri   = [webrtcSecondCall.callee cStringWebRTC];
     std::string holdUri     = [webrtcHoldedCall.callee cStringWebRTC];
     std::string lineinfo    = [webrtcSecondCall.msisdn cStringWebRTC];
 
+    WebRTC::mavInstance().mavCallHold([webrtcSecondCall.callId cStringWebRTC] , false);
     WebRTC::mavInstance().mavStartAdHocConf(confcallId, callId, activeUri, holdUri, WEBRTC_AUDIO_EAR_PIECE, lineinfo);
 }
 

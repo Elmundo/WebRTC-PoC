@@ -131,10 +131,11 @@
                   @"05360760924@ims.mnc001.mcc286.3gppnetwork.org" , @"05332109683@ims.mnc001.mcc286.3gppnetwork.org",
                   @"05398602011@ims.mnc001.mcc286.3gppnetwork.org" , @"05332109203@ims.mnc001.mcc286.3gppnetwork.org",
                   @"05307339475@ims.mnc001.mcc286.3gppnetwork.org" , @"05376306220@ims.mnc001.mcc286.3gppnetwork.org",
-                  @"05557090896@ims.mnc001.mcc286.3gppnetwork.org" , nil];
+                  @"05557090896@ims.mnc001.mcc286.3gppnetwork.org" , @"05322104683@ims.mnc001.mcc286.3gppnetwork.org",
+                  nil];
     
     _authCode           = [authCodes objectAtIndex:6];
-    _msisdn             = [msisdnList objectAtIndex:11];
+    _msisdn             = [msisdnList objectAtIndex:18];
     _targetMsisdn       = [msisdnList objectAtIndex:20];
     _secondTargetMsisdn = [msisdnList objectAtIndex:19];
     
@@ -284,7 +285,7 @@
 - (void)initWebRTC {
     WebRTCConfig config;
     config.TurnServerIP = "stun.l.google.com";
-    config.TurnServerUDPPort = 443;
+    config.TurnServerUDPPort = 19302;
     
     std::string sdkBuildVersionInfo = [@"" cStringWebRTC];
     WEBRTC_STATUS_CODE status = WebRTC::mavInstance().mavInitialize(config, sdkBuildVersionInfo);
@@ -836,6 +837,29 @@
     
     // Sure it is error
     if (statuscode >= 300) {
+        NSString *theCallId = [NSString stringWithCharList:callid.c_str()];
+        WebRTCCall *webrtcCall = [self getWebRTCCallWithCallId:theCallId];
+        if (webrtcCall && webrtcCall.state == WebRTCCallStatePending) {
+            [self removeWebRTCCall:webrtcCall];
+            Call *call = [[CallManager sharedManager] callWithUUID:webrtcCall.callUUID];
+            if (call) {
+                NSLog(@"mavOnReceivedCallEnd: Call class to be ended. callId: %@ callUUID: %@", call.callId, [call.uuid UUIDString]);
+                [[CallManager sharedManager] endCall:call];
+            }
+            
+            [self addLog: [NSString stringWithFormat:@"WebRTC mavOnReceivedCallEnd! callid: %@", [NSString stringWithCharList:callid.c_str()] ]];
+            for (WebRTCCall *theCall in self.calls) {
+                NSLog(@"mavOnReceivedCallEnd: After an call is ended from other side. CallId: %@  callUUID: %@ CallStatus: %lu", theCall.callId, [call.uuid UUIDString], (unsigned long)theCall.state);
+                // If there is an holded call session, unhold it.
+                if (theCall.state == WebRTCCallStateHold) {
+                    WebRTC::mavInstance().mavCallUnhold([theCall.callId cStringWebRTC]);
+                }
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CallEnd" object:nil userInfo:@{@"data": webrtcCall}];
+        }else {
+            NSLog(@"mavOnReceivedCallStatus::status callId: %@ will be ended in 'mavOnReceivedCallEnd' method", webrtcCall.callId);
+        }
+        
         if (self.presentedViewController) {
             [self.presentedViewController dismissViewControllerAnimated:true completion:nil];
             NSLog(@"************************* StatusCode >= 300 - General Error.");
@@ -980,18 +1004,24 @@
 -(void)mavOnAdHocConfStatus:(std::string)callid status:(std::string)status {
     [self addLog: [NSString stringWithFormat:@"WebRTC mavOnAdHocConfStatus! callid: %@  status: %@", [NSString stringWithCharList:callid.c_str()], [NSString stringWithCharList:status.c_str()] ]];
     
-    for (WebRTCCall *webrtcCall in self.calls) {
-        NSLog(@"\n\n\n\n -- AD_HOC_CONF Operation is started -- \n");
-        Call *call = [[CallManager sharedManager] callWithUUID:webrtcCall.callUUID];
-        if (call) {
-            NSLog(@"************************* mavOnAdHocConfStatus:: Call ended with callUUID: %@", [call.uuid UUIDString]);
-        }
-        NSLog(@"************************* mavOnAdHocConfStatus:: mavCallEnd callId: %@", webrtcCall.callId);
-        webrtcCall.state = WebRTCCallStateEndPending;
-        WebRTC::mavInstance().mavCallEnd([webrtcCall.callId cStringWebRTC]);
-    }
     
+    NSArray *calls = [[CallManager sharedManager] calls];
+    Call *firstCall = calls.firstObject;
+    Call *secondCall = calls[1];
     
+//    for (WebRTCCall *webrtcCall in self.calls) {
+//        NSLog(@"\n\n\n\n -- AD_HOC_CONF Operation is started -- \n");
+//        Call *call = [[CallManager sharedManager] callWithUUID:webrtcCall.callUUID];
+//        if (call) {
+//            NSLog(@"************************* mavOnAdHocConfStatus:: Call ended with callUUID: %@", [call.uuid UUIDString]);
+//        }
+//        NSLog(@"************************* mavOnAdHocConfStatus:: mavCallEnd callId: %@", webrtcCall.callId);
+//        webrtcCall.state = WebRTCCallStateEndPending;
+//        WebRTC::mavInstance().mavCallEnd([webrtcCall.callId cStringWebRTC]);
+//    }
+
+    
+    [[CallManager sharedManager] setGroup:firstCall mergeCall:secondCall];
     NSString *ns_callId = [NSString stringWithCharList:callid.c_str()];
     WebRTCCall *webrtcCall = [[WebRTCCall alloc] initWith:ns_callId msisdn:_msisdn callee:_targetMsisdn outgoing:true];
     [[CallManager sharedManager] startCall:_targetMsisdn videoEnabled:false webrtcCall:webrtcCall];
